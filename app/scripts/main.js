@@ -9,10 +9,13 @@ require.config({
         packery: '../bower_components/packery/dist/packery.pkgd',
         'get-size': '../bower_components/get-size/get-size',
         'get-style-property': '../bower_components/get-style-property',
+
+        fancybox: 'libs/jquery.fancybox',
 	},
 	shim: {
         'stellar': ['jquery'],
 		'isotope': ['jquery'],
+        'fancybox': ['jquery'],
 		//'packery': ['isotope']
 	}
 });

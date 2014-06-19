@@ -5,6 +5,7 @@ define(
 		'packery',
 		'get-size',
 		'stellar',
+		'fancybox'
 
 		//'packery-layout',
 	], 
@@ -14,30 +15,35 @@ define(
 		console.log('isotope', Isotope);
 		console.log('Packery', Packery);
 
-	//	$("#content > div").each(function( i, item ){
-
 		var content = $('#content > div');
 		$.each(content, function (index, item) {
 
 		  var w = 1;
 		  if($(this).attr("data-w")){
-		  	window.console.log($(this).attr("data-w"));
 		  	w = $(this).attr("data-w");
 		  }
 		  var h = 1;
 		  if($(this).attr("data-h")){
-		  	window.console.log($(this).attr("data-h"));
 		  	h = $(this).attr("data-h");
 		  }
 
 		  //var img = $(this).find('a')[0].attr("href");
 		  var imageUrl =  $(this).find('a')[0].getAttribute('href');
-		  window.console.log(imageUrl);
+		 // window.console.log(imageUrl);
 
 		  var title = $(this).find('h2')[0].innerHTML;
 
+		  var style = "";
+		  if(w == 1){
+		  	style += 'font-size:.7em;';
+		  }
+		  classes = ""
+		  if($(this).hasClass('fancybox')){
+		  	classes += 'fancybox ';
+		  }
 
-		  var html = '<div class="element w-'+w+' h-'+h+'">';
+
+		  var html = '<div style="'+style+'" class="'+classes+'element w-'+w+' h-'+h+'" data-id="'+$(this).attr("id")+'">';
 		      html += '<div style="background-image: url(\''+imageUrl+'\')">';
 		      html += '<h4>'+title+'</h4></div></div>';
 			
@@ -142,14 +148,49 @@ define(
 		  return elem.textContent || elem.innerText;
 		}*/
 
-		$(".element").click(function(){
-			window.console.log($(this));
-			$("#overlay").fadeIn(100);
+		$(".element").click(function(event){
+			window.console.log();
+			var id = $(this).data("id");
+
+			if($(this).hasClass("fancybox")){
+
+				href = $("#"+id).data("href");
+
+				$.fancybox({
+				//'padding'		: 0,
+				//'autoScale'		: false,
+				//'transitionIn'	: 'none',
+				//'transitionOut'	: 'none',
+				//'title'			: this.title,
+				//'width'		: 680,
+				//'height'		: 495,
+				'href'			: href,
+				'type'			: 'iframe'
+				//'type'			: 'swf',
+				//'swf'			: {
+				   	// 'wmode'		: 'transparent',
+					//'allowfullscreen'	: 'true'
+				//}
+		});
+			}else{
+				$("#content > div").hide(0);
+				$("#content > div#"+id).show(0);
+				$("#overlay").fadeIn(100);
+			}
+			
+
 		});
 
-		$("#overlay, #overlay .close").click(function(){
+		$("#scrim, #overlay .close").click(function(){
 			$("#overlay").fadeOut(100);
+			
 		})
+
+		$("#overlay #content").click(function(event){
+			event.preventDefault();
+			event.stopPropigation();
+		});
+
 
 		if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
 			$.stellar({
@@ -158,6 +199,15 @@ define(
 		}
 
 
+		$(".thumb").fancybox({
+		  beforeShow : function(){
+		   //this.title =  this.title + " - " + $(this.element).data("caption") + '<a href="#">foo</a>' + '<br><br><br> <br><br><br> foooo';
+		  }
+		 });
+
+		$("a.mh").fancybox({'width':760});
+		$("#hbo_vis").fancybox({'width':307, height:390});
+		$("#espn_nba").fancybox({'width':970, height:250});
 		
 		
 
