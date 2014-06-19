@@ -41,6 +41,9 @@ define(
 		  if($(this).hasClass('fancybox')){
 		  	classes += 'fancybox ';
 		  }
+		  if($(this).hasClass('iframe')){
+		  	classes += 'iframe ';
+		  }
 
 
 		  var html = '<div style="'+style+'" class="'+classes+'element w-'+w+' h-'+h+'" data-id="'+$(this).attr("id")+'">';
@@ -155,6 +158,10 @@ define(
 			if($(this).hasClass("fancybox")){
 
 				href = $("#"+id).data("href");
+				type = 'image';
+				if($(this).hasClass("iframe")){
+					type = 'iframe'
+				}
 
 				$.fancybox({
 				//'padding'		: 0,
@@ -165,7 +172,7 @@ define(
 				//'width'		: 680,
 				//'height'		: 495,
 				'href'			: href,
-				'type'			: 'iframe'
+				'type'			: type
 				//'type'			: 'swf',
 				//'swf'			: {
 				   	// 'wmode'		: 'transparent',
