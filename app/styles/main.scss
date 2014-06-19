@@ -16,6 +16,7 @@ body {
     width:100%;
     //background:black;
     padding: 10px;
+    
 }
 
 
@@ -155,6 +156,7 @@ $margin:5;
   background-color: rgba(0, 0, 0, 0.8);
   padding:100px;
   color:white;
+  display:none;
 
   #content{
     max-width: 900px;
@@ -199,4 +201,198 @@ $margin:5;
   width: 100px;
   height: 100px;
 }*/
+
+h1{
+    color:#c74417;
+    font-size:35px;
+    margin:40px 0 20px 0;
+}
+h2{
+    color:#00deff;
+    font-size: 20px;
+    margin:40px 0 10px 0;
+    
+}
+p{
+    font-size:17px;
+    line-height:22px;
+    margin:12px 0;
+    
+}
+a.thumb{
+    display:block;
+    float:left;
+    height:200px;
+    width:200px;
+    background: #3a414c;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin:0 9px 8px 0;
+    background-position: center center;
+
+    -webkit-background-size: cover; /*for webKit*/
+    -moz-background-size: cover; /*Mozilla*/
+    -o-background-size: cover; /*opera*/
+    background-size: cover; /*generic*/
+
+    /*-webkit-filter: grayscale(.8);
+    -webkit-transition: all 800ms;*/
+}
+a.last{
+    margin-right:0;
+}
+/*a.thumb:hover{
+    -webkit-filter: grayscale(0);
+}*/
+
+a{
+    transition: color .2s;
+    -moz-transition: color .2s; /* Firefox 4 */
+    -webkit-transition: color .2s; /* Safari and Chrome */
+    -o-transition: color .2s; /* Opera */
+     text-decoration: none;
+}
+a, a:active, a:visited{
+    color:#5b48bd;
+}
+a:hover{
+    color:#1a7af1;
+}
+
+
+a.c1{
+    width:955px;
+    margin-right:0px;
+}
+a.c2{
+    width:474px;
+}
+a.c3{
+    width:312px;
+}
+a.c4{
+    width:232px;
+}
+a.c5{
+    width:184px;
+}
+a.c6{
+    width:151px;
+}
+a.short{
+    height:136px;
+}
+
+a.f00{   
+    color:#860032;
+}
+a.f00:hover{
+    color:#ff0019;
+}
+
+
+dl{
+    clear:both;
+    display:block;
+    line-height:20px;
+    padding:10px 40px 10px 0;
+    font-size:15px;
+}
+dt, dd{
+    padding:10px 0 0 0;
+}
+dt{
+    float: left; 
+    width:100px;
+    text-align:right;
+    color:#435b77;
+}
+dt:after{ 
+    content:":";
+}
+dd{
+    margin-left: 110px;
+}
+
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(110,130,180,0), rgba(110,130,180,0.75), rgba(110,130,180,0));
+    background-image:    -moz-linear-gradient(left, rgba(110,130,180,0), rgba(110,130,180,0.75), rgba(110,130,180,0));
+    background-image:     -ms-linear-gradient(left, rgba(110,130,180,0), rgba(110,130,180,0.75), rgba(110,130,180,0));
+    background-image:      -o-linear-gradient(left, rgba(110,130,180,0), rgba(110,130,180,0.75), rgba(110,130,180,0));
+    margin: 25px 10px 0 0;
+    border-bottom: 1px solid #000;
+}
+
+#main{
+    position: relative;
+}
+.star{
+    position:absolute;
+}
+
+#client_brands{
+    display: block;
+    margin:10px 10px 30px 3px;
+}
+#client_brands li{
+    display:inline-block;
+}
+#client_brands li div{
+    width:155px;
+    height:120px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+#head{    
+    height:420px;
+    position:absolute;
+    width:100%;
+    background: #e9edff;
+    overflow: hidden;   
+}
+#me{
+    background: #e9edff url('../images/caseprince_3.jpg') no-repeat 15% 15px; 
+    height:498px;
+    width:100%;
+    position: relative;
+    right:0;
+    //margin:0 auto;
+}
+#head_copy{
+    width:100%;
+    padding-left:50%;
+    height:385px;
+    position: relative;
+    //position: 
+    margin-top: 20px;// 0 0px 420px;
+}
+#head_copy p{
+    background-color:#e9edff;
+    display: inline;
+    line-height: 22px;
+    padding:3px 0px 0 0px;
+}
+
+#phone{
+    width:116px;
+    height:282px;
+    //background: url('../img/phone.png');
+}
+
+ol li{
+    color: #435b77;
+}
+ol li span{
+    color: #687f99;
+}
+
+
+
+
+
 
