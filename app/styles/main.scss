@@ -181,11 +181,16 @@ $margin:5;
   }
 
   #content{
-    max-width: 976px;
+    max-width: 1280px;
+    min-width: 976px;
     margin: 0 auto;
     background-color: black;//#4b4b4b;
-    padding:50px 0px 50px 10px;
+    padding:50px 0px 50px 0px;
     position: relative;
+    >div{
+      width: 955px;
+      margin: 0 auto;
+    }
   }
 
 }
@@ -298,10 +303,10 @@ a.c4{
     width:232px;
 }
 a.c5{
-    width:184px;
+    width:182px;
 }
 a.c6{
-    width:151px;
+    width:150px;
 }
 a.short{
     height:136px;
