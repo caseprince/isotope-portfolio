@@ -194,8 +194,8 @@ define(
 		})
 
 		$("#overlay #content").click(function(event){
-			event.preventDefault();
-			event.stopPropigation();
+			//event.preventDefault();
+			//event.stopPropigation();
 		});
 
 
