@@ -3,6 +3,7 @@ require.config({
     paths: {
         jquery: '../bower_components/jquery/jquery',
         stellar: '../bower_components/jquery.stellar/jquery.stellar',
+
         isotope: '../bower_components/isotope/dist/isotope.pkgd',
         'packery-layout': '../bower_components/isotope-packery/packery-mode.pkgd',
 
@@ -11,11 +12,13 @@ require.config({
         'get-style-property': '../bower_components/get-style-property',
 
         fancybox: 'libs/jquery.fancybox',
+        typed: 'libs/typed'
 	},
 	shim: {
         'stellar': ['jquery'],
 		'isotope': ['jquery'],
         'fancybox': ['jquery'],
+        'typed': ['jquery']
 		//'packery': ['isotope']
 	}
 });

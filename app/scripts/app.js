@@ -4,6 +4,9 @@ define(
 		'isotope',
 		'packery',
 		'get-size',
+
+		//jquery plugins
+		'typed',
 		'stellar',
 		'fancybox'
 
@@ -216,7 +219,25 @@ define(
 		$("#hbo_vis").fancybox({'width':307, height:390});
 		$("#espn_nba").fancybox({'width':970, height:250});
 		
-		
+
+	    $("#typed").typed({
+			strings: [
+				"paper airplanes.", 
+				"origami",
+				"cat toys",
+				"cat videos",
+				"LED light fixtures",
+				"LED bonsais",
+				"timelapse videos",
+				"experiences",
+				"brands",
+				"things."
+			],
+			typeSpeed: 50
+	    });
+
+	    $("#brands, footer").delay(1000).show();
+
 
 
 	}
