@@ -166,7 +166,7 @@ $margin:5;
   position: fixed;
   top:0;
   left:0;
-  overflow-y:auto;
+  //overflow-y:auto;
   width:100%;
   height:100%;
   
@@ -259,7 +259,7 @@ h1{
 h2{
     color:#00deff;
     font-size: 30px;
-    margin:10px 50px;// 0 150px 0;
+    margin:10px 50px 40px 150px;// 0 150px 0;
     
 }
 p{
