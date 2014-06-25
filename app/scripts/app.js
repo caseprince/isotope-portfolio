@@ -7,6 +7,7 @@ define(
 
 		//jquery plugins
 		'typed',
+		'typer',
 		'stellar',
 		'fancybox'
 
@@ -218,9 +219,11 @@ define(
 		$("a.mh").fancybox({'width':760});
 		$("#hbo_vis").fancybox({'width':307, height:390});
 		$("#espn_nba").fancybox({'width':970, height:250});
-		
 
-	    $("#typed").typed({
+		$.typer.options.typerInterval = 5500;
+		$.typer.options.typeDelay = 50,
+		$('[data-typer-targets]').typer();
+	    /*$("#typed").typed({
 			strings: [
 				"paper airplanes.", 
 				"origami",
@@ -234,7 +237,7 @@ define(
 				"things."
 			],
 			typeSpeed: 50
-	    });
+	    });*/
 
 	    $("#brands, footer").delay(1000).show();
 

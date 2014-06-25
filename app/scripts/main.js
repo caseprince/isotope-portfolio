@@ -12,13 +12,15 @@ require.config({
         'get-style-property': '../bower_components/get-style-property',
 
         fancybox: 'libs/jquery.fancybox',
-        typed: 'libs/typed'
+        typed: 'libs/typed',
+        typer: 'libs/jquery.typer'
 	},
 	shim: {
         'stellar': ['jquery'],
 		'isotope': ['jquery'],
         'fancybox': ['jquery'],
-        'typed': ['jquery']
+        'typed': ['jquery'],
+        'typer': ['jquery']
 		//'packery': ['isotope']
 	}
 });
