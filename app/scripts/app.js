@@ -161,18 +161,25 @@ define(
 
 			if($(this).hasClass("fancybox")){
 
-				href = $("#"+id).data("href");
-				type = 'image';
+				var href = $("#"+id).data("href");
+				var type = 'image';
 				if($(this).hasClass("iframe")){
 					type = 'iframe'
 				}
+
+				var title = '';
+				if($("#"+id).data("caption")){
+					title = $("#"+id).data("caption");
+				}
+
+
 
 				$.fancybox({
 				//'padding'		: 0,
 				//'autoScale'		: false,
 				//'transitionIn'	: 'none',
 				//'transitionOut'	: 'none',
-				//'title'			: this.title,
+				'title'			: title,
 				//'width'		: 680,
 				//'height'		: 495,
 				'href'			: href,
