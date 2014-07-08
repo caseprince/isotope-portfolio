@@ -227,7 +227,7 @@ define(
 		$("#hbo_vis").fancybox({'width':307, height:390});
 		$("#espn_nba").fancybox({'width':970, height:250});
 
-		$.typer.options.typerInterval = 5500;
+		$.typer.options.typerInterval = 7500;
 		$.typer.options.typeDelay = 50,
 		$('[data-typer-targets]').typer();
 	    /*$("#typed").typed({
