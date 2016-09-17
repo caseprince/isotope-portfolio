@@ -96,72 +96,20 @@ define(
 		  this.layout();
 		};
 
-		 var container = document.querySelector('#container');
-		  var pckry = new Packery( container, {
-		    itemSelector: '.element',
-		    columnWidth: 120,
-		    gutter: 10
-		  });
-
-
-		/*var container = $('#container')[0];
-		var iso = window.iso = new Isotope( container, {
-			//layoutMode: 'fitRows',
-			//masonry: {
-			//      columnWidth: 50
-			//    },
-			layoutMode: 'packery',
-			packery: {
-			  gutter: 10
-			},
-			//itemSelector: '.mini-item',
-			//stamp: '.stamp'
-			getSortData: {
-				  // number: function( itemElem ) {
-				  //   return parseInt( getText( itemElem.querySelector('.number') ), 10 );
-				  // },
-				  // symbol: function( itemElem ) {
-				  //   return getText( itemElem.querySelector('.symbol') );
-				  // },
-				  // name: function( itemElem ) {
-				  //   return getText( itemElem.querySelector('.name') );
-				  // },
-				  // category: function( itemElem ) {
-				  //   return itemElem.getAttribute('data-category');
-				  // },			  
-				  number: '.number parseInt',
-				  symbol: '.symbol',
-				  name: '.name',
-				  category: '[data-category]'			  
-			  }
-		});*/
-
-		//var options = document.querySelector('#options');
-
-
-		/*$('#options li a').click(function(event){
-			//});
-			//eventie.bind( options, 'click', function( event ) {
-			// use link's href, remove leading hash
-			var sortBy = event.target.getAttribute('href').slice( 1 );
-			sortBy.slice( 0, 1 );
-			iso.options.sortBy = sortBy;
-			//window.console.log(iso, sortBy, event.target.getAttribute('href'));
-			iso.arrange();
-			event.preventDefault();
+		var container = document.querySelector('#container');
+		var pckry = new Packery( container, {
+			itemSelector: '.element',
+			columnWidth: 120,
+			gutter: 10
 		});
 
-		function getText( elem ) {
-		  return elem.textContent || elem.innerText;
-		}*/
-
 		$(".element").click(function(event){
-			window.console.log();
 			var id = $(this).data("id");
 
 			if($(this).hasClass("fancybox")){
 
 				var href = $("#"+id).data("href");
+
 				var type = 'image';
 				if($(this).hasClass("iframe")){
 					type = 'iframe'
@@ -172,31 +120,27 @@ define(
 					title = $("#"+id).data("caption");
 				}
 
-
-
 				$.fancybox({
-				//'padding'		: 0,
-				//'autoScale'		: false,
-				//'transitionIn'	: 'none',
-				//'transitionOut'	: 'none',
-				'title'			: title,
-				//'width'		: 680,
-				//'height'		: 495,
-				'href'			: href,
-				'type'			: type
-				//'type'			: 'swf',
-				//'swf'			: {
-				   	// 'wmode'		: 'transparent',
-					//'allowfullscreen'	: 'true'
-				//}
-		});
+					//'padding'		: 0,
+					//'autoScale'		: false,
+					//'transitionIn'	: 'none',
+					//'transitionOut'	: 'none',
+					'title'			: title,
+					//'width'		: 680,
+					//'height'		: 495,
+					'href'			: href,
+					'type'			: type
+					//'type'			: 'swf',
+					//'swf'			: {
+					   	// 'wmode'		: 'transparent',
+						//'allowfullscreen'	: 'true'
+					//}
+				});
 			}else{
 				$("#content > div").hide(0);
 				$("#content > div#"+id).show(0);
 				$("#overlay").fadeIn(100);
 			}
-			
-
 		});
 
 		$("#scrim, #overlay .close").click(function(){
@@ -230,25 +174,7 @@ define(
 		$.typer.options.typerInterval = 7500;
 		$.typer.options.typeDelay = 50,
 		$('[data-typer-targets]').typer();
-	    /*$("#typed").typed({
-			strings: [
-				"paper airplanes.", 
-				"origami",
-				"cat toys",
-				"cat videos",
-				"LED light fixtures",
-				"LED bonsais",
-				"timelapse videos",
-				"experiences",
-				"brands",
-				"things."
-			],
-			typeSpeed: 50
-	    });*/
 
 	    $("#brands, footer").delay(1000).show();
-
-
-
 	}
 );
