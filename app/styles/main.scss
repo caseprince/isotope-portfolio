@@ -190,11 +190,10 @@ $margin: 5;
     position: relative;
     border: 15px solid white;
     @include border-radius(4px);
-    //
+
     >div{
       overflow: hidden;
       max-width: 970px;
-      //width: 100%;
       margin: 0 auto;
     }
   }
@@ -203,7 +202,6 @@ $margin: 5;
 
 .close{
   font-size: 2em;
-  //@include rotateZ(45deg);
   background-color: rgba(1, 1, 1, 0.8);
   display: block;
   position: absolute;
@@ -457,7 +455,6 @@ ol li span{
   min-width: 975px;
   width: 100%;
   overflow: hidden;
-  overflow-x: scroll;
 }
 
 .left{

@@ -6,7 +6,6 @@ define(
 		'get-size',
 
 		//jquery plugins
-		'typed',
 		'typer',
 		'stellar',
 		'fancybox'
@@ -31,17 +30,10 @@ define(
 		  	h = $(this).attr("data-h");
 		  }
 
-		  //var img = $(this).find('a')[0].attr("href");
-		  var imageUrl =  $(this).find('a')[0].getAttribute('href');
-		 // window.console.log(imageUrl);
+		  var title = $(this).find('h2')[0].innerHTML,
+			  style = w == 1 ? 'font-size:.7em;' : '';
 
-		  var title = $(this).find('h2')[0].innerHTML;
-
-		  var style = "";
-		  if(w == 1){
-		  	style += 'font-size:.7em;';
-		  }
-		  classes = ""
+		  classes = '';
 		  if($(this).hasClass('fancybox')){
 		  	classes += 'fancybox ';
 		  }
@@ -49,14 +41,12 @@ define(
 		  	classes += 'iframe ';
 		  }
 
-
-		  var html = '<div style="'+style+'" class="'+classes+'element w-'+w+' h-'+h+'" data-id="'+$(this).attr("id")+'">';
+		  var imageUrl =  $(this).find('a')[0].getAttribute('href'),
+		  	  html = '<div style="'+style+'" class="'+classes+'element w-'+w+' h-'+h+'" data-id="'+$(this).attr("id")+'">';
 		      html += '<div style="background-image: url(\''+imageUrl+'\')">';
 		      html += '<h4>'+title+'</h4></div></div>';
 			
 			$("#container").append(html);
-
-
 		});
 
 
@@ -84,11 +74,8 @@ define(
 		      emptyWidth += space.width;
 		    }
 		  }
-
-		  return {
-		    width: this.fitWidth - this.gutter,
-		    height: this.maxY - this.gutter
-		  };
+		  return { width: this.fitWidth - this.gutter,
+		           height: this.maxY - this.gutter };
 		};
 
 		// always resize
@@ -105,54 +92,50 @@ define(
 
 		$(".element").click(function(event){
 			var id = $(this).data("id");
+			window.location.hash = '#'+id;
+		});
 
-			if($(this).hasClass("fancybox")){
+		$("#scrim, #overlay .close").click(clearHash);
 
-				var href = $("#"+id).data("href");
+		function clearHash() {
+			// Prevent scrolling by storing the page's current scroll offset
+			scrollV = document.body.scrollTop;
+			scrollH = document.body.scrollLeft;
 
-				var type = 'image';
-				if($(this).hasClass("iframe")){
-					type = 'iframe'
+			window.location.hash = '';
+
+			// Restore the scroll offset, should be flicker free
+			document.body.scrollTop = scrollV;
+			document.body.scrollLeft = scrollH;
+		}
+
+		function updateHash() {
+			var id = window.location.hash;
+			if (id) {
+				id = id.slice(1);
+				var $content = $("#"+id), 
+					$thumb = $('*[data-id="'+id+'"]');
+				if($('*[data-id="'+id+'"]').hasClass("fancybox")){
+					$.fancybox({
+						'title'	: $content.data("caption") || '',
+						'href'	: $content.data("href"),
+						'type'	: $thumb.hasClass("iframe") ? 'iframe' : 'image',
+						'afterClose' : function() {
+							clearHash();
+						}
+					});
+				}else{
+					$("#content > div").hide(0);
+					$content.show(0);
+					$("#overlay").fadeIn(100);
 				}
-
-				var title = '';
-				if($("#"+id).data("caption")){
-					title = $("#"+id).data("caption");
-				}
-
-				$.fancybox({
-					//'padding'		: 0,
-					//'autoScale'		: false,
-					//'transitionIn'	: 'none',
-					//'transitionOut'	: 'none',
-					'title'			: title,
-					//'width'		: 680,
-					//'height'		: 495,
-					'href'			: href,
-					'type'			: type
-					//'type'			: 'swf',
-					//'swf'			: {
-					   	// 'wmode'		: 'transparent',
-						//'allowfullscreen'	: 'true'
-					//}
-				});
-			}else{
-				$("#content > div").hide(0);
-				$("#content > div#"+id).show(0);
-				$("#overlay").fadeIn(100);
+			} else {
+				$.fancybox.close(true);
+				$("#overlay").fadeOut(100);
 			}
-		});
-
-		$("#scrim, #overlay .close").click(function(){
-			$("#overlay").fadeOut(100);
-			
-		})
-
-		$("#overlay #content").click(function(event){
-			//event.preventDefault();
-			//event.stopPropigation();
-		});
-
+		}
+		window.onhashchange = updateHash;
+		updateHash();
 
 		if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
 			$.stellar({
@@ -160,13 +143,7 @@ define(
 			});
 		}
 
-
-		$(".thumb").fancybox({
-		  beforeShow : function(){
-		   //this.title =  this.title + " - " + $(this.element).data("caption") + '<a href="#">foo</a>' + '<br><br><br> <br><br><br> foooo';
-		  }
-		 });
-
+		$(".thumb").fancybox();
 		$("a.mh").fancybox({'width':760});
 		$("#hbo_vis").fancybox({'width':307, height:390});
 		$("#espn_nba").fancybox({'width':970, height:250});
