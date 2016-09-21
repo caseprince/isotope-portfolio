@@ -20,9 +20,6 @@
 </head>
 <body>
   <div id="head"><div id="me" data-stellar-ratio=".6" data-stellar-vertical-offset="0"></div></div>
-    <!--[if lt IE 10]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
     <div id="main">
       <div id="head_copy"> <!-- data-stellar-ratio="1.6" data-stellar-vertical-offset="45"> -->
         <h1>Hello!</h1>
@@ -45,26 +42,15 @@
           "I squash [software] bugs. (IRL bugs are cool.)"
           ]}'></span></p>
           <h1>About Me</h1>
-          <ul>
-          <p>I'm a designer, developer, data-visualizer, and maker.<br> I've worked in Hi-Tech, Ed-Tech, Advertising & Marketing.<br><br>
-            I'm a Senior Web Developer at <a href="http://www.appneta.com/">AppNeta</a>.
-            <br><br> Here's <a href="http://www.caseprince.com/resume/" target="_blank">my resumé</a> and some favorite projects:
+          <p>I'm a designer, developer, data-visualizer, and maker.<br> I've worked in Hi-Tech, Ed-Tech, Advertising & Marketing.</p>
+
+          <p>I'm currently looking for a new gig visualizing interesting data and cracking hard challenges with fun colleagues.</p>
+
+          <p>Here's <a href="http://www.caseprince.com/resume/" target="_blank">my resumé</a> and some favorite projects:</p>
 
           <!-- <br><br>I'm currently learning about Go, Python, Django, Ruby, Node, Backbone, HTML5.2, D3, SVG, &lt;canvas&gt;, WebGL, & iOS. -->
          </p>
       </div>
-
-      <!-- <div id="options">
-        <h2>Sort</h2>
-        <ul class="option-set">
-          <li><a href="#original-order">original-order</a></li>
-          <li><a href="#number">number</a></li>
-          <li><a href="#name">name</a></li>
-          <li><a href="#symbol">symbol</a></li>
-          <li><a href="#weight">weight</a></li>
-          <li><a href="#category">category</a></li>
-        </ul>
-      </div> -->
 
   <div id="container">
     <!-- <div class="element w-3 h-2">
@@ -101,15 +87,61 @@
       </div>
 
 
-      <div id="tv" data-w="4" data-h="3">
+      <div id="TraceView" data-w="4" data-h="3" class="new-and-improved">
         <a href="images/tv/traceview_7.jpg"></a>
         <h2>TraceView</h2>
-        <div class="thumbs-vert">
-          <a class="thumb c4" href="images/tv/traceview_1.jpg" rel="tv" style="background-image:url('images/tv/traceview_1.jpg');"></a>
-          <a class="thumb c4" href="images/tv/traceview_2.jpg" rel="tv" style="background-image:url('images/tv/traceview_2.jpg');"></a>
-          <a class="thumb c4" href="images/tv/traceview_3.jpg" rel="tv" style="background-image:url('images/tv/traceview_3.jpg');"></a>
-          <a class="thumb c4 last" href="images/tv/traceview_4.jpg" rel="tv" style="background-image:url('images/tv/traceview_4.jpg');"></a>
+
+        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and distributed Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel</p>
+
+        <h3>The AppMap</h3>
+        <p>AppMap is a realtime network topology & health graph for distrubuted applications. I was the lead developer on the front end visualization. I worked closely with our Product Managers, Designer and multiple brilliant teams of Developers, developing initial prototypes, rapidly iteratating, polishing, optimizing, finalizing features, APIs & interfaces, integrating and ultimately deploying. This was an especially fun and challenging visualization to nail down. Some key challanges:</p>
+
+        <div class="left" style="width: 50%;">
+          <div class="col col2">
+             <a class="fancybox" href="images/tv/traceview_1.jpg" rel="tv">
+               <img src="images/tv/traceview_1.jpg">
+             </a>
+             <a class="fancybox" href="images/tv/traceview_2.jpg" rel="tv">
+               <img src="images/tv/traceview_2.jpg">
+             </a>
+             <a class="fancybox" href="images/tv/traceview_3.jpg" rel="tv">
+               <img src="images/tv/traceview_3.jpg">
+             </a>
+             <a class="fancybox" href="images/tv/traceview_4.jpg" rel="tv">
+               <img src="images/tv/traceview_4.jpg">
+             </a>
+          </div>
         </div>
+
+        
+        <h4>Performance & Scaliblity</h4>
+        <p class="detail">The AppMap needed to be able to visualize 10, or 1000 networked nodes and still be performant. We chose D3 & SVG for the main visualization. This allowed us to abstract out styling via CSS, and leverage native DOM interactions. These benefits, along with D3's data-binding and SVG's DOM testability made it the clear choice over &lt;canvas&gt; or WebGL.</p>
+
+        <h4>Information Display, Density & Interaction</h4>
+        <p class="detail">With hundreds of nodes and edges we needed to minimize on-screen text for smooth scrolling and digestability. We used intuitive colors and CSS animation to indicate node health and alerting nodes, color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users quickly see (and easily click on) problematic nodes or network paths for details.</p>
+
+        <h4>Grid Mode vs. Force Directed.</h4>
+        <p class="detail">The earliest appmap prototypes used D3's force-directed layout, but with 500+ nodes our framerate went down and MBPs' fans turned on. We dubbed the resulting tangles "angry spiders" and came to understand that force-direction is great for relatively simple maps, but isn't very scalable, especially so with persistant text labels.
+        <br><br>
+        To banish the angry spider, our intreped designer Quintin mocked up a 'grid mode' where nodes were grouped into columns by node type, and requests generally flow left-to-right. This layout intuitively has consumer or user nodes on the far left, which orignate requests through servers, to caches, DBs, CDNs, etc. on the far right. This more organized, scrollable layout mode was super fun and hard to optimally implement as a fully dynamic & responsive visualization. Notable features at launch include: 
+        <ol>
+          <li>Dynamic columns and column-rows by node type distribution</li>
+          <li>Vertical and horizontal responsiveness with dynamic node name truncation</li>
+          <li>Column order dynamically perfers right-to-left network request flow</li>
+          <li>Natural contextual z-sorting of nodes/edges</li>
+        </ol>
+        We ended up flushing out both modes and letting users which they prefered as a persistant use preference. There's more I'd like to do on this visualization, but I'm not allowed to work on it anymore. :u(
+        </p>
+
+        <dl>
+          <dt>Performance & Scaliblity</dt>
+            <dd>The AppMap needed to be able to visualize 10, or 1000 networked nodes, and be super performant. We chose D3 & SVG for the main visualization for performance, abstracted elementing styling vis CSS, and native-DOM interactability; We needed to display text & icons, and wanted clickable edges, so &lt;canvas&gt; or WebGL were not ideal.</dd>
+          <dt>Information display & Density</dt>
+            <dd></dd>
+          <dt></dt>
+            <dd><a href="https://www.appneta.com/products/traceview/">appneta.com/products/traceview/</a></dd>
+        </dl>
+
         <div class="thumbs-vert">
           <a class="thumb c4" href="images/tv/traceview_5.jpg" rel="tv" style="background-image:url('images/tv/traceview_5.jpg');"></a>
           <a class="thumb c4" href="images/tv/traceview_6.jpg" rel="tv" style="background-image:url('images/tv/traceview_6.jpg');"></a>
@@ -124,7 +156,11 @@
           <dt>Website</dt>
             <dd><a href="https://www.appneta.com/products/traceview/">appneta.com/products/traceview/</a></dd>
         </dl>
+
+        <!-- http://quintinmarcus.com/?portfolio=app-map -->
       </div>
+
+
 
 
       <div id="gitgong" data-w="2" data-h="2">
@@ -137,7 +173,7 @@
       </div>
 
 
-      <div id="spiace-pirate" class="fancybox" data-w="3" data-h="3" data-href="images/ToasterPirate_6_1400.jpg" data-caption="Our Scrum team, <em>The AstroCats</em>, split into 2 smaller teams; The Flying Toasters, and the Space Pirates.">
+      <div id="space-pirate-flying-toaster" class="fancybox" data-w="3" data-h="3" data-href="images/ToasterPirate_6_1400.jpg" data-caption="Our Scrum team, <em>The AstroCats</em>, split into 2 smaller teams; The Flying Toasters, and the Space Pirates.<br>To commerate our teams' evolution I photoshopped this and got it printed on canvas from <a href='https://www.winkflash.com'>https://www.winkflash.com</a>"> 
         <a href="images/ToasterPirate_6_1400.jpg"></a>
         <h2>Space Pirate with Flying Toaster</h2>
       </div>
@@ -730,7 +766,33 @@
       </div>
 
 
-      <div id="red" data-w="2" class="vert" style="display: block;"><a href="images/REDlogo_Perlin3.gif"></a><div class="left"><div><a href="http://ca5e.com/staging/red/logo/#ca5e/Spirograph"><img src="images/REDlogo_Spirograph.gif"></a> <a href="http://ca5e.com/staging/red/logo/#ca5e/Stars"><img src="images/REDlogo_Stars.gif"></a></div><div><a href="http://ca5e.com/staging/red/logo/#ca5e/Maps"><img src="images/REDlogo_Maps.gif"></a> <a href="http://ca5e.com/staging/red/logo/#ca5e/Weather"><img src="images/REDlogo_Weather.gif"></a></div><div><a href="http://ca5e.com/staging/red/logo/#ca5e/Perlin3D"><img src="images/REDlogo_Perlin3D.gif"></a> <a href="http://ca5e.com/staging/red/logo/#ca5e/Perlin3"><img src="images/REDlogo_Perlin3.gif"></a></div></div><h2>RED Canvas Logo</h2><p><b>Site</b> <a href="http://ca5e.com/staging/red/logo">ca5e.com/staging/red/logo</a></p><p><b>Source</b> <a href="https://github.com/ff0000/red-canvas-logo/tree/gh-pages/js/logo/canvases/ca5e">github.com/ff0000/red-canvas-logo/</a></p><p><b>About</b> This was a "Dev Day" project and ended up being used as the main logo in our office, projected on a cool translucent wall at reception. My brilliant colegues made too many canvas animations to list them all, but some favorites are; <a href="http://ca5e.com/staging/red/logo/#/timrwood/Physics">Physics</a>, <a href="http://ca5e.com/staging/red/logo/#/timrwood/PathTree">PathTree</a>, and <a href="http://ca5e.com/staging/red/logo/#/jpweeks/Hairs">Hairs</a>.</p><p><a href="https://github.com/ff0000/red-canvas-logo/tree/gh-pages/js/logo/canvases/ca5e">I contributed</a> some mathy animations, live weather reports &amp; street-views for the office locations, and a traffic map for L.A. because their rush-hour is epic. Never quite got around to adding the surf-report/forecast.</p><p><b>Tech</b> &lt;canvas&gt;, jQuery, CSS3, SASS, Compass, SVG, Google Maps API, Weather Underground API</p><p><b>Conspirators</b> <a href="http://timwoodcreates.com/">Tim Wood</a>, <a href="https://github.com/jdeagle">James Deagle</a>, <a href="https://github.com/jpweeks">Jay Weeks</a>, <a href="https://github.com/potench">Christian Shum-Harden</a>, <a href="https://github.com/cattlebane">Jacques Altounian</a></p></div>
+      <div id="red" data-w="2" class="vert" style="display: block;">
+        <a href="images/REDlogo_Perlin3.gif"></a>
+        <div class="left">
+          <div>
+            <a href="http://ca5e.com/staging/red/logo/#ca5e/Spirograph">
+              <img src="images/REDlogo_Spirograph.gif">
+            </a>
+            <a href="http://ca5e.com/staging/red/logo/#ca5e/Stars">
+              <img src="images/REDlogo_Stars.gif">
+            </a>
+          </div><div>
+            <a href="http://ca5e.com/staging/red/logo/#ca5e/Maps">
+              <img src="images/REDlogo_Maps.gif">
+            </a>
+            <a href="http://ca5e.com/staging/red/logo/#ca5e/Weather">
+              <img src="images/REDlogo_Weather.gif">
+            </a>
+          </div><div>
+            <a href="http://ca5e.com/staging/red/logo/#ca5e/Perlin3D">
+              <img src="images/REDlogo_Perlin3D.gif">
+            </a>
+            <a href="http://ca5e.com/staging/red/logo/#ca5e/Perlin3">
+              <img src="images/REDlogo_Perlin3.gif">
+            </a>
+          </div>
+        </div>
+        <h2>RED Canvas Logo</h2><p><b>Site</b> <a href="http://ca5e.com/staging/red/logo">ca5e.com/staging/red/logo</a></p><p><b>Source</b> <a href="https://github.com/ff0000/red-canvas-logo/tree/gh-pages/js/logo/canvases/ca5e">github.com/ff0000/red-canvas-logo/</a></p><p><b>About</b> This was a "Dev Day" project and ended up being used as the main logo in our office, projected on a cool translucent wall at reception. My brilliant colegues made too many canvas animations to list them all, but some favorites are; <a href="http://ca5e.com/staging/red/logo/#/timrwood/Physics">Physics</a>, <a href="http://ca5e.com/staging/red/logo/#/timrwood/PathTree">PathTree</a>, and <a href="http://ca5e.com/staging/red/logo/#/jpweeks/Hairs">Hairs</a>.</p><p><a href="https://github.com/ff0000/red-canvas-logo/tree/gh-pages/js/logo/canvases/ca5e">I contributed</a> some mathy animations, live weather reports &amp; street-views for the office locations, and a traffic map for L.A. because their rush-hour is epic. Never quite got around to adding the surf-report/forecast.</p><p><b>Tech</b> &lt;canvas&gt;, jQuery, CSS3, SASS, Compass, SVG, Google Maps API, Weather Underground API</p><p><b>Conspirators</b> <a href="http://timwoodcreates.com/">Tim Wood</a>, <a href="https://github.com/jdeagle">James Deagle</a>, <a href="https://github.com/jpweeks">Jay Weeks</a>, <a href="https://github.com/potench">Christian Shum-Harden</a>, <a href="https://github.com/cattlebane">Jacques Altounian</a></p></div>
 
       <div id="ck-fixture" class="fancybox" data-href="images/_art/ck_fixture-011.jpg" data-caption="Color shifting light fixture made from vintage electric bed-warmer frame, stretch fabric, copper wire, iColor Coves, aligator clips and a trash-picked MacBook charger." style="display: none;"><a href="images/_art/ck_fixture-011.jpg"></a><h2>Color Kinetics Light Fixture</h2><img src="images/_art/ck_fixture-011_thumb.jpg"></div>
 

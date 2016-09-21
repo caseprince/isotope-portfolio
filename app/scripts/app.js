@@ -21,16 +21,9 @@ define(
 		var content = $('#content > div');
 		$.each(content, function (index, item) {
 
-		  var w = 1;
-		  if($(this).attr("data-w")){
-		  	w = $(this).attr("data-w");
-		  }
-		  var h = 1;
-		  if($(this).attr("data-h")){
-		  	h = $(this).attr("data-h");
-		  }
-
-		  var title = $(this).find('h2')[0].innerHTML,
+		  var w = $(this).attr("data-w") || 1,
+		  	  h = $(this).attr("data-h") || 1,
+		      title = $(this).find('h2')[0].innerHTML,
 			  style = w == 1 ? 'font-size:.7em;' : '';
 
 		  classes = '';
@@ -58,7 +51,7 @@ define(
 		  var parentSize = getSize( this.element.parentNode );
 		  var colW = this.columnWidth + this.gutter;
 		  this.fitWidth = Math.floor( ( parentSize.innerWidth + this.gutter ) / colW ) * colW;
-		  console.log( colW, this.fitWidth )
+		  //console.log( colW, this.fitWidth )
 		  this.packer.width = this.fitWidth;
 		  this.packer.height = Number.POSITIVE_INFINITY;
 		  this.packer.reset();
@@ -143,7 +136,7 @@ define(
 			});
 		}
 
-		$(".thumb").fancybox();
+		$(".thumb, .fancybox").fancybox();
 		$("a.mh").fancybox({'width':760});
 		$("#hbo_vis").fancybox({'width':307, height:390});
 		$("#espn_nba").fancybox({'width':970, height:250});
