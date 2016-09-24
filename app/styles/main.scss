@@ -159,36 +159,27 @@ $margin: 5;
 
 #overlay{
   position: fixed;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   overflow-y: auto;
-  width: 100%;
-  height: 100%;
-
-  padding: 100px;
+  will-change: transform;
   padding: 7% 5% 5% 5%;
   color: white;
   display: none;
-  #scrim{
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
+  pointer-events: none;
 
   //min-width: 1006px;
-
   #content{
     max-width: 1310px;
-
     margin: 0 auto;
     background-color: black;//#4b4b4b;
     color: #687f99;
     padding: 70px 0px 70px 0px;
     position: relative;
-    border: 15px solid white;
+    border: 10px solid white;
+    pointer-events: auto;
     @include border-radius(4px);
 
     >div{
@@ -197,7 +188,16 @@ $margin: 5;
       margin: 0 auto;
     }
   }
+}
 
+#scrim{
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
 }
 
 .close{
@@ -205,8 +205,8 @@ $margin: 5;
   background-color: rgba(1, 1, 1, 0.8);
   display: block;
   position: absolute;
-  top: -32px;
-  right: -32px;
+  top: -21px;
+  right: -21px;
   width: 31px;
   height: 31px;
   text-align: center;
@@ -257,10 +257,12 @@ h2{
 h3{
     color: #00deff;
     font-size: 25px;
+    margin-top: 4px
 }
 h4{
     color: #00deff;
     font-size: 20px;
+    margin-top: 20px
 }
 p{
     font-size: 17px;
@@ -304,7 +306,7 @@ a{
      text-decoration: none;
 }
 a, a:active, a:visited{
-    color: #5b48bd;
+    color: #674aff;
 }
 a:hover{
     color: #1a7af1;
@@ -470,22 +472,24 @@ footer{
     position: relative;
     //position: 
     margin-top: 20px;// 0 0px 420px;
-}
-#head_copy p{
-    background-color: #e9edff;
-    line-height: 22px;
-    padding: 3px 0px 0 0px;
+    p{
+      background-color: #e9edff;
+      line-height: 22px;
+      padding: 3px 0px 0 0px;
+    }
 }
 
 ol{
-   list-style: decimal;
+    //list-style: decimal;
+    line-height: 26px;
+    padding-left: 30px;
+    li:before {
+        content: counter(li) ". ";
+        counter-increment: li;
+        color: red;
+    }
 }
-ol li{
-    color: #435b77;
-}
-ol li span{
-    color: #687f99;
-}
+
 
 .thumbs-vert{
   padding: 0 10px;
@@ -494,11 +498,18 @@ ol li span{
   overflow: hidden;
 }
 
+.left, .right {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1000
+}
 .left{
   float: left;
   margin-right: 30px;
-  position: relative;
-  z-index: 1000
+}
+.right{
+  float: right;
+  margin-left: 30px;
 }
 
 .vert{
@@ -515,6 +526,13 @@ ol li span{
       position: relative;
       left: -10px;
     }
+  }
+}
+
+.new-and-improved {
+  h2 {
+    font-size: 40px;
+    margin: 10px 50px 40px 0;
   }
 }
 

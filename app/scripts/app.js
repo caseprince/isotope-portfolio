@@ -120,11 +120,11 @@ define(
 				}else{
 					$("#content > div").hide(0);
 					$content.show(0);
-					$("#overlay").fadeIn(100);
+					$("#overlay, #scrim").fadeIn(50);
 				}
 			} else {
 				$.fancybox.close(true);
-				$("#overlay").fadeOut(100);
+				$("#overlay, #scrim").fadeOut(50);
 			}
 		}
 		window.onhashchange = updateHash;

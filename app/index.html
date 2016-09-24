@@ -52,26 +52,11 @@
          </p>
       </div>
 
-  <div id="container">
-    <!-- <div class="element w-3 h-2">
-      <div style="background-image: url('images/discovery_TotC_1.jpg')">
-        <h4>Thrill of the Catch</h4>
-      </div>
-    </div>
-
-    <div class="element transition metal   " data-symbol="Hg" data-category="transition">
-      <p class="number">80</p>
-      <h3 class="symbol">Hg</h3>
-      <h2 class="name">Mercury</h2>
-      <p class="weight">200.59</p>
-    </div> -->
-
-  </div>  <!-- end #container -->
+  <div id="container"></div>  
 </div> <!-- end #main -->
 
-<div id="overlay">
-
-  <div id="scrim"></div>
+<div id="scrim"></div>
+<div id="overlay">  
     <div id="content">
 
       <a class="close">
@@ -87,77 +72,84 @@
       </div>
 
 
-      <div id="TraceView" data-w="4" data-h="3" class="new-and-improved">
-        <a href="images/tv/traceview_7.jpg"></a>
-        <h2>TraceView</h2>
+      <div id="appmap" data-w="3" data-h="3" class="new-and-improved">
+        <a href="images/tv/traceview_1.jpg"></a>
+        <h3>TraceView</h3>
 
-        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and distributed Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel</p>
+        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/Babel</p>
 
         <h3>The AppMap</h3>
-        <p>AppMap is a realtime network topology & health graph for distrubuted applications. I was the lead developer on the front end visualization. I worked closely with our Product Managers, Designer and multiple brilliant teams of Developers, developing initial prototypes, rapidly iteratating, polishing, optimizing, finalizing features, APIs & interfaces, integrating and ultimately deploying. This was an especially fun and challenging visualization to nail down. Some key challanges:</p>
+        <p>AppMap is a real time network topology & health graph for distributed applications. I was the lead developer on the front end visualization. I worked closely with our Product Managers, Designer and multiple brilliant teams of Developers, developing initial prototypes, rapidly iterating, polishing, optimizing, finalizing features, APIs & interfaces, integrating and ultimately deploying. This was an especially fun and challenging visualization to nail down. Some key challenges:</p>
 
-        <div class="left" style="width: 50%;">
-          <div class="col col2">
+        <div class="left" style="width: 48%;">
+          <div class="col">
              <a class="fancybox" href="images/tv/traceview_1.jpg" rel="tv">
-               <img src="images/tv/traceview_1.jpg">
+              <img src="images/tv/traceview_1.jpg">
              </a>
-             <a class="fancybox" href="images/tv/traceview_2.jpg" rel="tv">
-               <img src="images/tv/traceview_2.jpg">
-             </a>
+             <!-- <a class="fancybox" href="images/tv/traceview_2.jpg" rel="tv">
+              <img src="images/tv/traceview_2.jpg">
+             </a> -->
+          </div>
+        </div>
+                
+        <h4>Performance & Scalability</h4>
+        <p class="detail">The AppMap needed to be able to visualize 10, or 1000 networked nodes and still be performant. We chose D3 & SVG for the main visualization. This allowed us to abstract out styling via CSS, and leverage native DOM interactions. These benefits, along with D3's data-binding and SVG's DOM testability made it the clear choice over &lt;canvas&gt; or WebGL.</p>
+        <h4>Information Display, Density & Interaction</h4>
+        <p class="detail">With hundreds of nodes and edges we needed to minimize on-screen text for smooth scrolling and digestibility. We used intuitive colors and CSS animation to indicate node health and alerting nodes, color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users quickly see (and easily click on) problematic nodes or network paths for details.</p>
+
+        <div class="right" style="width: 60%;">
+          <div class="col col2">
              <a class="fancybox" href="images/tv/traceview_3.jpg" rel="tv">
-               <img src="images/tv/traceview_3.jpg">
+              <img src="images/tv/traceview_3.jpg">
              </a>
              <a class="fancybox" href="images/tv/traceview_4.jpg" rel="tv">
-               <img src="images/tv/traceview_4.jpg">
+             <!--  --><img src="images/tv/traceview_4.jpg">
              </a>
           </div>
         </div>
 
-        
-        <h4>Performance & Scaliblity</h4>
-        <p class="detail">The AppMap needed to be able to visualize 10, or 1000 networked nodes and still be performant. We chose D3 & SVG for the main visualization. This allowed us to abstract out styling via CSS, and leverage native DOM interactions. These benefits, along with D3's data-binding and SVG's DOM testability made it the clear choice over &lt;canvas&gt; or WebGL.</p>
+        <h4>Use The <em>Force Direction</em> Luke</h4>
+        <p class="detail">The earliest appmap prototypes used D3's force-directed layout, but with 500+ nodes our frame rate went down and our fans turned on. We dubbed the resulting tangles "angry spiders" and came to understand that force-direction is great for relatively simple maps, but isn't very scalable, especially with persistent text labels.</p>
 
-        <h4>Information Display, Density & Interaction</h4>
-        <p class="detail">With hundreds of nodes and edges we needed to minimize on-screen text for smooth scrolling and digestability. We used intuitive colors and CSS animation to indicate node health and alerting nodes, color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users quickly see (and easily click on) problematic nodes or network paths for details.</p>
-
-        <h4>Grid Mode vs. Force Directed.</h4>
-        <p class="detail">The earliest appmap prototypes used D3's force-directed layout, but with 500+ nodes our framerate went down and MBPs' fans turned on. We dubbed the resulting tangles "angry spiders" and came to understand that force-direction is great for relatively simple maps, but isn't very scalable, especially so with persistant text labels.
-        <br><br>
-        To banish the angry spider, our intreped designer Quintin mocked up a 'grid mode' where nodes were grouped into columns by node type, and requests generally flow left-to-right. This layout intuitively has consumer or user nodes on the far left, which orignate requests through servers, to caches, DBs, CDNs, etc. on the far right. This more organized, scrollable layout mode was super fun and hard to optimally implement as a fully dynamic & responsive visualization. Notable features at launch include: 
+        <h4>Enter the Grid</h4>
+        <p>To banish the angry spider, our intreped designer <a href="http://quintinmarcus.com/?portfolio=app-map">Quintin Marcus</a> mocked up a 'grid mode' where nodes were grouped into columns by node type, and requests generally flow left-to-right. This layout intuitively has consumer or user nodes on the far left, which originate requests through servers, to caches, DBs, CDNs, etc. on the far right. This more organized, scrollable layout mode was super fun and deceptively challenging to implement as a fully dynamic & responsive visualization.<br><br>Notable features at launch include:</p>
         <ol>
           <li>Dynamic columns and column-rows by node type distribution</li>
           <li>Vertical and horizontal responsiveness with dynamic node name truncation</li>
-          <li>Column order dynamically perfers right-to-left network request flow</li>
+          <li>Column order dynamically prefers right-to-left network request flow</li>
           <li>Natural contextual z-sorting of nodes/edges</li>
         </ol>
-        We ended up flushing out both modes and letting users which they prefered as a persistant use preference. There's more I'd like to do on this visualization, but I'm not allowed to work on it anymore. :u(
-        </p>
+        <p>We ultimately flushed out both Force-Directed and Grid modes, let users choose, and persisted their preference.</p>
 
-        <dl>
-          <dt>Performance & Scaliblity</dt>
-            <dd>The AppMap needed to be able to visualize 10, or 1000 networked nodes, and be super performant. We chose D3 & SVG for the main visualization for performance, abstracted elementing styling vis CSS, and native-DOM interactability; We needed to display text & icons, and wanted clickable edges, so &lt;canvas&gt; or WebGL were not ideal.</dd>
-          <dt>Information display & Density</dt>
-            <dd></dd>
-          <dt></dt>
-            <dd><a href="https://www.appneta.com/products/traceview/">appneta.com/products/traceview/</a></dd>
-        </dl>
+        <p><a href="https://www.appneta.com/press-room/appmap-release/">Press Release</a></p>
 
+      </div>
+      <div id="trace-details" data-w="4" data-h="2" class="new-and-improved">
+        <a href="images/tv/traceview_thumb.png"></a>
+        <h2>TraceView: Trace Details Visualizer</h2>
+        
         <div class="thumbs-vert">
-          <a class="thumb c4" href="images/tv/traceview_5.jpg" rel="tv" style="background-image:url('images/tv/traceview_5.jpg');"></a>
-          <a class="thumb c4" href="images/tv/traceview_6.jpg" rel="tv" style="background-image:url('images/tv/traceview_6.jpg');"></a>
           <a class="thumb c4" href="images/tv/traceview_7.jpg" rel="tv" style="background-image:url('images/tv/traceview_7.jpg');"></a>
           <a class="thumb c4 last" href="images/tv/traceview_8.jpg" rel="tv" style="background-image:url('images/tv/traceview_8.jpg');"></a>
         </div>
-        <dl>
-          <dt>About</dt>
-            <dd>A full-stack Application Performance Management (APM) SaaS Application.</dd>
-          <dt>Role</dt>
-            <dd>I'm a Senior Web Developer on the TraceView Web App team. We collaboratively dream, design, develop, &amp; deliver new features, workflows, visualizations, and squash hairy bugs. I filled key rolls on major projects including: The 'App Map' network graph visualizer, Overview List &amp; the Trace Details visualizer.</dd>
-          <dt>Website</dt>
-            <dd><a href="https://www.appneta.com/products/traceview/">appneta.com/products/traceview/</a></dd>
-        </dl>
 
-        <!-- http://quintinmarcus.com/?portfolio=app-map -->
+        <p>One of the first things I tackled on the TraceView team was an older bug on the Trace Details page; Traces with asynchronous extents extending past the root extent (A.K.A 'fire and forget' jobs pushed to a queue) were being artificially truncated by the visualization. I spent perhaps a week learning the ins and outs of this legacy vis and trying to squash this seemingly straightforward bug before ultimately admitting defeat. It was wack-a-mole with hyrdas - each way of fixing the bug would introduce two more. The legacy visualization just wasn't built to handle asynchronicity (IE: it's more than just an inverted flame-graph). A complete greenfield refactoring was in order, but other projects had immediate priority.</p>
+
+        <h4>Skunkworks</h4>
+        <p>Intrigued by the challenge, I spent some nights and weekends whipping up an MVP, lightning-fast single-HTML-&lt;canvas&gt; prototype that could smoothly animate, pan, scroll, and zoom through 20K+ synchronous and asynchronous extents. Little did I know this was the easy part! The hard part came next: Achieving feature-parity, flushing out new features, adding unit & functional test coverage, and integrating with legacy endpoints, frameworks & templates.</p>
+
+        <h4>Hackathon</h4>
+        <p>The tipping point when teammate <a href="http://danriti.com/">Dan Riti</a> organized a full-team hackathon. We all sat around the picnic table and I doled out remaining subtasks to volunteers. Even our CTO <a href="https://kuebri.ch/">Dan Kuebrich</a> came down and hacked with us! Much fun was had and great progress was made.</p>
+
+        <h4>The Home Stretch</h4>
+        <p>The last 10% (always the hardest part) was brought home with help from our Senior Designer <a href="http://quintinmarcus.com/">Quintin Marcus</a>, Product Manager <a href="https://www.linkedin.com/in/jegeragh">Jennifer Burner</a>, our industrious intern <a href="https://www.linkedin.com/in/williamderivera">Will de Rivera</a>, and QA extrordinare <a href="http://rob.salmond.ca/">Rob Salmond</a>.</p>
+
+        <h4>Ship it!</h4>
+        <p>We worked with marketing, documentation, sales & support teams to prepare for launch. <a href="https://www.appneta.com/blog/new-in-traceview-5-more-ways-to-drill-down-on-your-apm-data/">(Read the blog post here.)</a> Since this was such critical visualizer, we preserved the legacy page behind a hidden URL as a fallback and for comparison purposes. Post-launch we continued to reach out to customers for feedback, ship UI/UX improvements, bugfixes, and features.</p>
+
+        <h4>The Vis That Keeps on Giving</h4>
+        <p>The new more accurate and performant visualizer gave us insight into previously invisible edge-cases where data was being misinterpreted in our data-processing pipeline, or malformed by experimental language instrumentation. TraceView is very much an "Eat your own dogfood" product, and this upgraded vis created a ripple effect of improvements throughout our codebase.</p>
+
       </div>
 
 
@@ -796,12 +788,8 @@
 
       <div id="ck-fixture" class="fancybox" data-href="images/_art/ck_fixture-011.jpg" data-caption="Color shifting light fixture made from vintage electric bed-warmer frame, stretch fabric, copper wire, iColor Coves, aligator clips and a trash-picked MacBook charger." style="display: none;"><a href="images/_art/ck_fixture-011.jpg"></a><h2>Color Kinetics Light Fixture</h2><img src="images/_art/ck_fixture-011_thumb.jpg"></div>
 
-    </div> <!-- end content -->
-
-
-
-
-</div>
+    </div> <!-- end #content -->
+</div> <!-- end #overlay -->
 
 
 <div id="brands">
