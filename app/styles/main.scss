@@ -168,7 +168,6 @@ $margin: 5;
   padding: 7% 5% 5% 5%;
   color: white;
   display: none;
-  pointer-events: none;
 
   //min-width: 1006px;
   #content{
@@ -179,7 +178,6 @@ $margin: 5;
     padding: 70px 50px;
     position: relative;
     border: 10px solid white;
-    pointer-events: auto;
     @include border-radius(4px);
 
     >div{

@@ -88,7 +88,8 @@ define(
 			window.location.hash = '#'+id;
 		});
 
-		$("#scrim, #overlay .close").click(clearHash);
+		$("#overlay, #overlay .close").click(clearHash);
+		$("#overlay #content").click(function(e){ e.stopPropagation();})
 
 		function clearHash() {
 			// Prevent scrolling by storing the page's current scroll offset
@@ -121,10 +122,14 @@ define(
 					$("#content > div").hide(0);
 					$content.show(0);
 					$("#overlay, #scrim").fadeIn(50);
+					$("body").css({
+						overflow: 'hidden'
+					});
 				}
 			} else {
-				$.fancybox.close(true);
+				$.fancybox.close();
 				$("#overlay, #scrim").fadeOut(50);
+				$("body").removeAttr('style');
 			}
 		}
 		window.onhashchange = updateHash;
@@ -136,7 +141,7 @@ define(
 			});
 		}
 
-		$(".thumb, .fancybox").fancybox();
+		$(".thumb").fancybox();
 		$("a.mh").fancybox({'width':760});
 		$("#hbo_vis").fancybox({'width':307, height:390});
 		$("#espn_nba").fancybox({'width':970, height:250});
