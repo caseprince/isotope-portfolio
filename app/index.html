@@ -76,34 +76,32 @@
         <a href="images/tv/traceview_1.jpg"></a>
         <h2>TraceView: Appmap</h2>
 
-        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and distributed Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel</p>
+        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and distributed Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel.</p>
 
         <h3>The AppMap</h3>
         <p>AppMap is a realtime network topology & health graph for distrubuted applications. I was the lead developer on the front end visualization. I worked closely with our Product Managers, Designer and multiple brilliant teams of Developers, developing initial prototypes, rapidly iteratating, polishing, optimizing, finalizing features, APIs & interfaces, integrating and ultimately deploying. This was an especially fun and challenging visualization to nail down. Some key challanges:</p>
 
         <div class="left" style="width: 48%;">
           <div class="col">
-             <a class="fancybox" href="images/tv/traceview_1.jpg" rel="tv">
+             <a class="fancybox" href="images/tv/traceview_1.jpg" rel="appmap">
               <img src="images/tv/traceview_1.jpg">
              </a>
-             <!-- <a class="fancybox" href="images/tv/traceview_2.jpg" rel="tv">
-              <img src="images/tv/traceview_2.jpg">
-             </a> -->
           </div>
         </div>
                 
         <h4>Performance & Scaliblity</h4>
         <p class="detail">The AppMap needed to be able to visualize 10, or 1000 networked nodes and still be performant. We chose D3 & SVG for the main visualization. This allowed us to abstract out styling via CSS, and leverage native DOM interactions. These benefits, along with D3's data-binding and SVG's DOM testability made it the clear choice over &lt;canvas&gt; or WebGL.</p>
         <h4>Information Display, Density & Interaction</h4>
-        <p class="detail">With hundreds of nodes and edges we needed to minimize on-screen text for smooth scrolling and digestability. We used intuitive colors and CSS animation to indicate node health and alerting nodes, color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users quickly see (and easily click on) problematic nodes or network paths for details.</p>
+
+        <p class="detail">With hundreds of nodes and network paths we needed to minimize on-screen text for smooth scrolling and digestability. We used intuitive colors and CSS animation to indicate node health and alerting nodes, color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users quickly see (and easily click on) problematic nodes or edges.</p>
 
         <div class="right" style="width: 60%;">
           <div class="col col2">
-             <a class="fancybox" href="images/tv/traceview_3.jpg" rel="tv">
+             <a class="fancybox" href="images/tv/traceview_3.jpg" rel="appmap">
               <img src="images/tv/traceview_3.jpg">
              </a>
-             <a class="fancybox" href="images/tv/traceview_4.jpg" rel="tv">
-             <!--  --><img src="images/tv/traceview_4.jpg">
+             <a class="fancybox" href="images/tv/traceview_4.jpg" rel="appmap">
+              <img src="images/tv/traceview_4.jpg">
              </a>
           </div>
         </div>
@@ -117,7 +115,7 @@
           <li>Dynamic columns and column-rows by node type distribution</li>
           <li>Vertical and horizontal responsiveness with dynamic node name truncation</li>
           <li>Column order dynamically perfers right-to-left network request flow</li>
-          <li>Natural contextual z-sorting of nodes/edges</li>
+          <li>Intuitive contextual z-sorting of nodes/edges</li>
         </ol>
         <p>As you can see, we erred on the side of over-delivering; We flushed out both modes and persisted user preference for one other the other.</p>
 
@@ -127,34 +125,55 @@
       <div id="trace-details" data-w="4" data-h="2" class="new-and-improved">
         <a href="images/tv/traceview_thumb.png"></a>
         <h2>TraceView: Trace Details Visualizer</h2>
-        
-        <div class="thumbs-vert">
-          <a class="thumb c4" href="images/tv/traceview_7.jpg" rel="tv" style="background-image:url('images/tv/traceview_7.jpg');"></a>
-          <a class="thumb c4 last" href="images/tv/traceview_8.jpg" rel="tv" style="background-image:url('images/tv/traceview_8.jpg');"></a>
+
+        <p>One of the first things I tackled on the TraceView team was an older bug on the Trace Details page;  Traces with asynchronous extents extending past the root extent (EG 'fire and forget' jobs pushed to a queue) were being artificially truncated by the visualization. I spent perhaps a week learning the ins and outs of this legacy vis. and trying to squash this seemingly straightforward bug before ultimately admitting defeat. It was wack-a-mole with hydras - each way of fixing the bug would introduce two more. The legacy visualization just wasn't built to handle asynchronicity (IE: it's more than just an inverted flame-graph). A complete greenfield refactoring was in order, but other projects had immediate priority.</p>
+
+        <div class="left" style="width: 25%;">
+          <div class="col">
+             <a class="fancybox" href="images/tv/trace_vocab.png" rel="trace_details" title="The new vis supports deep-linkable Layers, Extents, and Spans.<br>I made this graphic to communicate this critical concept and shared language.">
+              <img src="images/tv/trace_vocab.png">
+             </a>
+          </div>
         </div>
 
-        <p>One of the first things I tackled on the TraceView team was an older bug on the Trace Details page;  Traces with asynchronous extents extending past the root extent (A.K.A 'fire and forget' jobs pushed to a queue) were being artificially truncated by the visualization. I spent perhaps a week learning the ins and outs of this legacy vis. and trying to squash this seemingly straightforward bug before ultimately admitting defeat. It was wack-a-mole with hydras - each way of fixing the bug would introduce two more. The legacy visualization just wasn't built to handle asynchronicity (IE: it's more than just an inverted flame-graph). A complete greenfield refactoring was in order, but other projects had immediate priority.</p>
-
         <h4>Skunkworks</h4>
-        <p>Intrigued by the challenge, I spent some nights and weekends whipping up an MVP, lightning-fast single-HTML-&gt;canvas&lt;-based prototype that could smoothly animate, pan, scroll, and zoom through 20K+ synchronous and asynchronous extents. This was the easy part! The hard part came next: Achieving feature-parity, flushing out new features, adding unit & functional test coverage, and integrating with legacy endpoints, frameworks & templates.</p>
+        <p>Intrigued by the challenge, I spent some nights and weekends whipping up an MVP, lightning-fast single-HTML-Canvas-based prototype that could smoothly animate, pan, scroll, and zoom through 20K+ synchronous and asynchronous extents. This was the easy part! The hard part came next: Achieving feature-parity, flushing out new features, adding unit & functional test coverage, and integrating with legacy endpoints, frameworks & templates.</p>
+
+        <div class="right" style="width: 60%; margin-top: 25px;">
+          <div class="col col2">
+             <a class="fancybox" href="images/tv/trace_details_1.jpg" rel="trace_details">
+              <img src="images/tv/trace_details_1.jpg">
+             </a>
+             <a class="fancybox" href="images/tv/trace_details_2.jpg" rel="trace_details">
+              <img src="images/tv/trace_details_2.jpg">
+             </a>
+          </div>
+        </div>
 
         <h4>Hackathon</h4>
-        <p>The tipping point when teammate <a href="http://danriti.com/">Dan Riti</a> organized a full-team hackathon. We all sat around the picnic table and I doled out remaining subtasks to volunteers. Even our CTO <a href="https://kuebri.ch/">Dan Kuebrich</a> came down and hacked with us! Fun was had and much progress made.</p>
+        <p>The tipping point when teammate <a href="http://danriti.com/">Dan Riti</a> organized a full-team hackathon. We all sat around the picnic table and I doled out remaining subtasks to volunteers. Even our CTO <a href="https://kuebri.ch/">Dan Kuebrich</a> came down and hacked with us! Fun was had and so much progress was made.</p>
 
         <h4>The Home Stretch</h4>
         <p>The last 10%, which is always the hardest, was brought home with help from our Senior Designer <a href="http://quintinmarcus.com/">Quintin Marcus</a>, Product Manager <a href="https://www.linkedin.com/in/jegeragh">Jennifer Burner</a>, our industrious intern <a href="https://www.linkedin.com/in/williamderivera">Will de Rivera</a>, and QA extrordinare <a href="http://rob.salmond.ca/">Rob Salmond</a>.</p>
 
+        <div class="left" style="width: 25%;">
+          <div class="col">
+             <a class="fancybox" href="images/tv/trace_details_4.png" rel="trace_details">
+              <img src="images/tv/trace_details_4.png">
+             </a>
+             <a class="fancybox" href="images/tv/trace_details_3.png" rel="trace_details">
+              <img src="images/tv/trace_details_3.png">
+             </a>             
+          </div>
+        </div>
+
         <h4>Ship it!</h4>
-        <p>We worked with marketing, documentation, sales & support teams to prepare for launch. Since this was such critical visualizer, we preserved the legacy page in production behind a hidden URL as a fallback and for comparison purposes. Post-launch we continued to reach out to customers for feedback, ship UI/UX improvements, bugfixes, and features.</p>
+        <p>We worked with marketing, documentation, sales & support teams to prepare for launch, hosting demos for Product and Sales Engineers, writing a <a href="https://www.appneta.com/blog/new-in-traceview-5-more-ways-to-drill-down-on-your-apm-data/">Blog Post</a> and recording a <a href="https://www.youtube.com/watch?v=TUfRQR-qnbI">video walkthrough</a>. Since this was a critical visualizer, we preserved the legacy page in production behind a hidden URL - as a fallback and for comparison purposes. Post-launch we continued reaching out to customers for feedback and shiped UI/UX improvements, bugfixes, and features.</p>
 
         <h4>The Vis That Keeps on Giving</h4>
         <p>The new more accurate and performant visualizer gave us insight into previously invisible edge-cases where data was being misinterpreted in our data-processing pipeline, or malformed by experimental language instrumentation. TraceView is very much an "Eat your own dogfood" product, and this upgraded vis created a ripple effect of improvements throughout our codebase.</p>
 
-        <a href="https://www.appneta.com/blog/new-in-traceview-5-more-ways-to-drill-down-on-your-apm-data/">Blog Post</a>
-
       </div>
-
-
 
 
       <div id="gitgong" data-w="2" data-h="2">
