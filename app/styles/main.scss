@@ -460,10 +460,17 @@ ol{
     line-height: 26px;
     padding-left: 30px;
     counter-reset: li;
+    li {
+      position: relative;
+    }
     li:before {
         counter-increment: li;
         content: counter(li) ". ";
         color: #435b77;
+        position: absolute;
+        width: 40px;
+        left: -42px;
+        text-align: right;
     }
 }
 
@@ -495,7 +502,7 @@ ol{
   }
   p{
     position: relative;
-    font-size: 15px
+    font-size: 15px;
     b{
       display: block;
       color: #435b77;
@@ -513,6 +520,13 @@ ol{
   }
 }
 
-
+/* way the hell off screen */
+.scrollbar-measure {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
+}
 
 

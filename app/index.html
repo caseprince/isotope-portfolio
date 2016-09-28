@@ -74,12 +74,12 @@
 
       <div id="appmap" data-w="3" data-h="3" class="new-and-improved">
         <a href="images/tv/traceview_1.jpg"></a>
-        <h2>TraceView: Appmap</h2>
+        <h2>TraceView</h2>
 
-        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and distributed Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel.</p>
+        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel.</p>
 
         <h3>The AppMap</h3>
-        <p>AppMap is a realtime network topology & health graph for distrubuted applications. I was the lead developer on the front end visualization. I worked closely with our Product Managers, Designer and multiple brilliant teams of Developers, developing initial prototypes, rapidly iteratating, polishing, optimizing, finalizing features, APIs & interfaces, integrating and ultimately deploying. This was an especially fun and challenging visualization to nail down. Some key challanges:</p>
+        <p>A realtime network topology & health graph for distrubuted applications. I was the lead developer on the front end visualization. I worked closely with our Product Managers, Designer and multiple brilliant teams of Developers, developing initial prototypes, rapidly iteratating, polishing, optimizing, finalizing features, APIs & interfaces, integrating and ultimately deploying. This was an especially fun and challenging visualization to nail down. Some key challanges:</p>
 
         <div class="left" style="width: 48%;">
           <div class="col">
@@ -89,13 +89,15 @@
           </div>
         </div>
                 
-        <h4>Performance & Scaliblity</h4>
-        <p class="detail">The AppMap needed to be able to visualize 10, or 1000 networked nodes and still be performant. We chose D3 & SVG for the main visualization. This allowed us to abstract out styling via CSS, and leverage native DOM interactions. These benefits, along with D3's data-binding and SVG's DOM testability made it the clear choice over &lt;canvas&gt; or WebGL.</p>
-        <h4>Information Display, Density & Interaction</h4>
+        <h4><span class="counter">1.</span> Performance & Scaliblity</h4>
 
-        <p class="detail">With hundreds of nodes and network paths we needed to minimize on-screen text for smooth scrolling and digestability. We used intuitive colors and CSS animation to indicate node health and alerting nodes, color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users quickly see (and easily click on) problematic nodes or edges.</p>
+        <p class="detail">The AppMap needed to be able to visualize anywhere 10 or 1000 networked nodes and still be performant. We chose D3 & SVG for the main visualization. This allowed us to abstract out styling via CSS, and leverage native DOM interactions. These benefits, along with D3's data-binding and SVG's DOM testability made it the clear choice over &lt;canvas&gt; or WebGL.</p>
 
-        <div class="right" style="width: 60%;">
+        <h4><span class="counter">2.</span> Information Density</h4>
+
+        <p class="detail">With hundreds of nodes and network paths we needed to minimize on-screen text for smooth scrolling and digestability. We used intuitive colors and CSS animation to indicate node health, and color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users to quickly see (and easily click on) problematic nodes or edges.</p>
+
+        <div class="right" style="width: 50%;">
           <div class="col col2">
              <a class="fancybox" href="images/tv/traceview_3.jpg" rel="appmap">
               <img src="images/tv/traceview_3.jpg">
@@ -106,29 +108,33 @@
           </div>
         </div>
 
-        <h4>Use The <em>Force Direction</em> Luke</h4>
+        <h4><span class="counter">3.</span> Graph Theory</h4>
         <p class="detail">The earliest appmap prototypes used D3's force-directed layout, but with 500+ nodes our framerate went down and our fans turned on. We dubbed the resulting tangles "angry spiders" and came to understand that force-direction is great for relatively simple maps, but isn't very scalable, especially with persistant text labels.</p>
 
-        <h4>Enter the Grid</h4>
-        <p>To banish the angry spider, our intreped designer <a href="http://quintinmarcus.com/?portfolio=app-map">Quintin Marcus</a> mocked up a 'grid mode' where nodes were grouped into columns by node type, and requests generally flow left-to-right. This layout intuitively has consumer or user nodes on the far left, which orignate requests through servers, to caches, DBs, CDNs, etc. on the far right. This more organized, scrollable layout mode was super fun and deceptively challenging to implement as a fully dynamic & responsive visualization.<br><br>Notable features at launch include:</p>
+        <h4><span class="counter">4.</span> Intelligent Layout</h4>
+        <p class="detail">Our intreped designer <a href="http://quintinmarcus.com/?portfolio=app-map">Quintin Marcus</a> mocked up a 'collumn mode', intellegently grouping nodes into collumns by type, and such that requests generally flow left-to-right, e.g. user nodes on the far left originate requests which flow to the right through servers, to caches, DBs, CDNs, etc. This layout mode was super fun and deceptively challenging to implement with smooth scrolling and dynamic responsiveness.<br><br>Notable features at launch include:</p>
         <ol>
-          <li>Dynamic columns and column-rows by node type distribution</li>
+          <li>Dynamic columns and column-rows by node type</li>
           <li>Vertical and horizontal responsiveness with dynamic node name truncation</li>
-          <li>Column order dynamically perfers right-to-left network request flow</li>
+          <li>Column order dynamically perfers left-to-right network request flow</li>
           <li>Intuitive contextual z-sorting of nodes/edges</li>
         </ol>
-        <p>As you can see, we erred on the side of over-delivering; We flushed out both modes and persisted user preference for one other the other.</p>
+        <p>As you can see, we erred on the side of over-delivering; we flushed out both modes and persisted user preference for one or the other.</p>
 
         <p><a href="https://www.appneta.com/press-room/appmap-release/">Press Release</a></p>
 
       </div>
       <div id="trace-details" data-w="4" data-h="2" class="new-and-improved">
         <a href="images/tv/traceview_thumb.png"></a>
-        <h2>TraceView: Trace Details Visualizer</h2>
+        <h2>TraceView</h2>
 
-        <p>One of the first things I tackled on the TraceView team was an older bug on the Trace Details page;  Traces with asynchronous extents extending past the root extent (EG 'fire and forget' jobs pushed to a queue) were being artificially truncated by the visualization. I spent perhaps a week learning the ins and outs of this legacy vis. and trying to squash this seemingly straightforward bug before ultimately admitting defeat. It was wack-a-mole with hydras - each way of fixing the bug would introduce two more. The legacy visualization just wasn't built to handle asynchronicity (IE: it's more than just an inverted flame-graph). A complete greenfield refactoring was in order, but other projects had immediate priority.</p>
+        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel.</p>
 
-        <div class="left" style="width: 25%;">
+        <h3>Trace Details Visualizer</h3>
+
+        <p>Ye olde Trace Details Visualizer was plagued by long-standing bugs and lackluster UI/UX. Customers were complaining about poor performance and even browser crashes when rendering complex traces. Sadly, we didnt have the time or budget to address these issues, as the legacy code had become neigh-on unmaintainmable.</p>
+
+        <div class="left" style="width: 21%;">
           <div class="col">
              <a class="fancybox" href="images/tv/trace_vocab.png" rel="trace_details" title="The new vis supports deep-linkable Layers, Extents, and Spans.<br>I made this graphic to communicate this critical concept and shared language.">
               <img src="images/tv/trace_vocab.png">
@@ -137,9 +143,9 @@
         </div>
 
         <h4>Skunkworks</h4>
-        <p>Intrigued by the challenge, I spent some nights and weekends whipping up an MVP, lightning-fast single-HTML-Canvas-based prototype that could smoothly animate, pan, scroll, and zoom through 20K+ synchronous and asynchronous extents. This was the easy part! The hard part came next: Achieving feature-parity, flushing out new features, adding unit & functional test coverage, and integrating with legacy endpoints, frameworks & templates.</p>
+        <p>Unable to walk away from this facinating challenge, I went rogue, burning midnight oil to create a green-field replacement. My prototype could smoothly animate, pan, scroll, and zoom through 20K+ extents at 60fps! This turned out to be the easy part. The hard parts came next: achieving full feature-parity, flushing out new features, adding unit & functional test coverage, and integrating with legacy endpoints & templates.</p>
 
-        <div class="right" style="width: 60%; margin-top: 25px;">
+        <div class="right" style="width: 50%; margin-top: 25px;">
           <div class="col col2">
              <a class="fancybox" href="images/tv/trace_details_1.jpg" rel="trace_details">
               <img src="images/tv/trace_details_1.jpg">
@@ -151,10 +157,10 @@
         </div>
 
         <h4>Hackathon</h4>
-        <p>The tipping point when teammate <a href="http://danriti.com/">Dan Riti</a> organized a full-team hackathon. We all sat around the picnic table and I doled out remaining subtasks to volunteers. Even our CTO <a href="https://kuebri.ch/">Dan Kuebrich</a> came down and hacked with us! Fun was had and so much progress was made.</p>
+        <p>A tipping point when teammate <a href="http://danriti.com/">Dan Riti</a> organized a full-team hackathon. We all sat around the picnic table and I doled out subtasks to volunteers. Even our CTO <a href="https://kuebri.ch/">Dan Kuebrich</a> came down and hacked with us! Much fun was had and so much progress was made I was finally able to get buy-in from Product.</p>
 
         <h4>The Home Stretch</h4>
-        <p>The last 10%, which is always the hardest, was brought home with help from our Senior Designer <a href="http://quintinmarcus.com/">Quintin Marcus</a>, Product Manager <a href="https://www.linkedin.com/in/jegeragh">Jennifer Burner</a>, our industrious intern <a href="https://www.linkedin.com/in/williamderivera">Will de Rivera</a>, and QA extrordinare <a href="http://rob.salmond.ca/">Rob Salmond</a>.</p>
+        <p>The last 10% (always the hardest) was brought home with help from our Senior Designer <a href="http://quintinmarcus.com/">Quintin Marcus</a>, Product Manager <a href="https://www.linkedin.com/in/jegeragh">Jennifer Burner</a>, our industrious intern <a href="https://www.linkedin.com/in/williamderivera">Will de Rivera</a>, and QA extrordinare <a href="http://rob.salmond.ca/">Rob Salmond</a>.</p>
 
         <div class="left" style="width: 25%;">
           <div class="col">
@@ -168,10 +174,10 @@
         </div>
 
         <h4>Ship it!</h4>
-        <p>We worked with marketing, documentation, sales & support teams to prepare for launch, hosting demos for Product and Sales Engineers, writing a <a href="https://www.appneta.com/blog/new-in-traceview-5-more-ways-to-drill-down-on-your-apm-data/">Blog Post</a> and recording a <a href="https://www.youtube.com/watch?v=TUfRQR-qnbI">video walkthrough</a>. Since this was a critical visualizer, we preserved the legacy page in production behind a hidden URL - as a fallback and for comparison purposes. Post-launch we continued reaching out to customers for feedback and shiped UI/UX improvements, bugfixes, and features.</p>
+        <p>We worked with marketing, documentation, sales & support teams to prepare for launch, hosting demos for Product and Sales Engineers, writing a <a href="https://www.appneta.com/blog/new-in-traceview-5-more-ways-to-drill-down-on-your-apm-data/">blog post</a> and recording a <a href="https://www.youtube.com/watch?v=TUfRQR-qnbI">video walkthrough</a>. Since this was a critical visualizer, we preserved the legacy page in production behind a hidden URL as a fallback and for QA comparison.</p>
 
         <h4>The Vis That Keeps on Giving</h4>
-        <p>The new more accurate and performant visualizer gave us insight into previously invisible edge-cases where data was being misinterpreted in our data-processing pipeline, or malformed by experimental language instrumentation. TraceView is very much an "Eat your own dogfood" product, and this upgraded vis created a ripple effect of improvements throughout our codebase.</p>
+        <p>Post-launch, we continued reaching out to users for feedback, and shipping UI/UX improvements. In addition to happier customers, we gained new insight into previously invisible edge-cases of malformed data in our trace-processing pipeline and instrumentation. TraceView is very much an "eat your own dogfood" product, and this upgraded vis created a ripple effect of improvements throughout our codebase.</p>
 
       </div>
 
@@ -281,7 +287,7 @@
       </div>
 
 
-      <div id="mmw" data-w="2" data-h="2">
+      <div id="catch-constantine" data-w="2" data-h="2">
         <a href="images/mmw_3.jpg"></a>
           <h2>Muppets Most Wanted - Catch Constantine</h2>
           <div class="thumbs-vert">
@@ -300,7 +306,9 @@
           <dt>About</dt>
             <dd>A mobile-first HTML5 game for the newest Muppets movie; Muppets Most Wanted</dd>
           <dt>Roles</dt>
-            <dd>Development, visual & sound design, game mechanics</dd>
+            <dd>Concept, Development, visual & sound design, game mechanics</dd>
+          <dt>Process</dt>
+            <dd>Concept, Development, visual & sound design, game mechanics</dd>
           <dt>Tech</dt>
             <dd>&lt;canvas&gt;, jQuery, CSS3, SASS, Compass, <a href="http://requirejs.org/" target="_blank">require.js</a>, John Resig's <a href="http://ejohn.org/blog/simple-javascript-inheritance/">Simple JavaScript Inheritance</a>, <a href="https://github.com/ff0000/rosy/" target="_blank">Rosy</a></dd>
           <dt>Collaborators</dt>

@@ -18,6 +18,17 @@ define(
 		console.log('isotope', Isotope);
 		console.log('Packery', Packery);
 
+		// Create the measurement node
+		var scrollDiv = document.createElement("div");
+		scrollDiv.className = "scrollbar-measure";
+		document.body.appendChild(scrollDiv);
+
+		// Get the scrollbar width
+		var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+
+		// Delete the DIV 
+		document.body.removeChild(scrollDiv);
+
 		var content = $('#content > div');
 		$.each(content, function (index, item) {
 
@@ -123,12 +134,13 @@ define(
 					$content.show(0);
 					$("#overlay, #scrim").fadeIn(50);
 					$("body").css({
-						overflow: 'hidden'
+						'overflow': 'hidden',
+						'margin-right': scrollbarWidth+'px'
 					});
 				}
 			} else {
 				$.fancybox.close();
-				$("#overlay, #scrim").fadeOut(50);
+				$("#overlay, #scrim").hide();
 				$("body").removeAttr('style');
 			}
 		}
