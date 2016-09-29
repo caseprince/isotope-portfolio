@@ -79,7 +79,7 @@
         <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel.</p>
 
         <h3>The AppMap</h3>
-        <p>A realtime network topology & health graph for distrubuted applications. I was the lead developer on the front end visualization. I worked closely with our Product Managers, Designer and multiple brilliant teams of Developers, developing initial prototypes, rapidly iteratating, polishing, optimizing, finalizing features, APIs & interfaces, integrating and ultimately deploying. This was an especially fun and challenging visualization to nail down. Some key challanges:</p>
+        <p>A realtime network topology & health graph for distributed applications. I was the lead developer on the front end visualization. I worked closely with our Product Managers, Designer and multiple brilliant teams of Developers, developing initial prototypes, rapidly iterating, polishing, optimizing, finalizing features, APIs & interfaces, integrating and ultimately deploying. This was an especially fun and challenging visualization to nail down. Some key challenges:</p>
 
         <div class="left" style="width: 48%;">
           <div class="col">
@@ -89,13 +89,13 @@
           </div>
         </div>
                 
-        <h4><span class="counter">1.</span> Performance & Scaliblity</h4>
+        <h4><span class="counter">1.</span> Performance & Scalability</h4>
 
         <p class="detail">The AppMap needed to be able to visualize anywhere 10 or 1000 networked nodes and still be performant. We chose D3 & SVG for the main visualization. This allowed us to abstract out styling via CSS, and leverage native DOM interactions. These benefits, along with D3's data-binding and SVG's DOM testability made it the clear choice over &lt;canvas&gt; or WebGL.</p>
 
         <h4><span class="counter">2.</span> Information Density</h4>
 
-        <p class="detail">With hundreds of nodes and network paths we needed to minimize on-screen text for smooth scrolling and digestability. We used intuitive colors and CSS animation to indicate node health, and color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users to quickly see (and easily click on) problematic nodes or edges.</p>
+        <p class="detail">With hundreds of nodes and network paths we needed to minimize on-screen text for smooth scrolling and digestibility. We used intuitive colors and CSS animation to indicate node health, and color and line thickness to represent network health and throughput. Contextual z-sorting of SVG elements enables users to quickly see (and easily click on) problematic nodes or edges.</p>
 
         <div class="right" style="width: 50%;">
           <div class="col col2">
@@ -109,17 +109,17 @@
         </div>
 
         <h4><span class="counter">3.</span> Graph Theory</h4>
-        <p class="detail">The earliest appmap prototypes used D3's force-directed layout, but with 500+ nodes our framerate went down and our fans turned on. We dubbed the resulting tangles "angry spiders" and came to understand that force-direction is great for relatively simple maps, but isn't very scalable, especially with persistant text labels.</p>
+        <p class="detail">The earliest appmap prototypes used D3's force-directed layout, but with 500+ nodes our frame rate went down and our fans turned on. We dubbed the resulting tangles "angry spiders" and came to understand that force-direction is great for relatively simple maps, but isn't very scalable, especially with persistent text labels.</p>
 
         <h4><span class="counter">4.</span> Intelligent Layout</h4>
-        <p class="detail">Our intreped designer <a href="http://quintinmarcus.com/?portfolio=app-map">Quintin Marcus</a> mocked up a 'collumn mode', intellegently grouping nodes into collumns by type, and such that requests generally flow left-to-right, e.g. user nodes on the far left originate requests which flow to the right through servers, to caches, DBs, CDNs, etc. This layout mode was super fun and deceptively challenging to implement with smooth scrolling and dynamic responsiveness.<br><br>Notable features at launch include:</p>
+        <p>Our intreped designer <a href="http://quintinmarcus.com/?portfolio=app-map">Quintin Marcus</a> mocked up a 'column mode', intellegently grouping nodes by type, such that requests generally flow left-to-right, e.g. user nodes on the far left originate requests which flow to the right through servers, to caches, DBs, CDNs, etc. This layout mode was super fun and deceptively challenging to implement with smooth scrolling and dynamic responsiveness.<br><br>Notable features at launch include:</p>
         <ol>
-          <li>Dynamic columns and column-rows by node type</li>
+          <li>Dynamic columns and rows by node type</li>
           <li>Vertical and horizontal responsiveness with dynamic node name truncation</li>
-          <li>Column order dynamically perfers left-to-right network request flow</li>
-          <li>Intuitive contextual z-sorting of nodes/edges</li>
+          <li>Column order dynamically prefers left-to-right network request flow</li>
+          <li>Intuitive contextual z-sorting of nodes and edges</li>
         </ol>
-        <p>As you can see, we erred on the side of over-delivering; we flushed out both modes and persisted user preference for one or the other.</p>
+        <p>We erred on the side of over-delivering by flushing out both modes and persisting user preference for one or the other.</p>
 
         <p><a href="https://www.appneta.com/press-room/appmap-release/">Press Release</a></p>
 
@@ -128,11 +128,11 @@
         <a href="images/tv/traceview_thumb.png"></a>
         <h2>TraceView</h2>
 
-        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7/Babel.</p>
+        <p><a href="https://www.appneta.com/products/traceview/">TraceView</a> is a best-of-breed full-stack Application Performance Management (APM) SaaS Application. As a member of TraceView's Web App team, I collaborated with Product Managers, Designers, and Developer teams to design, develop, and deliver new features and visualizations. We also fixed copious bugs, eradicated technical debt, refactored pages & components, and introduced modern Javascript frameworks, libraries, and tooling, such as React, D3, and ES6/ES7.</p>
 
         <h3>Trace Details Visualizer</h3>
 
-        <p>Ye olde Trace Details Visualizer was plagued by long-standing bugs and lackluster UI/UX. Customers were complaining about poor performance and even browser crashes when rendering complex traces. Sadly, we didnt have the time or budget to address these issues, as the legacy code had become neigh-on unmaintainmable.</p>
+        <p>Ye olde Trace Details Visualizer was plagued by long-standing bugs and lackluster UI/UX. Customers were complaining about poor performance and even browser crashes when rendering complex traces. Sadly, we didn't have the time or budget to address these issues, and the legacy code had become unmaintainable.</p>
 
         <div class="left" style="width: 21%;">
           <div class="col">
@@ -143,7 +143,7 @@
         </div>
 
         <h4>Skunkworks</h4>
-        <p>Unable to walk away from this facinating challenge, I went rogue, burning midnight oil to create a green-field replacement. My prototype could smoothly animate, pan, scroll, and zoom through 20K+ extents at 60fps! This turned out to be the easy part. The hard parts came next: achieving full feature-parity, flushing out new features, adding unit & functional test coverage, and integrating with legacy endpoints & templates.</p>
+        <p>Unable to walk away from this fascinating challenge, I went rogue, burning midnight oil to create a green-field replacement. My prototype could smoothly animate, pan, scroll, and zoom through 20K+ extents at 60fps! This turned out to be the easy part. The hard parts came next: achieving full feature-parity, flushing out new features, adding unit & functional test coverage, and integrating with legacy endpoints & templates.</p>
 
         <div class="right" style="width: 50%; margin-top: 25px;">
           <div class="col col2">

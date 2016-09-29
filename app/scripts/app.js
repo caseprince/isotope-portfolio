@@ -133,6 +133,7 @@ define(
 					$("#content > div").hide(0);
 					$content.show(0);
 					$("#overlay, #scrim").fadeIn(50);
+					$("#overlay").scrollTop(0);
 					$("body").css({
 						'overflow': 'hidden',
 						'margin-right': scrollbarWidth+'px'
