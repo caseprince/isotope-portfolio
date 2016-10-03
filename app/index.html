@@ -182,13 +182,45 @@
       </div>
 
 
-      <div id="gitgong" data-w="2" data-h="2">
+      <div id="gitgong" data-w="2" data-h="2" class="new-and-improved">
         <a href="images/gitGong.png"></a>
+        <h2>Git Gong</h2>
+        <p>A team-building, code-collaborating, conversation piece, inspired by the presence of a Spark Core in our office, and the fact that GitHub has webhooks. I was jealous of AppNeta's sales reps ringing their giant gong when they made a big sale, so I built this during our self-directed "20% Tuesdays".</p>
         <div class="left">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/mpxQ4zg8YTM" frameborder="0" allowfullscreen></iframe>
         </div>
-        <h2>Git Gong</h2>
-        <p><b>Blog post:</b> <a href="https://www.appneta.com/blog/github-webhooks-spark-core-heroku-gitgong/" target="_blank">www.appneta.com/blog/github-webhooks-spark-core-heroku-gitgong</a></p>
+        <h3>Ingredients:</h3>
+        <ol style="margin-left: 580px;">
+          <li><a href="https://developer.github.com/webhooks/">GitHub Webhooks</a> allow you to build or set up integrations which subscribe to certain events on GitHub.com.</li>
+          <li><a href="https://www.spark.io/">Spark.io</a>: A $19 postage stamp-sized hackable Wi-Fi module for interacting with physical things.</li>
+          <li><a href="https://www.heroku.com/">Heroku</a>&nbsp;is a cloud application platform – a newfangled way of building and deploying apps.</li>
+          <li>One (1) Rube Goldberg machine made with scrap wood, servo, vintage clock chime, paperclip, and misc. hardware.</li>
+        </ol>
+
+        <div style="clear: left;">
+          <h3>Instructions:</h3>
+          <ol>
+            <li>Get a <a href="https://store.spark.io/?gclid=CJDP2bO478MCFRIjgQodLCYALA">Spark Core or Photon</a>. Register, claim your device, &amp; flash HelloWorld via wifi.</li>
+            <li>Connect your servo and <a href="https://raw.githubusercontent.com/technobly/SparkCore-FacebookLikesAlert/master/calibration.cpp">calibrate</a> – Play with angles to determine min/max – write down your angle setting when you encounter “servo-growling” so you can avoid that high-voltage state. Choose a generous angle range &gt; 90° that has plenty of buffer between min and max. (eg: 30° – 160°) Here’s our spark code: <a href="https://github.com/caseprince/git-gong/blob/master/spark-gong.ino">https://github.com/caseprince/git-gong/blob/master/spark-gong.ino</a></li>
+            <li>Mount servo on Rube Goldberg contraption w/ bell &amp; clapper, keeping your angle range in mind.</li>
+            <li>Sign up for a free Heroku account and deploy something like this: <a href="https://github.com/caseprince/git-gong/blob/master/github-listener.rb">https://github.com/caseprince/git-gong/blob/master/github-listener.rb</a> You’ll need to swap in your Spark API key in env.rb, and update __YourCoreName__ to talk to your core.</li>
+            <li>Test by hitting your Heroku URL. (eg: “sweet-gong-12345.herokuapp.com”)</li>
+            <li>Create a “Push event only” webhook on a GitHub repo pointing to your new Heroku app. (You’ll need admin privileges on the repo.) Test by pushing to your repo.</li>
+            <li>“Gong”</li>
+            <li>???</li>
+            <li>Profit</li>
+          </ol>
+        </div>
+
+        <div style="float: right; margin-left: 33px;">
+          <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">This is the most important thing ever built with GitHub webhooks. <a href="http://t.co/qi0MsOMH45">http://t.co/qi0MsOMH45</a> 👍</p>&mdash; Kyle Daigle (@kdaigle) <a href="https://twitter.com/kdaigle/status/572774362731954176">March 3, 2015</a></blockquote>
+          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>   
+
+        <h3 style="margin-top: 25px;">Maintenance & Enhancement:</h3>
+        <p class="detail">This shoestring contraption was surprisingly reliable for ~18 months - with only a little downtime when I tried to move the servo to a negative angle and the <a href="https://en.wikipedia.org/wiki/Magic_smoke">magic smoke</a> got out, necessitating an upgrade: The new servos came in a 4-pack, so I added a coat-hanger-driven musical-chime and integrated with <a href="https://jenkins.io/">Jenkins</a> so he could let us know when our AMI Auto-Scaling Groups were ready. (This was actually useful since our build process took ~30min.) I was also able to incorporate a Jira integration before the GitGong was eventually stymied when our IT dept. disabled 2.4Ghz wifi in favor of pure 5Ghz.</p>
+        <p><b>Original Blog post:</b> <a href="https://www.appneta.com/blog/github-webhooks-spark-core-heroku-gitgong/" target="_blank">www.appneta.com/blog/github-webhooks-spark-core-heroku-gitgong</a></p>
+
       </div>
 
 

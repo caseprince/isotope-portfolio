@@ -460,8 +460,11 @@ ol{
     line-height: 26px;
     padding-left: 30px;
     counter-reset: li;
+    margin-top: 10px;
     li {
       position: relative;
+      line-height: 22px;
+      margin-bottom: 11px;
     }
     li:before {
         counter-increment: li;
