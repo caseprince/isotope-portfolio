@@ -170,6 +170,7 @@ $margin: 5;
   display: none;
 
   //min-width: 1006px;
+  pointer-events: none;
   #content{
     max-width: 1310px;
     margin: 0 auto;
@@ -179,7 +180,7 @@ $margin: 5;
     position: relative;
     border: 10px solid white;
     @include border-radius(4px);
-
+    pointer-events: auto;
     >div{
       overflow: hidden;
       max-width: 970px;

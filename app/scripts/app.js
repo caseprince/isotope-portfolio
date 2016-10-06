@@ -99,8 +99,7 @@ define(
 			window.location.hash = '#'+id;
 		});
 
-		$("#overlay, #overlay .close").click(clearHash);
-		$("#overlay #content").click(function(e){ e.stopPropagation();})
+		$("#scrim, #overlay .close").click(clearHash);
 
 		function clearHash() {
 			// Prevent scrolling by storing the page's current scroll offset
@@ -154,7 +153,7 @@ define(
 			});
 		}
 
-		$(".thumb").fancybox();
+		$(".thumb, .fancythumb").fancybox();
 		$("a.mh").fancybox({'width':760});
 		$("#hbo_vis").fancybox({'width':307, height:390});
 		$("#espn_nba").fancybox({'width':970, height:250});
