@@ -4,41 +4,41 @@
 @import "compass/css3/transition";
 @import "jquery.fancybox";
 
-
 //@font-face {font-family: 'MuseoSans-500';src: url('fonts/265624_0_0.eot');src: url('fonts/265624_0_0.eot?#iefix') format('embedded-opentype'),url('fonts/265624_0_0.woff') format('woff'),url('fonts/265624_0_0.ttf') format('truetype');}
 
 body {
     background: #0e121b;
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     color: #333;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: Arial, Helvetica, sans-serif;
     //font-weight: 600;
 }
 
-#main{
+#main {
     width: 100%;
     //background: black;
     padding: 10px;
-
 }
 
-
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #container,
 .container {
-  //background: #EEE;
-  //width: 50%;
-  margin-bottom: 20px;
-  margin-right: auto;
-  margin-left: auto;
-  //max-width: 1400px;
-  //padding: 10px;
+    //background: #EEE;
+    //width: 50%;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    //max-width: 1400px;
+    //padding: 10px;
 }
 
 /* .item {
@@ -64,158 +64,153 @@ h1, h2, h3, h4 {
   border: 1px solid;
 } */
 
-
 /* element */
 $base: 120;
 $margin: 5;
 
 .element {
-  width: #{$base}#{px};
-  height: #{$base}#{px};
-  //margin: #{$margin}#{px};
-  background-color: #18212f;
-  float: left;
-  position: relative;
-
-
-  cursor: pointer;
-
-  dl{
-    display: none;
-  }
-
-  > div{
-
-    width: 100%;
-    height: 100%;
+    width: #{$base}#{px};
+    height: #{$base}#{px};
+    //margin: #{$margin}#{px};
+    background-color: #18212f;
+    float: left;
     position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    //-webkit-transition: -webkit-transform .5s;
-  }
-  h4{
-    padding: 20px;
-    font-size: 1.5em;
-    color: white;
-    background-color: rgba(0, 0, 0, .5);
-    width: 100%;
-    //height: 100%;
-    opacity: 0;
-    @include transition-property(opacity);
-    @include transition-duration(0.3s);
-  }
-  &:hover{
-    > div{
-       //@include rotate3d(0, 10, 0, 180deg);
-    }
-    h4{
-      opacity: 1;
-    }
-  }
-}
 
+    cursor: pointer;
+
+    dl {
+        display: none;
+    }
+
+    > div {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        //-webkit-transition: -webkit-transform .5s;
+    }
+    h4 {
+        padding: 20px;
+        font-size: 1.5em;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        //height: 100%;
+        opacity: 0;
+        @include transition-property(opacity);
+        @include transition-duration(0.3s);
+    }
+    &:hover {
+        > div {
+            //@include rotate3d(0, 10, 0, 180deg);
+        }
+        h4 {
+            opacity: 1;
+        }
+    }
+}
 
 @for $i from 1 through 4 {
-  .w-#{$i} {
-    width: #{($base * $i) + ($margin * ($i - 1) * 2)}#{px};
-  }
-  .h-#{$i} {
-    height: #{($base * $i) + ($margin * ($i - 1) * 2)}#{px};
-  }
-}
-
-#overlay{
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-  will-change: transform;
-  padding: 7% 5% 5% 5%;
-  color: white;
-  display: none;
-
-  //min-width: 1006px;
-  pointer-events: none;
-  #content{
-    max-width: 1310px;
-    margin: 0 auto;
-    background-color: black;//#4b4b4b;
-    color: #687f99;
-    padding: 70px 50px;
-    position: relative;
-    border: 10px solid white;
-    @include border-radius(4px);
-    pointer-events: auto;
-    >div{
-      overflow: hidden;
-      max-width: 970px;
-      margin: 0 auto;
+    .w-#{$i} {
+        width: #{($base * $i) + ($margin * ($i - 1) * 2)}#{px};
     }
-  }
+    .h-#{$i} {
+        height: #{($base * $i) + ($margin * ($i - 1) * 2)}#{px};
+    }
 }
 
-#scrim{
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    will-change: transform;
+    padding: 7% 5% 5% 5%;
+    color: white;
+    display: none;
+
+    //min-width: 1006px;
+    //pointer-events: none;
+    #content {
+        max-width: 1310px;
+        margin: 0 auto;
+        background-color: black; //#4b4b4b;
+        color: #687f99;
+        padding: 70px 50px;
+        position: relative;
+        border: 10px solid white;
+        @include border-radius(4px);
+        pointer-events: auto;
+        > div {
+            overflow: hidden;
+            max-width: 970px;
+            margin: 0 auto;
+        }
+    }
 }
 
-.close{
-  font-size: 2em;
-  background-color: rgba(1, 1, 1, 0.8);
-  display: block;
-  position: absolute;
-  top: -21px;
-  right: -21px;
-  width: 31px;
-  height: 31px;
-  text-align: center;
-  border: 3px solid white;
-  line-height: 18px;
-  cursor: pointer;
-
-  @include border-radius(50px);
-  @include single-box-shadow(0, 0, 4px, 1px, #000000);
-  svg{
-    display: inline;
-  }
+#scrim {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
 }
 
+.close {
+    font-size: 2em;
+    background-color: rgba(1, 1, 1, 0.8);
+    display: block;
+    position: absolute;
+    top: -21px;
+    right: -21px;
+    width: 31px;
+    height: 31px;
+    text-align: center;
+    border: 3px solid white;
+    line-height: 18px;
+    cursor: pointer;
 
-h1{
+    @include border-radius(50px);
+    @include single-box-shadow(0, 0, 4px, 1px, #000000);
+    svg {
+        display: inline;
+    }
+}
+
+h1 {
     color: #c74417;
     font-size: 35px;
     margin: 40px 0 20px 0;
 }
 
-h2{
+h2 {
     color: #00deff;
     font-size: 30px;
     margin: 10px 50px 40px 150px;
 }
-h3{
+h3 {
     color: #00deff;
     font-size: 25px;
-    margin-top: 4px
+    margin-top: 4px;
 }
-h4{
+h4 {
     color: #00deff;
     font-size: 20px;
 }
-p{
+p {
     font-size: 17px;
     line-height: 22px;
     margin: 12px 0 20px 0;
 }
 
-a.thumb{
+a.thumb {
     // ugh fix this
     display: block;
     float: left;
@@ -236,205 +231,226 @@ a.thumb{
     /*-webkit-filter: grayscale(.8);
     -webkit-transition: all 800ms;*/
 }
-a.last{
+a.last {
     margin-right: 0;
 }
 /*a.thumb:hover{
     -webkit-filter: grayscale(0);
 }*/
 
-a{
-    transition: color .2s;
-    -moz-transition: color .2s; /* Firefox 4 */
-    -webkit-transition: color .2s; /* Safari and Chrome */
-    -o-transition: color .2s; /* Opera */
-     text-decoration: none;
+a {
+    transition: color 0.2s;
+    -moz-transition: color 0.2s; /* Firefox 4 */
+    -webkit-transition: color 0.2s; /* Safari and Chrome */
+    -o-transition: color 0.2s; /* Opera */
+    text-decoration: none;
 }
-a, a:active, a:visited{
+a,
+a:active,
+a:visited {
     color: #674aff;
 }
-a:hover{
+a:hover {
     color: #1a7af1;
 }
 
-
-a.c1{
+a.c1 {
     width: 955px;
     margin-right: 0px;
 }
-a.c2{
+a.c2 {
     width: 474px;
 }
-a.c3{
+a.c3 {
     width: 312px;
 }
-a.c4{
+a.c4 {
     width: 232px;
 }
-a.c5{
+a.c5 {
     width: 182px;
 }
-a.c6{
+a.c6 {
     width: 150px;
 }
-a.short{
+a.short {
     height: 136px;
 }
 
-a.f00{
+a.f00 {
     color: #860032;
 }
-a.f00:hover{
+a.f00:hover {
     color: #ff0019;
 }
 
 .col {
-  margin-left: -10px;
+    margin-left: -10px;
 }
 .col > * {
-  display: block;
-  float: left;
+    display: block;
+    float: left;
 
-  //margin: 0 0 0 10px;
-  background-position: center center;
-  -webkit-background-size: cover; /*for webKit*/
-  -moz-background-size: cover; /*Mozilla*/
-  -o-background-size: cover; /*opera*/
-  background-size: cover; /*generic*/
-  > * {
-      padding: 0 0 0 10px;
-      max-width:100%;
-      max-height:100%;
-  }
+    //margin: 0 0 0 10px;
+    background-position: center center;
+    -webkit-background-size: cover; /*for webKit*/
+    -moz-background-size: cover; /*Mozilla*/
+    -o-background-size: cover; /*opera*/
+    background-size: cover; /*generic*/
+    > * {
+        padding: 0 0 0 10px;
+        max-width: 100%;
+        max-height: 100%;
+    }
 }
 
 .col2 > * {
-  width: 50% !important;
+    width: 50% !important;
 }
 .col3 > * {
-  width: 33.3333% !important;
+    width: 33.3333% !important;
 }
 .col4 > * {
-  width: 25% !important;
+    width: 25% !important;
 }
 .col5 > * {
-  width: 20% !important;
+    width: 20% !important;
 }
 
 p.detail {
-  font-size: 15px;
+    font-size: 15px;
 }
-dl{
+dl {
     clear: both;
     display: block;
     line-height: 20px;
     padding: 10px 50px 10px 50px;
     font-size: 15px;
 }
-dt, dd{
+dt,
+dd {
     padding: 10px 0 0 0;
 }
-dt{
+dt {
     float: left;
     width: 100px;
     text-align: right;
     color: #435b77;
 }
-dt:after{
+dt:after {
     content: ": ";
 }
-dd{
+dd {
     margin-left: 110px;
 }
-
 
 hr {
     border: 0;
     height: 1px;
-    background-image: -webkit-linear-gradient(left, rgba(110,130,180,0), rgba(110,130,180,0.75), rgba(110,130,180,0));
-    background-image:    -moz-linear-gradient(left, rgba(110,130,180,0), rgba(110,130,180,0.75), rgba(110,130,180,0));
-    background-image:     -ms-linear-gradient(left, rgba(110,130,180,0), rgba(110,130,180,0.75), rgba(110,130,180,0));
-    background-image:      -o-linear-gradient(left, rgba(110,130,180,0), rgba(110,130,180,0.75), rgba(110,130,180,0));
+    background-image: -webkit-linear-gradient(
+        left,
+        rgba(110, 130, 180, 0),
+        rgba(110, 130, 180, 0.75),
+        rgba(110, 130, 180, 0)
+    );
+    background-image: -moz-linear-gradient(
+        left,
+        rgba(110, 130, 180, 0),
+        rgba(110, 130, 180, 0.75),
+        rgba(110, 130, 180, 0)
+    );
+    background-image: -ms-linear-gradient(
+        left,
+        rgba(110, 130, 180, 0),
+        rgba(110, 130, 180, 0.75),
+        rgba(110, 130, 180, 0)
+    );
+    background-image: -o-linear-gradient(
+        left,
+        rgba(110, 130, 180, 0),
+        rgba(110, 130, 180, 0.75),
+        rgba(110, 130, 180, 0)
+    );
     margin: 25px 10px 0 0;
     border-bottom: 1px solid #000;
 }
 
-#main{
+#main {
     position: relative;
 }
-.star{
+.star {
     position: absolute;
 }
 
-#brands{
-  max-width: 980px;
-  margin: 0 auto;
-  text-align: center;
-  display: none;
-  ul#client_brands{
-    display: block;
-    margin: 10px 10px 30px 3px;
-    li{
-        display: inline-block;
+#brands {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+    display: none;
+    ul#client_brands {
+        display: block;
+        margin: 10px 10px 30px 3px;
+        li {
+            display: inline-block;
+        }
     }
-  }
 }
 
-#client_brands li div{
+#client_brands li div {
     width: 155px;
     height: 120px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 
-footer{
-  text-align: center;
-  background-color: #e9edff;
-  padding: 50px 0 70px 0;
-  display: none;
+footer {
+    text-align: center;
+    background-color: #e9edff;
+    padding: 50px 0 70px 0;
+    display: none;
 }
 
-#head{
+#head {
     height: 450px;
     position: absolute;
     width: 100%;
     background: #e9edff;
     overflow: hidden;
 }
-#me{
-    background: #e9edff url('../images/caseprince_3.jpg') no-repeat 15% 15px;
+#me {
+    background: #e9edff url("../images/caseprince_3.jpg") no-repeat 15% 15px;
     height: 498px;
     width: 100%;
     position: relative;
     right: 0;
     //margin: 0 auto;
 }
-#head_copy{
+#head_copy {
     width: 100%;
     max-width: 500px;
     margin-left: 50%;
     height: 420px;
     position: relative;
     //position:
-    margin-top: 20px;// 0 0px 420px;
-    p{
-      background-color: #e9edff;
-      line-height: 26px;
-      padding: 3px 0px 0 0px;
-      font-size: 19px;
+    margin-top: 20px; // 0 0px 420px;
+    p {
+        background-color: #e9edff;
+        line-height: 26px;
+        padding: 3px 0px 0 0px;
+        font-size: 19px;
     }
 }
 
-ol{
+ol {
     //list-style: decimal;
     line-height: 26px;
     padding-left: 30px;
     counter-reset: li;
     margin-top: 10px;
     li {
-      position: relative;
-      line-height: 22px;
-      margin-bottom: 11px;
+        position: relative;
+        line-height: 22px;
+        margin-bottom: 11px;
     }
     li:before {
         counter-increment: li;
@@ -447,59 +463,57 @@ ol{
     }
 }
 
-
-.thumbs-vert{
-  padding: 0 10px;
-  min-width: 975px;
-  width: 100%;
-  overflow: hidden;
+.thumbs-vert {
+    padding: 0 10px;
+    min-width: 975px;
+    width: 100%;
+    overflow: hidden;
 }
 
-.left, .right {
+.left,
+.right {
     margin-bottom: 20px;
     position: relative;
-    z-index: 1000
+    z-index: 1000;
 }
-.left{
-  float: left;
-  margin-right: 30px;
+.left {
+    float: left;
+    margin-right: 30px;
 }
-.right{
-  float: right;
-  margin-left: 30px;
+.right {
+    float: right;
+    margin-left: 30px;
 }
 
-.vert{
-  h2{
-    margin-top: 20px;
-  }
-  p{
-    position: relative;
-    font-size: 15px;
-    b{
-      display: block;
-      color: #435b77;
-      font-weight: 400;
-      position: relative;
-      left: -10px;
+.vert {
+    h2 {
+        margin-top: 20px;
     }
-  }
+    p {
+        position: relative;
+        font-size: 15px;
+        b {
+            display: block;
+            color: #435b77;
+            font-weight: 400;
+            position: relative;
+            left: -10px;
+        }
+    }
 }
 
 .new-and-improved {
-  h2 {
-    font-size: 40px;
-    margin: 10px 50px 40px 0;
-  }
+    h2 {
+        font-size: 40px;
+        margin: 10px 50px 40px 0;
+    }
 }
 
 /* way the hell off screen */
 .scrollbar-measure {
-  width: 100px;
-  height: 100px;
-  overflow: scroll;
-  position: absolute;
-  top: -9999px;
+    width: 100px;
+    height: 100px;
+    overflow: scroll;
+    position: absolute;
+    top: -9999px;
 }
-
-
