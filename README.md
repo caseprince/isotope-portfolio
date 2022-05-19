@@ -5,10 +5,15 @@ Hosted at [caseprince.com](http://caseprince.com)
 ## Setup
 
 > npm install -g bower
+
 > bower install
+
 > npm install
+
 > choco install ruby
+
 > gem install compass
+
 > grunt serve
 
 ### Todo

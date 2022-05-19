@@ -133,8 +133,7 @@ $margin: 5;
     color: white;
     display: none;
 
-    //min-width: 1006px;
-    //pointer-events: none;
+    // min-width: 1006px;
     #content {
         max-width: 1310px;
         margin: 0 auto;
@@ -441,10 +440,9 @@ footer {
     }
 }
 
-ol {
-    //list-style: decimal;
+ol, li {
     line-height: 26px;
-    padding-left: 30px;
+    margin-left: 30px;
     counter-reset: li;
     margin-top: 10px;
     li {
@@ -452,6 +450,9 @@ ol {
         line-height: 22px;
         margin-bottom: 11px;
     }
+}
+
+ol {
     li:before {
         counter-increment: li;
         content: counter(li) ". ";

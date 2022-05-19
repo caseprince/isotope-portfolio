@@ -1,8 +1,8 @@
 /*------------------------------------*\
     RESET
 \*------------------------------------*/
-/* http://meyerweb.com/eric/tools/css/reset/ 
-    v2.0b1 | 201101 
+/* http://meyerweb.com/eric/tools/css/reset/
+    v2.0b1 | 201101
     NOTE:WORK IN PROGRESS
     USE WITH CAUTION AND TEST WITH ABANDON */
 
@@ -35,7 +35,7 @@ body{
     line-height:1;
 }
 ol,ul{
-    list-style:none;
+    // list-style:none;
 }
 blockquote,q{
     quotes:none;
@@ -45,7 +45,7 @@ q:before,q:after{
     content:’’;
     content:none;
 }
-/* remember to define visible focus styles! 
+/* remember to define visible focus styles!
 :focus{
     outline:?????;
 } */
