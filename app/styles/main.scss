@@ -95,7 +95,7 @@ $margin: 5;
         padding: 20px;
         font-size: 1.5em;
         color: white;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.6);
         width: 100%;
         //height: 100%;
         opacity: 0;
@@ -169,8 +169,8 @@ $margin: 5;
     position: absolute;
     top: -21px;
     right: -21px;
-    width: 31px;
-    height: 31px;
+    width: 32px;
+    height: 32px;
     text-align: center;
     border: 3px solid white;
     line-height: 18px;
@@ -426,21 +426,26 @@ footer {
 }
 #head_copy {
     width: 100%;
-    max-width: 500px;
-    margin-left: 50%;
+    max-width: 647px;
+    margin-left: 43%;
     height: 420px;
     position: relative;
     //position:
     margin-top: 20px; // 0 0px 420px;
+    h1 {
+        margin: 30px 0 20px 0;
+    }
     p {
         background-color: #e9edff;
         line-height: 26px;
+        margin: 12px 0 12px 0;
         padding: 3px 0px 0 0px;
-        font-size: 19px;
+        font-size: 16px;
     }
 }
 
-ol, li {
+ol,
+li {
     line-height: 26px;
     margin-left: 30px;
     counter-reset: li;
@@ -462,6 +467,10 @@ ol {
         left: -42px;
         text-align: right;
     }
+}
+
+small {
+    font-size: 11px;
 }
 
 .thumbs-vert {
@@ -518,3 +527,20 @@ ol {
     position: absolute;
     top: -9999px;
 }
+
+.fancybox-lock {
+    margin-right: 19px;
+}
+
+// ::-webkit-scrollbar {
+//     width: inherit;
+//     height: inherit;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//     background: rgb(114, 114, 114);
+// }
+
+// ::-webkit-scrollbar-track {
+//     background: #333;
+// }
