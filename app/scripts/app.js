@@ -135,6 +135,7 @@ define([
 
         $("#overlay, #scrim").hide();
         $("body").removeAttr("style");
+
         // Restore the scroll offset, should be flicker free
         window.scrollTo(scrollX, scrollY);
     }
@@ -156,7 +157,6 @@ define([
                     },
                     openSpeed: 0,
                     closeSpeed: 0,
-                    scrolling: "visible",
                     helpers: {
                         overlay: {
                             speedOut: 0,
@@ -170,12 +170,11 @@ define([
                 $("#overlay").scrollTop(0);
                 $("body").css({
                     overflow: "hidden",
-                    "margin-right": scrollbarWidth + "px",
+                    // "margin-right": scrollbarWidth + "px",
+                    "margin-right": 0,
                 });
             }
         } else {
-            // $("#overlay, #scrim").hide();
-            // $("body").removeAttr("style");
             $.fancybox.close(true);
         }
     }
@@ -193,7 +192,6 @@ define([
     $(".thumb, .fancythumb").fancybox({
         openSpeed: 0,
         closeSpeed: 0,
-        scrolling: "visible",
         helpers: {
             overlay: {
                 speedOut: 0,
