@@ -114,7 +114,17 @@ define([
         window.location.hash = "#" + id;
     });
 
-    $("#scrim, #overlay, .close").click(clearHash);
+    $("#scrim, #overlay, .close").click(function (e) {
+        console.log(e.target);
+        // Avoid clearing hash on propagated events, but preserve propagation for fancybox
+        if (
+            e.target.id === "scrim" ||
+            e.target.id === "overlay" ||
+            e.target.classList.contains("close")
+        ) {
+            clearHash();
+        }
+    });
 
     function clearHash() {
         // Prevent scrolling by storing the page's current scroll offset
@@ -180,10 +190,17 @@ define([
         });
     }
 
-    $(".thumb, .fancythumb").fancybox();
+    $(".thumb, .fancythumb").fancybox({
+        openSpeed: 0,
+        closeSpeed: 0,
+        scrolling: "visible",
+        helpers: {
+            overlay: {
+                speedOut: 0,
+            },
+        },
+    });
     $("a.mh").fancybox({ width: 760 });
-    $("#hbo_vis").fancybox({ width: 307, height: 390 });
-    $("#espn_nba").fancybox({ width: 970, height: 250 });
 
     $.typer.options.typerInterval = 7500;
     ($.typer.options.typeDelay = 50), $("[data-typer-targets]").typer();

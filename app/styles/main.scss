@@ -180,6 +180,7 @@ $margin: 5;
     @include single-box-shadow(0, 0, 4px, 1px, #000000);
     svg {
         display: inline;
+        pointer-events: none;
     }
 }
 
