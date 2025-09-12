@@ -197,6 +197,9 @@ module.exports = function (grunt) {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     // `name` and `out` is set by grunt-usemin
+                    out: 'dist/scripts/main.js',
+                    name: 'main',
+                    mainConfigFile: '<%= yeoman.app %>/scripts/main.js',
                     baseUrl: 'app/scripts',
                     optimize: 'none',
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
@@ -418,10 +421,10 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
-        'modernizr',
-        'rev',
-        'usemin',
-        'htmlmin'
+        // 'modernizr',
+        // 'rev',
+        // 'usemin',
+        // 'htmlmin'
     ]);
 
     grunt.registerTask('default', [
