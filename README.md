@@ -6,6 +6,8 @@ Hosted at [caseprince.com](http://caseprince.com)
 
 Install python 2 from https://www.python.org/downloads/release/python-2716/
 
+Install node 16.16.0
+
 > npm install -g bower
 
 > bower install
