@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - materials - dynamic cube reflection</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+
+      html, body {
+        height: 100%;
+      }
+			body {
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+        position: relative;
+			}
+
+			#info {
+				position: absolute;
+				left: 0;
+        bottom: 0;
+        width: 420px;
+				color: white;
+        background-color:rgba(0, 0, 0, 0.5);
+				padding: 5px;
+				font-family: Sans-Serif;
+				font-size: 12px;
+			}
+      #info p {
+        margin: 3px 0;
+      }
+      #info em {
+        display: inline-block;
+        width: 90px;
+        margin-right: 5px;
+        text-align: right;
+        color: #74b2ff;
+      }
+			#audioDebug{
+				position: absolute;
+			}
+			#debug{
+				color: white;
+				position: absolute;
+				right: 0;
+			}
+			a {
+				color: #ffffff;
+			}
+		</style>
+	</head>
+	<body>
+
+		<canvas id="audioDebug" width=330 height=250></canvas>
+		<div id="controls"></div>
+		<div id="debug"></div>
+
+    <div id="info">
+      <p><em>Music:</em> <a href="https://soundcloud.com/torley/augmented-ambience?in=torley/sets/made-with-wave-alchemy-1">soundcloud.com/torley/augmented-ambience</a>
+      <p><em>Mouse:</em> Drag to rotate, mouse-wheel zooms</a>
+      <p><em>Num keys 1-6:</em> Change waveform geometry &amp; randomize background</a>
+      <p><em>Spacebar:</em> Explode</a>
+      <p><em>Made with:</em> <a href="http://threejs.org/">three.js</a>, <a href="https://greensock.com/tweenmax">TweenMax.js</a>, <a href="https://www.airtightinteractive.com/2013/02/intro-to-pixel-shaders-in-three-js">Inspiration from Airtight Interactive</a></p>
+      <p><em>For:</em> <a href="http://dancejs.io/">Dance.js</a> Vancouver Edition, 2015</p>
+    </div>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="build/three.min.js"></script>
+
+		<script src="js/minivents.min.js"></script>
+		<script src="js/AudioHandler.js"></script>
+		<script src="js/ControlsHandler.js"></script>
+
+		<script src="js/shaders/CopyShader.js"></script>
+		<script src="js/shaders/DigitalGlitch.js"></script>
+
+		<script src="js/postprocessing/EffectComposer.js"></script>
+		<script src="js/postprocessing/RenderPass.js"></script>
+		<script src="js/postprocessing/MaskPass.js"></script>
+		<script src="js/postprocessing/ShaderPass.js"></script>
+		<script src="js/postprocessing/GlitchPass.js"></script>
+
+		<script src="js/stats.min.js"></script>
+
+		<script src="js/TweenMax.min.js"></script>
+
+		<script>
+
+		//http://www.airtightinteractive.com/2011/06/rutt-etra-izer/
+
+			var random = true;
+			var BG_TTL = 60000;
+			var ratio_TTL = 50000;
+			var modes = ['fqGrid', 'fqRipples', 'fqSphere', 'fqTorus', 'fqCylinder', 'fqSpiral'];
+			var tTime = 1.6;
+
+			var bgTimeout, ratioTimeout;
+			var showDebug = false; //AudioHandler debug panel!
+			var lights = false;
+
+			var channel = 1;
+
+			var eqLineMaterial = new THREE.LineBasicMaterial({
+		        color: 0xff00ff
+		    });
+
+			/*var eqGrid = 1;
+			var eqRipples = 0;
+			var eqSphere = 0;
+			var eqTunnel = 0;
+			var eqTorus = 0;
+			var eqCylinder = 0;*/
+
+			var fqGrid = 1;
+			var fqRipples = 0;
+			var fqSphere = 0;
+			var fqSpiral = 0;
+			var fqTorus = 0;
+			var fqCylinder = 0;
+
+			var fqTorus = 0;
+			var eqCylinder = 0;
+
+			var time;
+
+			var events = new Events();
+			AudioHandler.init();
+			AudioHandler.loadSampleAudio();
+
+			var stats = new Stats();
+			// align top-left
+			stats.domElement.style.position = 'absolute';
+			stats.domElement.style.left = '0px';
+			stats.domElement.style.top = '0px';
+			document.body.appendChild( stats.domElement );
+
+			update();
+			function update() {
+				requestAnimationFrame(update);
+				events.emit("update");
+				stats.end();
+			}
+
+			var bufferDepth = 50
+
+			var camera, cubeCamera, scene, renderer, composer;
+			var logo, logoHolder, cube1, cube2, cube3, cube4, cube5, cube6, cube7, cube8;
+			var logoCubeArrs = [];
+			var light1, light2, light3, light4, light5, light6;
+			var cubeGroup1, cubeGroup2, cubeGroup3, cubeGroup4, cubeGroup5, cubeGroup6;
+
+			var multiCubes = [];
+			var multiRatio = 0;
+
+			var glitchPass;
+			var glitching = 0;
+
+			var eqBufferArr = [];
+			var eqLines = [];
+			var eqLinesGroup = new THREE.Group();
+			var eqRows = 256;
+			var eqCols = bufferDepth;
+			var eqWidth = 600;
+			var eqY = -130;
+
+			var eqWaves = [];
+
+			var fqBufferArr = [];
+			var fqLines = [];
+			var fqLinesGroup = new THREE.Group();
+			var fqRows = 128//512;
+			var fqCols = bufferDepth;
+			var fqWidth = 600;
+			var fqY = 130;
+
+			logoHolderSpin = 0;
+
+
+			var scale = 1.2;
+
+			var fov = 80,
+			isUserInteracting = false,
+			onMouseDownMouseX = 0, onMouseDownMouseY = 0,
+			lon = 0, onMouseDownLon = 0,
+			lat = 0, onMouseDownLat = 0,
+			phi = 0, theta = 0;
+
+			//moar camera motion
+			var camera_y = Math.PI * 0.5;
+			var camera_distance = 0;
+			var camera_fov = 0;
+
+
+
+			//../360-panoramas-perran-dunes-1200x600
+			//textures/2294472375_24a3b8ef46_o.jpg
+			//../120317-old-boys-school-360-041
+			//Whiterun-2560x1440.jpg
+			//3646400b0a54700ab3ae0b559950ad21.jpg
+			var backgrounds = [
+				'TowerNightPanoramaFinalClouds8000x2000_b.jpg',
+				'austrianpanorama-b.jpg',
+				'3646400b_18.jpg',
+				'2012Dec15-8764-Australia-SouthernMilkyWayPano-WarpedMercator360x160-1900px.jpg',
+				'Cascading_Milky_Way_sm.jpg',
+				'vlt-mw-potw-hires.jpg',
+				'axel6000-arabic.jpg',
+				//'Whiterun-2560x1440.jpg',
+				'IMAG1052.jpg'
+			]
+			var bgMesh;
+			var bgIndex = Math.floor(Math.random() * backgrounds.length);
+			var bgTexture = THREE.ImageUtils.loadTexture( 'img/'+backgrounds[bgIndex], THREE.UVMapping, function () {
+
+				init();
+				animate();
+
+				doRandomBG();
+				doRandomRatio();
+
+			} );
+
+			function getFOV() {
+				return fov + camera_fov;
+			}
+
+			function doRandomBG(){
+				clearTimeout(bgTimeout);
+				bgTimeout = setTimeout(function(){
+					console.log("random bg")
+					doRandomBG();
+					randomBG();
+				}, BG_TTL);
+
+			}
+			function doRandomRatio(){
+				ratioTimeout = setTimeout(function(){
+					doRandomRatio();
+					tweenRandomRatio();
+				}, ratio_TTL);
+			}
+
+			function tweenRandomRatio(){
+				var randomMode = Math.floor(Math.random() * modes.length);
+				tweenToModeIndex(randomMode);
+			}
+
+			function tweenToModeIndex(index){
+				var props = {ease:Power2.easeOut};
+				for(i = 0; i < modes.length; i++){
+					var key = modes[i];
+					if(i === index){
+						props[key] = 1;
+					}else{
+						props[key] = 0;
+					}
+				}
+				TweenMax.to(this, 10, props);
+			}
+
+			function randomBG(){
+				var ranBG = Math.floor(Math.random() * backgrounds.length);
+	  		while(ranBG == bgIndex){
+	  			var ranBG = Math.floor(Math.random() * backgrounds.length);
+	  		}
+	  		bgIndex = ranBG;
+				bgMesh.material.map = THREE.ImageUtils.loadTexture( 'img/'+backgrounds[bgIndex] );
+				bgMesh.material.needsUpdate = true;
+
+				glitching = 4;
+			}
+
+			function randomRadio(){
+				var ranBG = Math.floor(Math.random() * backgrounds.length);
+	  		while(ranBG == bgIndex){
+	  			var ranBG = Math.floor(Math.random() * backgrounds.length);
+	  		}
+	  		bgIndex = ranBG;
+				bgMesh.material.map = THREE.ImageUtils.loadTexture( 'img/'+backgrounds[bgIndex] );
+				bgMesh.material.needsUpdate = true;
+			}
+
+			function stopRandom(){
+				random = false;
+				clearTimeout(bgTimeout);
+				clearTimeout(ratioTimeout);
+			}
+
+			function init() {
+
+				window.addEventListener("keypress", function(event) {
+
+				  var keyCode = event.keyCode;
+				  console.log(keyCode);
+				  var self = this;
+
+				  if(keyCode == 27){ // [ esc ]
+
+				  }else if(keyCode == 114){ // [ r ]
+
+				  	//do random!
+				  	random = !random;
+				  	if(random){
+				  		doRandomBG();
+				  	}else{
+				  		stopRandom();
+				  	}
+
+				  }else if(keyCode == 32){ // [ space ]
+
+				  	for(var i = 0; i < this.multiCubes.length; i++){
+				  		var mc = this.multiCubes[i];
+				  		if(mc.spinRatio == 1){
+					  		mc.spinRatio = 0;
+					  	}
+				  		var delay = (mc._x + mc._y + mc._z) / -150;
+				  		if(delay > .6){
+				  			delay = .6;
+				  		}
+				  		TweenMax.to(mc, 1.9, {posRatio:1.5, delay:delay, ease: Cubic.easeInOut, onComplete:function(){
+				  			TweenMax.to(this.target, 1, {posRatio:1, ease: Cubic.easeInOut});
+				  		}});
+				  		TweenMax.to(mc, 3, {spinRatio:1, delay:delay, ease: Cubic.easeInOut});
+				  	}
+				  }else if(keyCode >= 49 && keyCode <= 59){
+				  	var newChannel = keyCode - 48;
+				  	if(channel != newChannel){
+				  		glitching = 4;
+				  		channel = newChannel;
+
+				  		randomBG();
+				  		stopRandom()
+
+
+
+				  		switch (channel) {
+						    case 1:
+						    	tweenToModeIndex(0);
+						        break;
+						    case 2:
+						    	tweenToModeIndex(1);
+						        break;
+						    case 3:
+						    	tweenToModeIndex(2);
+						        break;
+						    case 4:
+						    	tweenToModeIndex(3);
+						        break;
+						    case 5:
+						    	tweenToModeIndex(4);
+						        break;
+						    case 6:
+						    	tweenToModeIndex(5);
+						        break;
+							}
+				  	}
+				  }
+				});
+
+				updateCameraFOV();
+				//var aspect = window.innerWidth / window.innerHeight;
+				//var d = 20;
+				//camera = new THREE.OrthographicCamera( - d * aspect, d * aspect, d, - d, 1, 1000 );
+
+				scene = new THREE.Scene();
+
+				bgMesh = new THREE.Mesh( new THREE.SphereGeometry( 500, 60, 40 ), new THREE.MeshBasicMaterial( { map: bgTexture } ) );
+				bgMesh.scale.x = -1;
+				scene.add( bgMesh );
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				cubeCamera = new THREE.CubeCamera( 1, 1000, 1024 );
+				cubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
+				scene.add( cubeCamera );
+
+				document.body.appendChild( renderer.domElement );
+
+				var refl = .5;
+				var material_red = new THREE.MeshBasicMaterial({ //MeshLambertMaterial
+					envMap: cubeCamera.renderTarget,
+					color: 0xe12226,
+					combine: THREE.MixOperation,
+					reflectivity: refl
+				});
+				var material_blue = new THREE.MeshBasicMaterial({
+					envMap: cubeCamera.renderTarget,
+					color: 0x5ac6d6,
+					combine: THREE.MixOperation,
+					reflectivity: refl
+				});
+				var material_yellow = new THREE.MeshBasicMaterial({
+					envMap: cubeCamera.renderTarget,
+					color: 0xffe000,
+					combine: THREE.MixOperation,
+					reflectivity: refl
+				});
+				var material_green = new THREE.MeshBasicMaterial({
+					envMap: cubeCamera.renderTarget,
+					color: 0xbac83c,
+					combine: THREE.MixOperation,
+					reflectivity: refl
+				});
+
+				var material_pink = new THREE.MeshBasicMaterial({
+					envMap: cubeCamera.renderTarget,
+					color: 0xff00ff,
+					combine: THREE.MixOperation,
+					reflectivity: refl
+				});
+
+				//var texture = THREE.ImageUtils.loadTexture( 'textures/crate.gif' );
+				//texture.anisotropy = renderer.getMaxAnisotropy();
+					// material = new THREE.MeshBasicMaterial( { map: texture } );
+
+				/*sphere = new THREE.Mesh( new THREE.SphereGeometry( 20, 30, 15 ), material );
+				scene.add( sphere );*/
+
+				var size = 60;
+
+				logo = new THREE.Group();
+
+				var cg;
+				//function multiCube(size, slices, material, _x, _y, _z){
+				cg = multiCube(size, 5, material_yellow, 0, 0, 0);
+				logo.add( cg.group );
+				multiCubes.push(cg);
+
+				cg = multiCube(size, 5, material_red, 0, 0, -size);
+				logo.add( cg.group );
+				multiCubes.push(cg);
+
+				cg = multiCube(size, 5, material_blue, 0, -size, 0);
+				logo.add( cg.group );
+				multiCubes.push(cg);
+
+				cg = multiCube(size, 5, material_green, -size, 0, 0);
+				logo.add( cg.group );
+				multiCubes.push(cg);
+
+				cg = multiCube(size * 0.55, 3, material_blue, -size, size, -size);
+				logo.add( cg.group );
+				multiCubes.push(cg);
+
+				cg = multiCube(size * 0.55, 3, material_green, size, -size, -size);
+				logo.add( cg.group );
+				multiCubes.push(cg);
+
+				cg = multiCube(size * 0.55, 3, material_red, -size, -size, size);
+				logo.add( cg.group );
+				multiCubes.push(cg);
+
+				cg = multiCube(size * 0.55, 3, material_pink, -size, -size, -size);
+				logo.add( cg.group );
+				multiCubes.push(cg);
+
+				/*
+				cube1 = new THREE.Mesh( new THREE.BoxGeometry( size, size, size, 10, 10, 10 ), material_yellow );
+				logo.add( cube1 );
+
+				cube2 = new THREE.Mesh( new THREE.BoxGeometry( size, size, size, 10, 10, 10 ), material_red );
+				cube2.position.z = -size;
+				logo.add( cube2 );
+
+				cube3 = new THREE.Mesh( new THREE.BoxGeometry( size, size, size, 10, 10, 10 ), material_blue );
+				cube3.position.y = -size;
+				logo.add( cube3 );
+
+				cube4 = new THREE.Mesh( new THREE.BoxGeometry( size, size, size, 10, 10, 10 ), material_green );
+				cube4.position.x = -size;
+				logo.add( cube4 );
+
+				cube6 = new THREE.Mesh( new THREE.BoxGeometry( size * 0.55, size * 0.55, size * 0.6, 7, 7, 7 ), material_blue );
+				cube6.position.x = -size;
+				cube6.position.y = size;
+				cube6.position.z = -size;
+				logo.add( cube6 );
+
+				cube5 = new THREE.Mesh( new THREE.BoxGeometry( size * 0.55, size * 0.55, size * 0.6, 7, 7, 7 ), material_green );
+				cube5.position.x = size;
+				cube5.position.y = -size;
+				cube5.position.z = -size;
+				logo.add( cube5 );
+
+				cube7 = new THREE.Mesh( new THREE.BoxGeometry( size * 0.55, size * 0.55, size * 0.6, 7, 7, 7 ), material_red );
+				cube7.position.x = -size;
+				cube7.position.y = -size;
+				cube7.position.z = size;
+				logo.add( cube7 );
+
+				cube7 = new THREE.Mesh( new THREE.BoxGeometry( size * 0.55, size * 0.55, size * 0.6, 7, 7, 7 ), material_pink );
+				cube7.position.x = -size;
+				cube7.position.y = -size;
+				cube7.position.z = -size;
+				logo.add( cube7 );*/
+
+				logoHolder = new THREE.Group();
+				logoHolder.add(logo);
+				logoHolder.position.y = 50;
+				scene.add(logoHolder);
+
+				scene.add(eqLinesGroup);
+				scene.add(fqLinesGroup);
+
+				var toRads = (Math.PI/180);
+
+				logo.rotation.x = 30 * toRads;
+				logo.rotation.y = 35 * toRads;
+				logo.rotation.z = -45 * toRads;
+
+				/*logo.rotation.x = 30 * toRads;
+				logo.rotation.y = 35 * toRads;
+				logo.rotation.z = -45 * toRads;*/
+
+				//lights
+
+				//scene.add( new THREE.AmbientLight( 0x111111 ) ); 0xa7a7a7 0x565656
+				var light = new THREE.AmbientLight( 0x565656 ); // soft white light
+				//scene.add( light )
+
+				var intensity = 2.5;
+				var distance = 500;
+				var c1 = 0xff0040, c2 = 0x0040ff, c3 = 0x80ff80, c4 = 0xffaa00, c5 = 0x00ffaa, c6 = 0xff1100;
+
+				/*var light = new THREE.PointLight( 0xff0000, 100, 1000 );
+				light.position.set( 150, 50, 50 );
+				scene.add( light );*/
+
+				if(lights){
+
+					var sphere = new THREE.SphereGeometry( 2.5, 16, 8 );
+
+					light1 = new THREE.PointLight( c1, intensity, distance );
+					light1.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: c1 } ) ) );
+					scene.add( light1 );
+
+					light2 = new THREE.PointLight( c2, intensity, distance );
+					light2.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: c2 } ) ) );
+					scene.add( light2 );
+
+					light3 = new THREE.PointLight( c3, intensity, distance );
+					light3.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: c3 } ) ) );
+					scene.add( light3 );
+
+					light4 = new THREE.PointLight( c4, intensity, distance );
+					light4.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: c4 } ) ) );
+					scene.add( light4 );
+
+					light5 = new THREE.PointLight( c5, intensity, distance );
+					light5.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: c5 } ) ) );
+					scene.add( light5 );
+
+					light6 = new THREE.PointLight( c6, intensity, distance );
+					light6.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: c6 } ) ) );
+					scene.add( light6 );
+
+					var dlight = new THREE.DirectionalLight( 0xffffff, 0.1 );
+					dlight.position.set( 0.5, -1, 0 ).normalize();
+					scene.add( dlight );
+				}
+
+				/*torus = new THREE.Mesh( new THREE.TorusKnotGeometry( 20, 5, 100, 25 ), material );
+				scene.add( torus );*/
+
+
+
+				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+				document.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
+				document.addEventListener( 'DOMMouseScroll', onDocumentMouseWheel, false);
+				window.addEventListener( 'resize', onWindowResized, false );
+				onWindowResized( null );
+
+
+
+				// postprocessing
+
+				composer = new THREE.EffectComposer( renderer );
+				composer.addPass( new THREE.RenderPass( scene, camera ) );
+
+				glitchPass = new THREE.GlitchPass();
+				glitchPass.renderToScreen = true;
+				//glitchPass.goWild = true;
+				composer.addPass( glitchPass );
+
+			}
+
+			function multiCube(size, slices, material, offsetX, offsetY, offsetZ){
+				//cube7 = new THREE.Mesh( new THREE.BoxGeometry( size * 0.55, size * 0.55, size * 0.6, 7, 7, 7 ), material_pink );
+				var cubeGroup = new THREE.Group();
+				var cubeArr = [];
+				var subSize = size / slices;
+
+				console.log(size, slices, subSize);
+				var cubes = [];
+				var exp = 1;//.18;
+				for(var x = 0; x < slices; x++){
+					cubes.push([])
+					for(var y = 0; y < slices; y++){
+						cubes[x].push([])
+						for(var z = 0; z < slices; z++){
+							var subCube = new THREE.Mesh( new THREE.BoxGeometry( subSize , subSize, subSize, 1, 1, 1 ), material );
+							subCube._x = offsetX + (size * -0.5) + ((x + 0.5) * subSize * exp);
+							subCube._y = offsetY + (size * -0.5) + ((y + 0.5) * subSize * exp);
+							subCube._z = offsetZ + (size * -0.5) + ((z + 0.5) * subSize * exp);
+							subCube.position.set(subCube._x, subCube._y, subCube._z);
+							cubeGroup.add(subCube);
+							cubes[x][y][z] = subCube;
+						}
+					}
+				}
+				return {
+					group: cubeGroup,
+					cubes: cubes,
+					spinRatio: 0,
+					posRatio: 1,
+					spin: Math.PI / 10,
+					_x: offsetX,
+					_y: offsetY,
+					_z: offsetZ
+				}
+			}
+
+
+
+			function updateCameraFOV(){
+				camera = new THREE.PerspectiveCamera( getFOV(), window.innerWidth / window.innerHeight, 1, 1200 );
+			}
+
+			function onWindowResized( event ) {
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				updateCameraFOV();
+			}
+
+			function onDocumentMouseDown( event ) {
+
+				event.preventDefault();
+
+				onPointerDownPointerX = event.clientX;
+				onPointerDownPointerY = event.clientY;
+
+				onPointerDownLon = lon;
+				onPointerDownLat = lat;
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				lon = ( event.clientX - onPointerDownPointerX ) * 0.1 + onPointerDownLon;
+				lat = ( event.clientY - onPointerDownPointerY ) * 0.1 + onPointerDownLat;
+
+			}
+
+			function onDocumentMouseUp( event ) {
+				document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+			}
+
+			function onDocumentMouseWheel( event ) {
+				// WebKit
+				if ( event.wheelDeltaY ) {
+					fov -= event.wheelDeltaY * 0.05;
+				// Opera / Explorer 9
+				} else if ( event.wheelDelta ) {
+					fov -= event.wheelDelta * 0.05;
+				// Firefox
+				} else if ( event.detail ) {
+					fov += event.detail * 1.0;
+				}
+				updateCameraFOV();
+			}
+
+			function animate() {
+				requestAnimationFrame( animate );
+				render();
+			}
+
+
+			function getGridPoint(buffer, x, z, rows){
+				var _x = eqWidth - ((eqWidth * 0.5) + (x/eqCols * eqWidth));
+				var _y = 0;
+				if(buffer[x] && buffer[x][z]){
+					_y = buffer[x][z] * 50;
+				}
+				var _z = (eqWidth * -0.5) + (z/rows * eqWidth);
+
+				return {x: _x, y: _y, z: _z}
+			}
+
+			function getRipplePoint(buffer, x, z, rows){
+				var r = (400 / eqCols) * (x + 2);
+				var rads = (z / (rows -1)) * Math.PI * -2;
+				var _x = Math.cos(rads) * r;
+				var _y = 0;
+				if(buffer[x] && buffer[x][z]){
+					_y = buffer[x][z] * 50;
+				}
+				var _z = Math.sin(rads) * r;
+
+				return {x: _x, y: _y, z: _z}
+			}
+
+			function getSpherePoint(buffer, x, z, rows, latitude){
+				var r = eqWidth * .3;//Math.sin(latitude) * 300;//(eqWidth / eqCols) * (x + 2);
+				var rads = (z / (rows -1)) * Math.PI * 2;
+				var _yA = 0;
+				if(buffer[x] && buffer[x][z]){
+					_yA = buffer[x][z] * 50;
+				}
+				r += _yA;
+				var _x = Math.cos(rads) * r * Math.sin(latitude);
+				var _y = Math.cos(latitude) * r;
+				var _z = Math.sin(rads) * r * Math.sin(latitude);
+
+				return {x: _x, y: _y, z: _z}
+			}
+
+			function getTunnelPoint(buffer, x, z, rows, latitude){
+				var r = eqWidth * .3;//Math.sin(latitude) * 300;//(eqWidth / eqCols) * (x + 2);
+				var rads = (z / (rows -1)) * Math.PI * 2;
+				var _yA = 0;
+				if(buffer[x] && buffer[x][z]){
+					_yA = buffer[x][z] * 50;
+				}
+				r += _yA;
+				var _y = Math.cos(rads) * r * Math.sin(latitude);
+				var _x = Math.cos(latitude) * r;
+				var _z = Math.sin(rads) * r * Math.sin(latitude);
+
+				return {x: _x, y: _y, z: _z}
+			}
+
+			function getSpiralPoint(buffer, x, z, rows, xMultiplier, zMultiplier){
+				var r = (eqWidth / eqCols) * (x + 2);
+				var rads = ((z) / (rows -1)) * Math.PI * -2;
+				if(xMultiplier < 0){
+					rads = ((rows-z) / (rows -1)) * Math.PI * -2;
+				}
+
+				var _x = Math.cos(rads) * r;
+				var _y = (z * zMultiplier) + (x);
+				if(buffer[x] && buffer[x][z]){
+					_y += buffer[x][z] * 50;
+				}
+				var _z = Math.sin(rads) * r;
+
+				return {x: _x, y: _y, z: _z}
+			}
+
+			function getTorusPoint(buffer, x, z, rows, latitude){
+				var r = Math.sin(latitude) * 300;//torus!
+				var rads = (z / (rows -1)) * Math.PI * 2;
+				var _yA = 0;
+				if(buffer[x] && buffer[x][z]){
+					_yA = buffer[x][z] * 50;
+				}
+				r += _yA;
+
+				var _x = Math.cos(rads) * r * Math.sin(latitude);
+				var _y = Math.cos(latitude) * r;
+				var _z = Math.sin(rads) * r * Math.sin(latitude);
+
+				return {x: _x, y: _y, z: _z}
+			}
+
+			function getCylinderPoint(buffer, x, z, rows, cols, height){
+				var rads = (z / (rows -1)) * Math.PI * 2;
+				var r = 200;//torus!
+				var _yA = 0;
+				if(buffer[x] && buffer[x][z]){
+					_yA = buffer[x][z] * 50;
+				}
+				r += _yA;
+				var _x = Math.cos(rads) * r;
+				var _y = ((x / cols) * height) - (height / 2);
+				var _z = Math.sin(rads) * r;
+
+				return {x: _x, y: _y, z: _z}
+			}
+
+			function updateEqMaterial(color){
+				color = typeof color !== 'undefined' ? color : '0xff00ff';
+				eqLineMaterial = new THREE.LineBasicMaterial({
+		        color: color
+		    });
+			}
+
+			function render() {
+
+				time = Date.now() * 0.00025;
+
+				if(glitching > 0){
+					glitching --;
+				}
+
+
+				// EQ lines
+				var lineMaterial = new THREE.LineBasicMaterial({
+		        color: 0xff00ff
+		    });
+				for(var x = 0; x < eqCols; x++){
+					var geometry = new THREE.Geometry();
+					if(fqSphere != 0 || fqTorus != 0){
+						var latitude = (((x + 1) / (eqCols - 1)) 	) * Math.PI;
+					}
+					for(var z = 0; z < eqRows; z++){
+
+						var _x = 0
+						var _y = 0;
+						var _z = 0;
+						var pt;
+
+						if(fqGrid != 0){
+							pt = getGridPoint(eqBufferArr, x, z, eqRows);
+							_x += pt.x * fqGrid;
+							_y += (eqY + pt.y) * fqGrid;
+							_z += pt.z * fqGrid;
+						}
+
+						if(fqRipples != 0){
+							pt = getRipplePoint(eqBufferArr, x, z, eqRows);
+							_x += pt.x * fqRipples;
+							_y += (eqY + pt.y) * fqRipples;
+							_z += pt.z * fqRipples;
+						}
+
+						if(fqSphere != 0){
+							pt = getSpherePoint(eqBufferArr, x, z, eqRows, latitude);
+							_x += pt.x * fqSphere;
+							_y += pt.y * fqSphere;
+							_z += pt.z * fqSphere;
+						}
+
+						if(fqSpiral != 0){
+							pt = getSpiralPoint(eqBufferArr, x, z, eqRows, -1, -2);
+							_x += pt.x * fqSpiral;
+							_y += pt.y * fqSpiral;
+							_z += pt.z * fqSpiral;
+						}
+
+						if(fqTorus != 0){
+							pt = getTorusPoint(eqBufferArr, x, z, eqRows, latitude);
+							_x += pt.x * fqTorus;
+							_y += pt.y * fqTorus;
+							_z += pt.z * fqTorus;
+						}
+
+						if(fqCylinder != 0){
+							pt = getCylinderPoint(eqBufferArr, x, z, eqRows, eqCols, -800 );
+							_x += pt.x * fqCylinder;
+							_y += pt.y * fqCylinder;
+							_z += pt.z * fqCylinder;
+						}
+
+						geometry.vertices.push(new THREE.Vector3(_x, _y, _z));
+					}
+					if(!eqLines[x]){
+						eqLines[x] = new THREE.Line(geometry, eqLineMaterial);
+						eqLinesGroup.add(eqLines[x]);
+						//console.log(eqLines[x], geometry);
+					}else{
+						eqLines[x].geometry.vertices = geometry.vertices;
+						eqLines[x].geometry.verticesNeedUpdate = true;
+					}
+				}
+
+				// FQ lines
+				var lineMaterial = new THREE.LineBasicMaterial({
+		        color: 0x00c0ff
+		    });
+				for(var x = 0; x < fqCols; x++){
+					var geometry = new THREE.Geometry();
+					if(fqSphere != 0 || fqTorus != 0){
+						var latitude = ((x / fqCols) 	) * Math.PI;
+					}
+					for(var z = 0; z < fqRows; z++){
+
+						var _x = 0
+						var _y = 0;
+						var _z = 0;
+						var pt;
+
+						if(fqGrid != 0){
+							pt = getGridPoint(fqBufferArr, x, z, fqRows);
+							_x += pt.x * fqGrid;
+							_y += (fqY + pt.y) * fqGrid;
+							_z += pt.z * fqGrid;
+						}
+
+						if(fqRipples != 0){
+							pt = getRipplePoint(fqBufferArr, x, z, fqRows);
+							_x += pt.x * fqRipples;
+							_y += (fqY + pt.y) * fqRipples;
+							_z += pt.z * fqRipples;
+						}
+
+						if(fqSphere != 0){
+							pt = getSpherePoint(fqBufferArr, x, z, fqRows, latitude);
+							_x += pt.x * fqSphere;
+							_y += pt.y * fqSphere;
+							_z += pt.z * fqSphere;
+						}
+
+						if(fqSpiral != 0){
+							pt = getSpiralPoint(fqBufferArr, x, z, fqRows, 1, 3);
+							_x += pt.x * fqSpiral;
+							_y += pt.y * fqSpiral;
+							_z += pt.z * fqSpiral;
+						}
+
+						if(fqTorus != 0){
+							pt = getTorusPoint(fqBufferArr, x, z, fqRows, latitude);
+							_x += pt.x * fqTorus;
+							_y += pt.y * fqTorus;
+							_z += pt.z * fqTorus;
+						}
+
+						if(fqCylinder != 0){
+							pt = getCylinderPoint(fqBufferArr, x, z, fqRows, fqCols, -700);
+							_x += pt.x * fqCylinder;
+							_y += pt.y * fqCylinder;
+							_z += pt.z * fqCylinder;
+						}
+
+						geometry.vertices.push(new THREE.Vector3(_x, _y, _z));
+
+					}
+					if(!fqLines[x]){
+						fqLines[x] = new THREE.Line(geometry, lineMaterial);
+						fqLinesGroup.add(fqLines[x]);
+					}else{
+						fqLines[x].geometry.vertices = geometry.vertices;
+						fqLines[x].geometry.verticesNeedUpdate = true;
+					}
+				}
+
+
+				//global rotation
+				lon -= .11;
+				camera_y += .0013;
+				camera_distance += .003;
+				camera_fov += .0021;
+
+
+				lat = Math.max( - 85, Math.min( 85, lat ) );
+				phi = THREE.Math.degToRad( 90 - lat );
+				theta = THREE.Math.degToRad( lon );
+
+				logo.scale.set(scale, scale, scale);
+
+				logoHolderSpin += 0.005;
+				if(logoHolderSpin > Math.PI * 2){
+					logoHolderSpin -= Math.PI * 2;
+				}
+
+				var logoHolderAttitude = Math.PI * 0.5;
+				logoHolder.rotation.set(0, logoHolderSpin, logoHolderAttitude);
+
+
+				var cameraDistance = 300 + (250 * Math.sin(camera_distance));
+				camera.position.x = cameraDistance * Math.sin( phi ) * Math.cos( theta );
+				camera.position.y = cameraDistance * Math.cos( phi );
+				camera.position.y += 300 * Math.cos( camera_y );
+				camera.position.z = cameraDistance * Math.sin( phi ) * Math.sin( theta );
+				camera.lookAt( scene.position );
+
+				logo.visible = false; // *cough*
+				cubeCamera.updateCubeMap( renderer, scene );
+				logo.visible = true; // *cough*
+
+
+
+				var z = 20, d = 250;
+
+				if(lights){
+
+					light1.position.x = Math.sin( time * 0.7 ) * d;
+					light1.position.z = Math.cos( time * 0.3 ) * d;
+
+					light2.position.x = Math.cos( time * 0.3 ) * d;
+					light2.position.z = Math.sin( time * 0.7 ) * d;
+
+					light3.position.x = Math.sin( time * 0.7 ) * d;
+					light3.position.z = Math.sin( time * 0.5 ) * d;
+
+					light4.position.x = Math.sin( time * 0.3 ) * d;
+					light4.position.z = Math.sin( time * 0.5 ) * d;
+
+					light5.position.x = Math.cos( time * 0.3 ) * d;
+					light5.position.z = Math.sin( time * 0.5 ) * d;
+
+					light6.position.x = Math.cos( time * 0.7 ) * d;
+					light6.position.z = Math.cos( time * 0.5 ) * d;
+				}
+
+
+				//multi cubes
+
+				for(var i = 0; i < multiCubes.length; i++){
+					var cubes = multiCubes[i].cubes;
+					for(var x = 0; x < cubes.length; x++){
+						for(var y = 0; y < cubes[x].length; y++){
+							for(var z = 0; z < cubes[x][y].length; z++){
+								var cube = cubes[x][y][z];
+								var r = multiCubes[i].spinRatio * multiCubes[0].spin * 5;
+								var p = multiCubes[i].posRatio;
+								cube.rotation.set(x * r, y * r, z * r);
+								cube.position.set(cube._x * p, cube._y * p, cube._z * p);
+							}
+						}
+					}
+				}
+
+				if(glitching > 0){
+					composer.render();
+				}else{
+					renderer.render(scene, camera);
+				}
+			}
+
+		</script>
+
+	</body>
+</html>
