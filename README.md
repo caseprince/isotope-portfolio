@@ -13,8 +13,9 @@ Install python 2 from https://www.python.org/downloads/release/python-2716/
 > npm install
 
 Install chocolatey: https://chocolatey.org/install
-
-> choco install ruby
+..and an old version of ruby that still supports compass (https://stackoverflow.com/a/75923901)
+ 
+> choco install ruby --version=3.1.3.1
 
 > gem install compass
 
@@ -26,5 +27,5 @@ Install chocolatey: https://chocolatey.org/install
 
 1. 86 bower (npm or yarn?)
 1. 86 jQuery (Vite? Vue?)
-1. Update content/brands
-1. ~Host with github.io?~
+2. Modernize CSS pipeline
+3. ~Host with github.io?~

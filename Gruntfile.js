@@ -418,10 +418,10 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
-        //'modernizr',
-        //'rev',
-        //'usemin',
-        //'htmlmin'
+        'modernizr',
+        'rev',
+        'usemin',
+        'htmlmin'
     ]);
 
     grunt.registerTask('default', [

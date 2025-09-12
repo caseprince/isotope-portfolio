@@ -208,7 +208,7 @@ h4 {
 }
 p {
     font-size: 17px;
-    line-height: 22px;
+    line-height: 1.5;
     margin: 12px 0 20px 0;
 }
 
@@ -442,13 +442,13 @@ footer {
         background-color: #e9edff;
         line-height: 26px;
         margin: 12px 0 12px 0;
-        padding: 3px 0px 0 0px;
+        padding: 3px 5px;
         font-size: 16px;
     }
 }
 
 ol,
-li {
+ul {
     line-height: 26px;
     margin-left: 30px;
     counter-reset: li;
