@@ -9,7 +9,7 @@ var ControlsHandler = function() {
     beatHoldTime:40,
     beatDecayRate:0.97,
                   //TORLEY_-_Symphonic_Cognition.mp3
-    sampleURL: "mp3/TORLEY_-_Augmented_Ambience.mp3"
+    sampleURL: "mp3/TORLEY_-_Symphonic_Cognition.mp3"
   };
 
   function init(){
