@@ -199,16 +199,16 @@
             <div class="col">
               <a
                 class="fancythumb"
-                href="images/grabcad/print-scheduler_1.png"
-                rel="gcp"
+                href="images/grabcad/print-scheduler-tall.png"
+                rel="print-scheduler"
               >
-                <img src="images/grabcad/print-scheduler_1.png" />
+                <img src="images/grabcad/print-scheduler-tall.png" />
               </a>
             </div>
           </div>
 
           <p>
-            A major feature of GrabCAD Print is the ability to remotely schedule
+            A core feature of GrabCAD Print is the ability to remotely schedule
             and manage print jobs on networked printers. I led the design and
             development of the new Print Scheduler, which was a ground-up
             rewrite to replace the legacy 3D Printer queue management system
@@ -216,20 +216,20 @@
             connected locally, via legacy cloud infrastructure, or new AWS
             Greengrass IoT Gateways. The system needed to integrate with
             existing workflows, while allowing customers to seamlessly upgrade
-            and unlock new features such as moving Jobs between Printers,
+            and unlock new features such as moving jobs between printers,
             automatic load balancing, robust audit trails, search, and reprint.
             It was designed from the ground up to be functional in fully offline
-            environments, supporting the security requirements of government and
-            defense customers.
+            environments, supporting the strict security requirements of
+            government and defense customers.
           </p>
 
-          <h4 style="clear: left">Challenges</h4>
+          <h4 style="clear: left">Drag and Drop</h4>
           <div class="right" style="width: 50%">
             <div class="col">
               <a
                 class="fancythumb"
-                href="images/grabcad/2022-04-29 (5).png"
-                rel="gcp"
+                href="images/grabcad/print-scheduler_DnD.gif"
+                rel="print-scheduler"
               >
                 <img src="images/grabcad/print-scheduler_DnD.gif" />
               </a>
@@ -241,9 +241,30 @@
             solution for the unique needs of this complex UI. When moving jobs
             between printers we needed to account for job-specific constraints,
             as well as configurable "operating hours" for the customer's
-            organization. We also wanted to preview cascading downstream changes
-            to predictive load-balancing.
+            organization. We also preview cascading downstream changes to
+            predicted load-balancing between printers.
           </p>
+
+          <h4 style="clear: left">Print Job History & Search</h4>
+
+          <p>
+            The Print Scheduler needed to accommodate our largest customers' 3D
+            printer farms, displaying a searchable history of completed jobs
+            spanning up to a year across 100s of printers. We utilized native
+            scrolling and careful optimization to support mobile devices and
+            achieved 60fps pan and zoom even with the largest datasets.
+          </p>
+          <div class="right" style="width: 100%">
+            <div class="col">
+              <a
+                class="fancythumb"
+                href="images/grabcad/print-scheduler-history.png"
+                rel="print-scheduler"
+              >
+                <img src="images/grabcad/print-scheduler-history.png" />
+              </a>
+            </div>
+          </div>
         </div>
 
         <div id="streamline-pro" data-w="3" data-h="2" class="new-and-improved">
