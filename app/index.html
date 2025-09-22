@@ -40,7 +40,10 @@
           I'm Case.
           <span
             data-typer-targets='{ "targets" : [
-          "I write software.",
+          "I engineer software.",
+          "I deliver features.",
+          "I delight users.",
+          "I launch products.",
           "I make websites.",
           "I visualize data.",
           "I fold origami icosahedrons.",
@@ -51,11 +54,9 @@
           "I really like LEDs.",
           "I might have an LED addiction.",
           "I make timelapse videos.",
-          "I make servo-actuated wifi GitHub Gongs.",
+          "I make servo-actuated IoT GitHub Gongs.",
           "I make sawdust.",
           "I stack rocks on the beach.",
-          "I launch features.",
-          "I fix tests.",
           "I dream about software.",
           "I squash [software] bugs. (IRL bugs are cool.)",
           "I cultivate milkweed.",
@@ -67,8 +68,8 @@
         <p>I'm a developer, designer, and maker.</p>
         <p>
           My specialties include: deep collaboration, highly polished UI/UX,
-          data-visualization, data-integrity, TDD, and DB/API optimization. I've
-          worked in Additive Manufacturing (3D Printing), Application
+          data-visualization, readable code, product development, and mentoring.
+          I've worked in Additive Manufacturing (3D Printing), Application
           Performance Monitoring (APM), Technical Marketing, Advertising &
           Marketing, Ed-Tech, Videography, Animation, and Graphic Design (Among
           other things.)
@@ -388,6 +389,75 @@
         >
           <a href="images/voxel_visualizer.jpg"></a>
           <h2>Voxel Visualizer</h2>
+        </div>
+
+        <div id="laser-cat" data-w="3" data-h="2" class="new-and-improved">
+          <a href="images/laser-cat.jpg"></a>
+          <h2>Laser Cat</h2>
+
+          <div class="left" style="width: 50%">
+            <div class="col">
+              <img src="images/laser-cat.jpg" style="width: 100%" />
+            </div>
+          </div>
+
+          <p>
+            A series of parametric sculptures made from laser-cut mirrored
+            acrylic.
+          </p>
+
+          <h3>Process</h3>
+          <p>
+            Low poly meshes were designed Blender, then processed in Rhino using
+            a custom Python script. The script transforms the mesh into
+            non-overlapping faces while accounting for material thickness, then
+            generates interlocking tabbed "hubs" with the precise angle of each
+            shared edge. Slots and hubs are etched with matching numbers to make
+            assembly possible.
+          </p>
+
+          <div class="right" style="width: 40%">
+            <div class="col">
+              <img src="images/physics-bin-packing.png" style="width: 100%" />
+            </div>
+          </div>
+
+          <h4 style="clear: left">Bin Packing</h4>
+          <p>
+            Arranging the parts for laser cutting to minimize material wastage
+            turned out to be a challenging combinatorial optimization problem.
+            After trying several free software packages with mixed results, I
+            hit upon the idea to try physics simulation. In order to import the
+            laser cutting paths into the simulation, I modified the Python
+            script to output the toolpaths alongside simplified geometry
+            compatible with the simulation engine. SVG turns out to be a great
+            format for this.
+          </p>
+          <p>
+            This approach turns out to work quite well. You can see a live demo
+            here:
+            <a href="https://caseprince.github.io/physics-bin-packing/"
+              >caseprince.github.io/physics-bin-packing</a
+            >
+            I added seeded randomness to the initial placement and orientation
+            of parts and set up the app to iterate over seeds and record the
+            densest packings.
+          </p>
+
+          <div class="left" style="width: 40%">
+            <div class="col">
+              <img src="images/laser-dog.jpg" style="width: 100%" />
+            </div>
+          </div>
+
+          <h4 style="clear: right">Laser Dog!</h4>
+          <p>
+            This pupper was my first try at the process. The tab and slot
+            geometry was designed to be press-fit, which didn't work as well as
+            I'd hoped due to tolerance variations in the laser cutter. I ended
+            up using a little superglue to hold it together. The cat improves on
+            this with compliant snap-fit joints that require no glue.
+          </p>
         </div>
 
         <div
