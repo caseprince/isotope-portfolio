@@ -2,7 +2,7 @@
 
 Hosted at [caseprince.com](http://caseprince.com)
 
-## Setup
+## Dev
 
 Install python 2 from https://www.python.org/downloads/release/python-2716/
 
@@ -24,6 +24,10 @@ Install chocolatey: https://chocolatey.org/install
 > npm install -g grunt-cli
 
 > grunt serve
+
+## Build
+
+> grunt build
 
 ### Todo
 
