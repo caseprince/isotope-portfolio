@@ -1,0 +1,13 @@
+{
+	"region_sets" : [	
+		{"id": "NA", "zoom": 300, "title": "North America", "lat": 41, "lng": -110, "regions": ["BS", "BZ", "CR", "CU", "DO", "GL", "GT", "HN", "HT", "JM", "MX", "NI", "PA", "PR", "SV", "TT", "CAAB", "CABC", "CAMB", "CANB", "CANL", "CANS", "CANT", "CANU", "CAON", "CAPE", "CAQC", "CASK", "CAYT", "USAK", "USAL", "USAR", "USAZ", "USCA", "USCO", "USCT", "USDE", "USFL", "USGA", "USHI", "USIA", "USID", "USIL", "USIN", "USKS", "USKY", "USLA", "USMA", "USMD", "USME", "USMI", "USMN", "USMO", "USMS", "USMT", "USNC", "USND", "USNE", "USNH", "USNJ", "USNM", "USNV", "USNY", "USOH", "USOK", "USOR", "USPA", "USRI", "USSC", "USSD", "USTN", "USTX", "USUT", "USVA", "USVT", "USWA", "USWI", "USWV", "USWY"]},
+		{"id": "EU", "zoom": 300, "title": "Europe", "lat": 53, "lng": 30, "regions": ["AL", "AT", "BE", "BG", "BA", "BY", "CH", "CZ", "DE", "DK", "ES", "EE", "FI", "FR", "GB", "GR", "HR", "HU", "IE", "IS", "IT", "XK", "LT", "LV", "MD", "MK", "ME", "NL", "NO", "PL", "PT", "RO", "RU", "RS", "SK", "SI", "SE", "UA"]},
+		{"id": "AS", "zoom": 300, "title": "Asia", "lat": 35, "lng": 93, "regions": ["AF", "AE", "AM", "AZ", "BD", "BN", "BT", "CN", "C2", "CY", "GE", "ID", "IN", "IR", "IQ", "IL", "JO", "JP", "K2", "KZ", "KG", "KH", "KR", "KW", "LA", "LB", "LK", "MM", "MN", "MY", "NP", "OM", "PK", "PH", "KP", "PS", "QA", "SA", "SY", "TH", "TJ", "TM", "TL", "TR", "TW", "UZ", "VN", "YE"]},
+		{"id": "SA", "zoom": 300, "title": "South America", "lat": -14, "lng": -58, "regions": ["AR", "BO", "BR", "CL", "CO", "EC", "FK", "GY", "PE", "PY", "SR", "UY", "VE"]},
+		{"id": "AF", "zoom": 300, "title": "Africa", "lat": 15, "lng": 18, "regions": ["AO", "BI", "BJ", "BF", "BW", "CF", "CI", "CM", "CD", "CG", "DJ", "DZ", "EG", "ER", "ET", "GA", "GH", "GN", "GM", "GW", "GQ", "KE", "LR", "LY", "LS", "MA", "MG", "ML", "MZ", "MR", "MW", "NA", "NE", "NG", "RW", "EH", "SD", "SS", "SN", "SL", "S2", "SO", "SZ", "TD", "TG", "TN", "TZ", "UG", "ZA", "ZM", "ZW"]},
+		{"id": "AU", "zoom": 300, "title": "Australia", "lat": -25, "lng": 133, "regions": ["AU", "FJ", "NC", "NZ", "PG", "SB", "VU"]},
+		{"id": "AMER", "zoom": 600, "title": "AMER", "mapLabel": "false", "lat": 11, "lng": -80, "regions": [], "regionSets": ["NA", "SA"]},
+		{"id": "EMEA", "zoom": 600, "title": "EMEA", "mapLabel": "false", "lat": 53, "lng": 30, "regions": ["YE", "OM", "SA", "IR", "IQ", "SY", "TR", "GE", "AM", "AZ", "AE", "QA", "BH", "KW"], "regionSets": ["EU", "AF"]},
+		{"id": "APJ", "zoom": 600, "title": "APJ", "mapLabel": "false", "lat": -25, "lng": 133, "regions": ["PK", "KZ", "AF", "TM", "UZ", "TJ", "KG", "CN", "NP", "IN", "BT", "BD", "MM", "TH", "LA", "VN", "KH", "MY", "ID", "PH", "PH", "KP", "KR", "TW", "JP"], "regionSets": ["AU"]}
+	]
+}

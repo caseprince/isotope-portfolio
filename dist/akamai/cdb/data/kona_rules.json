@@ -1,0 +1,372 @@
+{ "konaRules": [
+    {
+        "rules": [
+            {
+                "description": "POST request must have a Content-Length header",
+                "ruleId": "960012"
+            },
+            {
+                "description": "URL Encoding Abuse Attack Attempt",
+                "ruleId": "950107"
+            },
+            {
+                "description": "Invalid character in request",
+                "ruleId": "960901"
+            },
+            {
+                "description": "Content-Length HTTP header is not numeric",
+                "ruleId": "960016"
+            },
+            {
+                "description": "GET or HEAD requests with bodies",
+                "ruleId": "960011"
+            },
+            {
+                "description": "Unicode Full/Half Width Abuse Attack Attempt",
+                "ruleId": "950116"
+            },
+            {
+                "description": "Request Body Parsing Failed. %{REQBODY_PROCESSOR_ERROR_MSG}",
+                "ruleId": "960912"
+            },
+            {
+                "description": "Invalid character in request",
+                "ruleId": "960018"
+            },
+            {
+                "description": "Request Containing Content but Missing Content-Type header",
+                "ruleId": "960904"
+            },
+            {
+                "description": "Request Missing a Host Header",
+                "ruleId": "960008"
+            },
+            {
+                "description": "Host header is a numeric IP address",
+                "ruleId": "960017"
+            },
+            {
+                "description": "Request Missing an Accept Header",
+                "ruleId": "960015"
+            },
+            {
+                "description": "HTTP/0.9 Request Detected",
+                "ruleId": "960019"
+            },
+            {
+                "description": "Request Missing a User Agent Header",
+                "ruleId": "960009"
+            }
+        ],
+        "title": "Protocol Anomalies & Violations",
+        "ruleGroupId": "4001"
+    },
+    {
+        "rules": [
+            {
+                "description": "Too many arguments in request",
+                "ruleId": "960335"
+            }
+        ],
+        "title": "Request Limits",
+        "ruleGroupId": "4002"
+    },
+    {
+        "rules": [
+            {
+                "description": "Method is not allowed by policy",
+                "ruleId": "960032"
+            },
+            {
+                "description": "URL file extension is restricted by policy",
+                "ruleId": "960035"
+            },
+            {
+                "description": "Request content type is not allowed by policy",
+                "ruleId": "960010"
+            },
+            {
+                "description": "HTTP protocol version is not allowed by policy",
+                "ruleId": "960034"
+            },
+            {
+                "description": "HTTP header is restricted by policy",
+                "ruleId": "960038"
+            }
+        ],
+        "title": "HTTP Policy",
+        "ruleGroupId": "4003"
+    },
+    {
+        "rules": [
+            {
+                "description": "Rate Limiting Rule: <ruleId>",
+                "ruleId": "IPBLOCK*"
+            },
+            {
+                "description": "Request Indicates a Security Scanner Scanned the Site",
+                "ruleId": "990902"
+            },
+            {
+                "description": "Rogue web site crawler",
+                "ruleId": "990012"
+            },
+            {
+                "description": "Request Indicates a Security Scanner Scanned the Site",
+                "ruleId": "990901"
+            },
+            {
+                "description": "Request Indicates a Security Scanner Scanned the Site",
+                "ruleId": "990002"
+            },
+            {
+                "description": "Request Indicates an automated program explored the site",
+                "ruleId": "990011"
+            },
+            {
+                "description": "Remote File Access Attempt",
+                "ruleId": "959005"
+            },
+            {
+                "description": "SQL Injection Attack",
+                "ruleId": "950906"
+            },
+            {
+                "description": "Remote File Access Attempt",
+                "ruleId": "950005"
+            },
+            {
+                "description": "SQL Injection Attack",
+                "ruleId": "950901"
+            },
+            {
+                "description": "Blind SQL Injection Attack",
+                "ruleId": "959007"
+            },
+            {
+                "description": "SQL Injection Attack",
+                "ruleId": "950001"
+            },
+            {
+                "description": "HTTP Response Splitting Attack",
+                "ruleId": "950910"
+            },
+            {
+                "description": "SQL Injection Attack",
+                "ruleId": "959908"
+            },
+            {
+                "description": "SSI injection Attack",
+                "ruleId": "950011"
+            },
+            {
+                "description": "Cross-site Scripting (XSS) Attack",
+                "ruleId": "959004"
+            },
+            {
+                "description": "Injection of Undocumented ColdFusion Tags",
+                "ruleId": "959008"
+            },
+            {
+                "description": "Blind SQL Injection Attack",
+                "ruleId": "959904"
+            },
+            {
+                "description": "System Command Access",
+                "ruleId": "950002"
+            },
+            {
+                "description": "Email Injection Attack",
+                "ruleId": "950019"
+            },
+            {
+                "description": "SQL Injection Attack",
+                "ruleId": "950908"
+            },
+            {
+                "description": "Email Injection Attack",
+                "ruleId": "959019"
+            },
+            {
+                "description": "HTTP Response Splitting Attack",
+                "ruleId": "950911"
+            },
+            {
+                "description": "Persistent Universal PDF XSS attack",
+                "ruleId": "959018"
+            },
+            {
+                "description": "SQL Injection Attack",
+                "ruleId": "959001"
+            },
+            {
+                "description": "LDAP Injection Attack",
+                "ruleId": "950010"
+            },
+            {
+                "description": "PHP Injection Attack",
+                "ruleId": "959013"
+            },
+            {
+                "description": "Session Fixation",
+                "ruleId": "959009"
+            },
+            {
+                "description": "SQL Injection Attack",
+                "ruleId": "959906"
+            },
+            {
+                "description": "Blind SQL Injection Attack",
+                "ruleId": "950007"
+            },
+            {
+                "description": "Injection of Undocumented ColdFusion Tags",
+                "ruleId": "950008"
+            },
+            {
+                "description": "Blind SQL Injection Attack",
+                "ruleId": "950904"
+            },
+            {
+                "description": "Session Fixation",
+                "ruleId": "950009"
+            },
+            {
+                "description": "SQL Injection Attack",
+                "ruleId": "959901"
+            },
+            {
+                "description": "PHP Injection Attack",
+                "ruleId": "950013"
+            },
+            {
+                "description": "LDAP Injection Attack",
+                "ruleId": "959010"
+            },
+            {
+                "description": "System Command Injection",
+                "ruleId": "950006"
+            },
+            {
+                "description": "Cross-site Scripting (XSS) Attack",
+                "ruleId": "950004"
+            },
+            {
+                "description": "System Command Injection",
+                "ruleId": "950907"
+            },
+            {
+                "description": "System Command Injection",
+                "ruleId": "959907"
+            },
+            {
+                "description": "System Command Injection",
+                "ruleId": "959006"
+            },
+            {
+                "description": "Persistent Universal PDF XSS attack",
+                "ruleId": "950018"
+            },
+            {
+                "description": "SSI injection Attack",
+                "ruleId": "959011"
+            },
+            {
+                "description": "Backdoor access",
+                "ruleId": "950921"
+            },
+            {
+                "description": "Backdoor access",
+                "ruleId": "950110"
+            },
+            {
+                "description": "Backdoor access",
+                "ruleId": "950922"
+            }
+        ],
+        "title": "Bad Robots & Trojans",
+        "ruleGroupId": "4004"
+    },
+    {
+        "rules": [
+            {
+                "description": "ASP/JSP source code leakage",
+                "ruleId": "970903"
+            },
+            {
+                "description": "Cold Fusion Information Leakage",
+                "ruleId": "970008"
+            },
+            {
+                "description": "SQL Information Leakage",
+                "ruleId": "970003"
+            },
+            {
+                "description": "File or Directory Names Leakage",
+                "ruleId": "970011"
+            },
+            {
+                "description": "ISA server existence revealed",
+                "ruleId": "970010"
+            },
+            {
+                "description": "WebLogic information disclosure",
+                "ruleId": "970021"
+            },
+            {
+                "description": "PHP Information Leakage",
+                "ruleId": "970009"
+            },
+            {
+                "description": "ASP/JSP source code leakage",
+                "ruleId": "970014"
+            },
+            {
+                "description": "Directory Listing",
+                "ruleId": "970013"
+            },
+            {
+                "description": "IIS Information Leakage",
+                "ruleId": "970904"
+            },
+            {
+                "description": "Zope Information Leakage",
+                "ruleId": "970007"
+            },
+            {
+                "description": "IIS Information Leakage",
+                "ruleId": "970004"
+            },
+            {
+                "description": "The application is not available",
+                "ruleId": "970118"
+            },
+            {
+                "description": "Microsoft Office document properties leakage",
+                "ruleId": "970012"
+            },
+            {
+                "description": "PHP source code leakage",
+                "ruleId": "970015"
+            },
+            {
+                "description": "Statistics Information Leakage",
+                "ruleId": "970002"
+            },
+            {
+                "description": "The application is not available",
+                "ruleId": "970901"
+            },
+            {
+                "description": "PHP source code leakage",
+                "ruleId": "970902"
+            },
+            {
+                "description": "Cold Fusion source code leakage",
+                "ruleId": "970016"
+            }
+        ],
+        "title": "Outbound",
+        "ruleGroupId": "4005"
+    }
+]}

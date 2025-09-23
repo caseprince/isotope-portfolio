@@ -1,0 +1,30 @@
+{
+    "title": "my awesome site",
+    "id": "XXXX",
+    "customer_id": "XXXX",
+    "products": [
+        {
+            "id": "traffic",
+            "startDate": 1300000000,
+            "endDate": 1300000001,
+            "minInterval": 5
+        },
+        {
+            "id": "media",
+            "startDate": 1300000000,
+            "endDate": 1300000001,
+            "minInterval": 60
+        },
+        {
+            "id": "security",
+            "startDate": 1300000000,
+            "endDate": 1300000001,
+            "minInterval": 15
+        }
+    ],
+
+    "settings": {
+        "mode": "customerDash"
+        "deck": []
+    }   
+}
