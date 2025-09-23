@@ -213,7 +213,6 @@ p {
 }
 
 a.thumb {
-    // ugh fix this
     display: block;
     float: left;
     height: 200px;
@@ -293,7 +292,6 @@ a.f00:hover {
     display: block;
     float: left;
 
-    //margin: 0 0 0 10px;
     background-position: center center;
     -webkit-background-size: cover; /*for webKit*/
     -moz-background-size: cover; /*Mozilla*/
@@ -425,7 +423,6 @@ footer {
     width: 100%;
     position: relative;
     right: 0;
-    //margin: 0 auto;
 }
 #head_copy {
     width: 100%;
@@ -457,18 +454,6 @@ ul {
         position: relative;
         line-height: 22px;
         margin-bottom: 11px;
-    }
-}
-
-ol {
-    li:before {
-        counter-increment: li;
-        content: counter(li) ". ";
-        color: #435b77;
-        position: absolute;
-        width: 40px;
-        left: -42px;
-        text-align: right;
     }
 }
 

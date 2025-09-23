@@ -225,7 +225,7 @@
           </p>
 
           <h4 style="clear: left">Drag and Drop</h4>
-          <div class="right" style="width: 50%">
+          <div class="right" style="width: 60%">
             <div class="col">
               <a
                 class="fancythumb"
@@ -1022,71 +1022,15 @@
           </dl>
         </div>
 
-        <div id="webgl" data-w="3" data-h="3">
+        <div id="akamai-globe" data-w="3" data-h="3">
           <a href="images/webgl-globe_lg.jpg"></a>
           <h2>WebGL Globe</h2>
-          <div class="thumbs-vert">
-            <a
-              class="thumb c1"
-              href="http://ca5e.com/webgl-globe/"
-              target="_blank"
-              rel="globe"
-              style="background-image: url('images/thumbs/globe.jpg')"
-            ></a>
-          </div>
+          <image alt="Global network analytics visualizer" src="images/webgl-globe_lg.jpg" style="display: block; margin: 0 auto;" />
           <dl>
             <dt>Client</dt>
             <dd>Akamai Technologies</dd>
             <dt>About</dt>
-            <dd>
-              A prototype-upgrade for
-              <a href="http://wwwnui.akamai.com/gnet/globe/" target="_blank"
-                >Akamai's Spinning Globe</a
-              >. Goals include:
-              <ol>
-                <li><span>More visual impact, richer interaction.</span></li>
-                <li><span>Easily readable, multi-dimensional data.</span></li>
-                <li><span>Data display per City and/or Region.</span></li>
-                <li><span>Auto-play mode cycling through top Cities</span></li>
-                <li>
-                  <span
-                    >Deployment in Network Operations Command Centers
-                    (NOCCs).</span
-                  >
-                </li>
-              </ol>
-            </dd>
-            <dt style="position: relative; right: 15px">Challenges</dt>
-            <dd>
-              <ol>
-                <li>
-                  <span
-                    >Effecient client-side spherical extrusion of custom
-                    TopoJSON shapes with THREE.js</span
-                  >
-                </li>
-                <li>
-                  <span
-                    >Too-Large-to-extrude Regions (Russa: Y U cross
-                    international date line on mercator projection?)</span
-                  >
-                </li>
-                <li>
-                  <span
-                    >Transparency, Shaders, FPS, Rollovers, 3d-to-2d
-                    'unprojection' for H.U.D.</span
-                  >
-                </li>
-                <li>
-                  <span
-                    >Animating the short way from L.A. to Tokyo (How do I great
-                    circle?)</span
-                  >
-                </li>
-                <li><span>Face & Vertex Normals (how do they work?)</span></li>
-                <!--li><span>Rushing, etc.</span></li-->
-              </ol>
-            </dd>
+            <dd>A global network analytics visualizer for deployment in Network Operations Command Centers (NOCCs).</dd>
             <dt>Tech</dt>
             <dd>
               WebGL, D3, <a href="http://threejs.org/">THREE.js</a>,
