@@ -175,14 +175,16 @@ $margin: 5;
     height: 32px;
     text-align: center;
     border: 3px solid white;
-    line-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 
     @include border-radius(50px);
     @include single-box-shadow(0, 0, 4px, 1px, #000000);
     svg {
-        display: inline;
         pointer-events: none;
+        margin: 1px 0 0 1px;
     }
 }
 
