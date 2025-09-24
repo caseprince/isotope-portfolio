@@ -531,9 +531,11 @@ body {
   justify-content: center;
   cursor: pointer;
   border-radius: 50%;
-  box-shadow: 0, 0, 4px, 1px, #000000 svg;
-  box-shadow-pointer-events: none;
-  box-shadow-margin: 1px 0 0 1px;
+  box-shadow: 0, 0, 4px, 1px, #000000;
+  svg {
+    pointer-events: none;
+    margin: 1px 0 0 1px;
+  }
 }
 
 h1 {
