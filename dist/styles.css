@@ -396,6 +396,14 @@ body {
   opacity: 1;
 }
 
+/* @for $i from 1 through 10 {
+    .w-#{$i} {
+        width: #{($base * $i) + ($margin * ($i - 1) * 2)}#{px};
+    }
+    .h-#{$i} {
+        height: #{($base * $i) + ($margin * ($i - 1) * 2)}#{px};
+    }
+} */
 .w-1 {
   width: 120px;
 }
