@@ -26,11 +26,15 @@ var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 document.body.removeChild(scrollDiv);
 
 var content = $("#content > div");
-$.each(content, function (index, item) {
-    var w = $(this).attr("data-w") || 1,
-        h = $(this).attr("data-h") || 1,
-        title = $(this).find("h2")[0].innerHTML,
-        style = w == 1 ? "font-size:.7em;" : "";
+$.each(content, function () {
+    const id = $(this).attr("id"),
+        w = $(this).data("w") || 1,
+        h = $(this).data("h") || 1,
+        title = $(this).find("h2")[0]?.innerHTML,
+        style = w == 1 ? "font-size:.7em;" : "",
+        href = $(this).data("href"),
+        externalLink = !$(this).hasClass("fancybox") && $(this).data("href"),
+        imageUrl = $(this).find("a")[0]?.getAttribute("href");
 
     var classes = "";
     if ($(this).hasClass("fancybox")) {
@@ -40,24 +44,20 @@ $.each(content, function (index, item) {
         classes += "iframe ";
     }
 
-    var imageUrl = $(this).find("a")[0].getAttribute("href"),
-        html =
-            '<div style="' +
-            style +
-            '" class="' +
-            classes +
-            "element w-" +
-            w +
-            " h-" +
-            h +
-            '" data-id="' +
-            $(this).attr("id");
-    if ($(this).data("href")) {
-        html += '" data-href="' + $(this).data("href");
-    }
-    html += '">';
-    html += "<div style=\"background-image: url('" + imageUrl + "')\">";
-    html += "<h4>" + title + "</h4></div></div>";
+    const html = `
+    <a style="${style}" class="${classes}element w-${w} h-${h}" data-id="${id}" ${
+        href ? `data-href="${href}"` : ""
+    } ${externalLink ? `href="${externalLink}"` : ""}>
+        <div style="background-image: url('${imageUrl}')">
+            <h4>${title}</h4>
+            ${
+                externalLink
+                    ? `<span class="external-link">${externalLink}</span>`
+                    : ""
+            }
+        </div>
+    </a>
+    `;
 
     $("#container").append(html);
 });
