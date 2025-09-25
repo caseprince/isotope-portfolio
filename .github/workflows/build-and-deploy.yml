@@ -44,7 +44,9 @@ jobs:
         npm install
         npm run build
     - name: Copy static files
-      run: cp -R static/akamai/ akamai/
+      run: |
+        cp -R static/akamai/ dist/akamai/
+        cp -R static/appneta/ dist/appneta/
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
