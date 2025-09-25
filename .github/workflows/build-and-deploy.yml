@@ -3,7 +3,7 @@ name: NodeJS with Vite
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,12 +39,12 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-
     - name: Build
       run: |
         npm install
         npm run build
-        
+    - name: Copy static files
+      run: cp -R static/akamai/ akamai/
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
