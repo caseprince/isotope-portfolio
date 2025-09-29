@@ -24,8 +24,10 @@
     "@types/jquery": "^3.5.33",
     "@types/packery": "^1.4.37",
     "@vue/tsconfig": "^0.8.1",
+    "sharp": "^0.34.4",
     "typescript": "~5.8.3",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "vite-plugin-image-optimizer": "^2.0.2"
   },
   "engines": {
     "node": "22.11.0",
