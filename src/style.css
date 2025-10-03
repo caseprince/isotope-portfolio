@@ -836,8 +836,9 @@ header {
 }
 
 #head_copy {
-  max-width: 647px;
+  max-width: 530px;
   margin-left: 43.5%;
+  padding-right: 30px;
 }
 #head_copy h1 {
   margin: 25px 0 15px 0px;
