@@ -31,7 +31,7 @@ $.each(content, function () {
         w = $(this).data("w") || 1,
         h = $(this).data("h") || 1,
         title = $(this).find("h2")[0]?.innerHTML,
-        style = w == 1 ? "font-size:.7em;" : "",
+        inlineStyle = $(this).attr("style") || "",
         href = $(this).data("href"),
         externalLink = !$(this).hasClass("fancybox") && $(this).data("href"),
         imageUrl = $(this).find("a")[0]?.getAttribute("href");
@@ -45,10 +45,10 @@ $.each(content, function () {
     }
 
     const html = `
-    <a style="${style}" class="${classes}element w-${w} h-${h}" data-id="${id}" ${
+    <a style="${w == 1 ? "font-size:.7em;" : ""}" class="${classes}element w-${w} h-${h}" data-id="${id}" ${
         href ? `data-href="${href}"` : ""
     } ${externalLink ? `href="${externalLink}"` : ""}>
-        <div style="background-image: url('${imageUrl}')">
+        <div style="background-image: url('${imageUrl}'); ${inlineStyle}">
             <h4>${title}</h4>
             ${
                 externalLink
