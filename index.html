@@ -10,7 +10,10 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto"
       rel="stylesheet"
     />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>"
+    />
   </head>
   <body>
     <div id="head">
@@ -1974,29 +1977,34 @@
           </dl>
         </div>
 
-        <div id="led" data-w="3" data-h="3">
+        <div id="led" data-w="3" data-h="3" class="new-and-improved">
           <h2>LED Bonsai</h2>
-          <div class="thumbs-vert">
-            <a
-              class="thumb c2"
-              href="images/LED_tree_1.jpg"
-              rel="led"
-              style="background-image: url('images/thumbs/LED_tree_1.jpg')"
-            ></a>
+          <div style="display: flex; flex-direction: row">
             <a
               class="thumb c2"
               href="images/LED_tree_2.jpg"
               rel="led"
-              style="background-image: url('images/thumbs/LED_tree_2.jpg')"
+              style="
+                background-image: url('images/thumbs/LED_tree_2.jpg');
+                width: 50%;
+                height: 400px;
+              "
+            ></a>
+            <a
+              class="thumb c2"
+              href="images/LED_tree_1.jpg"
+              rel="led"
+              style="
+                background-image: url('images/thumbs/LED_tree_1.jpg');
+                width: 50%;
+                height: 400px;
+              "
             ></a>
           </div>
-          <dl>
-            <dt>About</dt>
-            <dd>
-              A piece for my little sister. Hundreds of red, green, blue and
-              white LEDs, lots of copper wire and a mahogany base.
-            </dd>
-          </dl>
+          <p>
+            A piece for my little sister. Hundreds of red, green, blue and white
+            LEDs, lots of copper wire and a mahogany base.
+          </p>
         </div>
 
         <div
@@ -2024,17 +2032,6 @@
         </div>
 
         <div
-          id="leds"
-          class="fancybox"
-          data-w="2"
-          data-h="2"
-          data-href="images/leds.jpg"
-        >
-          <a href="images/leds.jpg"></a>
-          <h2>LEDs</h2>
-        </div>
-
-        <div
           id="spoke-pov"
           class="fancybox"
           data-w="1"
@@ -2049,7 +2046,7 @@
           id="ck-fixture"
           class="fancybox"
           data-href="images/_art/ck_fixture-011.jpg"
-          data-caption="Color shifting light fixture made from vintage electric bed-warmer frame, stretch fabric, copper wire, iColor Coves, aligator clips and a trash-picked MacBook charger."
+          data-caption="Color shifting light fixture made from vintage electric bed-warmer frame, stretch fabric, copper wire, iColor Coves, and a trash-picked MacBook charger."
           style="display: none"
         >
           <a href="images/_art/ck_fixture-011.jpg"></a>
