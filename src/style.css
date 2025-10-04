@@ -738,14 +738,14 @@ header {
   margin: 25px 0 0px 0px;
   padding: 0px 5px;
   font-weight: 700;
-  background-color: #e9edff;
+  background-color: #e9edfff2
 }
 #head_copy p {
   font-size: 16px;
   line-height: 1.6;
   margin: 10px 0;
   padding: 3px 7px;
-  background-color: #e9edff;
+  background-color: #e9edfff2
 }
 
 @media (max-width: 1200px) {
