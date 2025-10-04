@@ -327,10 +327,13 @@ body {
   float: left;
   position: relative;
   cursor: pointer;
+  &.hidden {
+    display: none;
+  }
 }
-.element dl {
+/* .element dl {
   display: none;
-}
+} */
 .element > div {
   width: 100%;
   height: 100%;
@@ -584,23 +587,17 @@ a.thumb {
   -moz-background-size: cover; /*Mozilla*/
   -o-background-size: cover; /*opera*/
   background-size: cover; /*generic*/
-  /*-webkit-filter: grayscale(.8);
-  -webkit-transition: all 800ms;*/
 }
 
 a.thumb:last-child {
   margin-right: 0;
 }
 
-/*a.thumb:hover{
-    -webkit-filter: grayscale(0);
-}*/
 a {
   transition: color 0.2s;
   -moz-transition: color 0.2s; /* Firefox 4 */
   -webkit-transition: color 0.2s; /* Safari and Chrome */
   -o-transition: color 0.2s; /* Opera */
-  text-decoration: none;
 }
 
 a,

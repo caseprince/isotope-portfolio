@@ -5,8 +5,8 @@
     <title>CasePrince.com</title>
     <meta name="description" content="" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
-    <meta name="viewport" content="width=790, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=800, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="/src/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto"
@@ -52,19 +52,23 @@
         <p>I'm a Software Engineer, Designer, and Maker.</p>
         <p>
           My specialties include: Deep Collaboration, Highly Polished UI/UX,
-          Data-Visualization, Maintainable Code, Product Development, and
+          Maintainable Code, Data-Visualization, Product Development, and
           Mentoring. I've worked in Additive Manufacturing, Application
           Performance Monitoring, Technical Marketing, and Advertising.
         </p>
         <p>
           Here's
-          <a
-            href="https://caseprince.github.io/resume/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >my resumé</a
-          >
+          <a href="https://caseprince.github.io/resume/">my resumé</a>
           and some favorite projects:
+          <!-- <select id="project-filter">
+            <option value="all">All</option>
+            <option value="enterprise">Enterprise</option>
+            <option value="data-vis">Data Vis</option>
+            <option value="cad">CAD</option>
+            <option value="ads">Ads/Marketing</option>
+            <option value="games">Games</option>
+            <option value="leds">LEDs</option>
+          </select> -->
         </p>
       </div>
     </header>
@@ -101,8 +105,9 @@
           id="grabcad-print"
           data-w="5"
           data-h="3"
-          class="new-and-improved"
+          class="new-and-improved enterprise"
           style="background-position: 0px -18px"
+          data-tags="enterprise"
         >
           <a href="images/grabcad/GCP_darkMode.png"></a>
           <h2>GrabCAD Print</h2>
@@ -120,10 +125,14 @@
           </div>
 
           <p>
-            <a href="https://grabcad.com/print">GrabCAD Print</a> is the primary
-            user interface for all
-            <a href="https://www.stratasys.com/">Stratasys</a> 3D printers
-            including FDM & PolyJet. It handles CAD model slicing & print
+            <a href="https://grabcad.com/print">GrabCAD Print</a> is the core of
+            the flagship GrabCAD Additive Manufacturing Platform. It serves as
+            the primary user interface for all
+            <a href="https://www.stratasys.com/">Stratasys</a> 3D printing
+            technologies including FDM, PolyJet, and SAF.
+          </p>
+          <p>
+            The desktop aplpication handles CAD model slicing & print
             preparation locally, and enables remote job scheduling, queue
             management, and reporting tools for networked printers. It's built
             on Electron + React + TypeScript, with a plugin-based,
@@ -149,16 +158,16 @@
           </div>
 
           <p style="margin: 0 0 20px; font-style: italic; font-size: 0.8em">
-            Above: GrabCAD Print in Dark Mode. Right: Component Library & Style
-            Guide.
+            Above: GrabCAD Print in Dark Mode. Right: Design System & Component
+            Library.
           </p>
 
           <h4 style="clear: left">Contributions</h4>
           <ul>
             <li>
               Improved app-wide UX consistency, maintainability, and increased
-              developer velocity by introducing UI Component Library & Style
-              Guide.
+              developer velocity by introducing Design System & Component
+              Library.
             </li>
             <li>
               Increased user value with addition & refinement of numerous core
@@ -184,6 +193,7 @@
           data-h="2"
           class="new-and-improved"
           style="background-position: 0 0"
+          data-tags="enterprise data-vis"
         >
           <a href="images/grabcad/print-scheduler_wide.png"></a>
           <h2>GrabCAD Print Scheduler</h2>
@@ -201,7 +211,7 @@
           </div>
 
           <p>
-            A core feature of GrabCAD Print is the ability to remotely schedule
+            A core feature of <a href="https://grabcad.com/print">GrabCAD Print</a> is the ability to remotely schedule
             and manage print jobs on networked printers. I led the design and
             development of the new Print Scheduler, which was a ground-up
             rewrite to replace the legacy 3D Printer queue management system
@@ -260,7 +270,13 @@
           </div>
         </div>
 
-        <div id="streamline-pro" data-w="3" data-h="2" class="new-and-improved">
+        <div
+          id="streamline-pro"
+          data-w="3"
+          data-h="2"
+          class="new-and-improved"
+          data-tags="enterprise"
+        >
           <a href="images/grabcad/streamline_control_sm.png"></a>
           <h2>GrabCAD Streamline Pro</h2>
 
@@ -360,6 +376,7 @@
           data-w="3"
           data-h="4"
           data-href="https://blog.grabcad.com/blog/2018/11/28/italian-marbled-voxels-on-the-stratasys-j750/"
+          data-tags="cad"
         >
           <a href="images/ItalianMarbledVoxels_hero.png"></a>
           <h2>Italian Marbled Voxels on the Stratasys J750</h2>
@@ -369,6 +386,7 @@
           data-w="2"
           data-h="3"
           data-href="https://blog.grabcad.com/blog/2019/09/05/my-summer-project-rainbow-horse-zoetrope-lamp-on-the-stratasys-j750/"
+          data-tags="cad"
         >
           <a href="images/rainbow_horse_zoetrope_lamp.jpg"></a>
           <h2>Rainbow Horse Zoetrope Lamp</h2>
@@ -378,12 +396,19 @@
           data-w="4"
           data-h="2"
           data-href="https://github.com/caseprince/voxel-visualizer"
+          data-tags="cad data-vis"
         >
           <a href="images/voxel_visualizer.jpg"></a>
           <h2>Voxel Visualizer</h2>
         </div>
 
-        <div id="laser-cat" data-w="3" data-h="2" class="new-and-improved">
+        <div
+          id="laser-cat"
+          data-w="3"
+          data-h="2"
+          class="new-and-improved"
+          data-tags="cad"
+        >
           <a href="images/laser-cat.jpg"></a>
           <h2>Laser Cat</h2>
 
@@ -462,6 +487,7 @@
           data-w="3"
           data-h="3"
           data-href="https://github.com/caseprince/stackoverflow-data-vis"
+          data-tags="data-vis"
         >
           <a href="images/thumbs/stackoverflow-visualizer.png"></a>
           <h2>Stack Overflow Visualizer</h2>
@@ -472,6 +498,7 @@
           data-w="4"
           data-h="3"
           data-href="https://github.com/caseprince/temerity-os"
+          data-tags="leds cad arduino"
         >
           <a
             href="https://github.com/caseprince/temerity-os/blob/main/images/20230708_224618.jpg?raw=true"
@@ -480,10 +507,11 @@
         </div>
 
         <div
-          id="temerity-2022"
+          id="rhino-python-scripts"
           data-w="1"
           data-h="2"
           data-href="https://github.com/caseprince/rhino-python-scripts"
+          data-tags="cad"
         >
           <a
             href="https://github.com/caseprince/rhino-python-scripts/raw/master/images/ripple-shade.png?raw=true"
@@ -498,6 +526,7 @@
           data-h="2"
           data-href="images/lamp_head.jpg"
           data-caption="Lampshade or helmet? 3D printed in PLA on a Stratasys F370."
+          data-tags="cad"
         >
           <a href="images/lamp_head.jpg"></a>
           <h2>Lamp Head</h2>
@@ -510,6 +539,7 @@
           class="fancybox"
           data-href="images/stained_glass_1.jpg"
           data-caption="Tiffany-style 3D printed faux stained glass panels designed in Rhino, PhotoShop, and Illustrator."
+          data-tags="cad"
         >
           <a href="images/stained_glass_1.jpg"></a>
           <h2>3d Printed Stained Glass</h2>
@@ -522,6 +552,7 @@
           data-h="1"
           data-href="https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/1b5788d581dfbc69559c4879f10d4984/large.jpg"
           data-caption="<a href='https://grabcad.com/library/elephant-cabinet-1'>https://grabcad.com/library/elephant-cabinet-1</a>"
+          data-tags="cad"
         >
           <a
             href="https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/1b5788d581dfbc69559c4879f10d4984/large.jpg"
@@ -536,6 +567,7 @@
           data-h="3"
           data-href="images/misc_snapSpherePendants.jpg"
           data-caption="Some prototypes over my desk at GrabCAD."
+          data-tags="cad"
         >
           <a href="images/misc_snapSpherePendants.jpg"></a>
           <h2>Various 3D Printed Pendants</h2>
@@ -548,6 +580,7 @@
           data-h="3"
           data-href="images/spiral-lamp.jpg"
           data-caption="Parametric Lamp Shade in Rhino + Python"
+          data-tags="cad"
         >
           <a href="images/spiral-lamp.jpg"></a>
           <h2>Spiral Lamp Shade</h2>
@@ -560,6 +593,7 @@
           data-h="1"
           data-href="images/Fibonacci_Sphere_Pendant_Lamps_1.jpg"
           data-caption="<a href='https://grabcad.com/library/fibonacci-sphere-pendant-lamps-1'>https://grabcad.com/library/fibonacci-sphere-pendant-lamps-1</a>"
+          data-tags="cad"
         >
           <a href="images/thumbs/fibonacci_thumb.jpg"></a>
           <h2>Fibonacci Sphere Pendant Lamps</h2>
@@ -572,12 +606,19 @@
           data-h="2"
           data-href="images/LED_clock.jpg"
           data-caption="WIP clock w/ vintage Bulova neon clock face + 144 #neopixels + #particlephoton + @Ponoko"
+          data-tags="leds"
         >
           <a href="images/LED_clock.jpg"></a>
           <h2>LED Clock</h2>
         </div>
 
-        <div id="appmap" data-w="3" data-h="3" class="new-and-improved">
+        <div
+          id="appmap"
+          data-w="3"
+          data-h="3"
+          class="new-and-improved"
+          data-tags="enterprise data-vis"
+        >
           <a href="images/tv/traceview_1.jpg"></a>
           <h2>TraceView AppMap</h2>
 
@@ -693,7 +734,13 @@
           </p>
         </div>
 
-        <div id="trace-details" data-w="4" data-h="2" class="new-and-improved">
+        <div
+          id="trace-details"
+          data-w="4"
+          data-h="2"
+          class="new-and-improved"
+          data-tags="enterprise data-vis"
+        >
           <a href="images/tv/traceview_thumb.png"></a>
           <h2>TraceView - Trace Details Visualizer</h2>
 
@@ -833,7 +880,13 @@
           </p>
         </div>
 
-        <div id="gitgong" data-w="2" data-h="2" class="new-and-improved">
+        <div
+          id="gitgong"
+          data-w="2"
+          data-h="2"
+          class="new-and-improved"
+          data-tags="arduino"
+        >
           <a href="images/gitGong.png"></a>
           <h2>Git Gong</h2>
           <p>
@@ -1046,7 +1099,12 @@
           </dl>
         </div>
 
-        <div id="akamai-globe" data-w="3" data-h="3">
+        <div
+          id="akamai-globe"
+          data-w="3"
+          data-h="3"
+          data-tags="enterprise data-vis"
+        >
           <a href="images/webgl-globe_lg.jpg"></a>
           <h2>WebGL Globe</h2>
           <img
@@ -1082,7 +1140,7 @@
           </dl>
         </div>
 
-        <div id="cdb" data-w="4" data-h="3">
+        <div id="cdb" data-w="4" data-h="3" data-tags="enterprise data-vis">
           <h2>Akamai Customer Dashboard</h2>
           <div class="thumbs-vert">
             <a
@@ -1175,7 +1233,7 @@
           </dl>
         </div>
 
-        <div id="catch-constantine" data-w="2" data-h="2">
+        <div id="catch-constantine" data-w="2" data-h="2" data-tags="games">
           <a href="images/mmw_3.jpg"></a>
           <h2>Muppets Most Wanted - Catch Constantine</h2>
           <div class="thumbs-vert">
@@ -1332,7 +1390,7 @@
           </dl>
         </div>
 
-        <div id="coke_zero" data-w="1" data-h="3">
+        <div id="coke_zero" data-w="1" data-h="3" data-tags="ads">
           <a href="images/coke_zero.png"></a>
           <div class="left">
             <img src="images/gifs/cokeZero.gif" width="160" height="600" />
@@ -1347,7 +1405,7 @@
           <p>Foam physics simulated with Box2D</p>
         </div>
 
-        <div id="totc" data-w="4" data-h="2">
+        <div id="totc" data-w="4" data-h="2" data-tags="games">
           <h2>The Thrill of the Catch</h2>
           <div class="thumbs-vert">
             <a
@@ -1508,7 +1566,7 @@
           </p>
         </div>
 
-        <div id="f150-arabic" data-w="2">
+        <div id="f150-arabic" data-w="2" data-tags="ads">
           <h2>Ford 150 Comparison Tool - Arabic Localization</h2>
           <div class="thumbs-vert">
             <a
@@ -1597,7 +1655,7 @@
           </dl>
         </div>
 
-        <div id="bloodcopy" data-w="2" data-h="3">
+        <div id="bloodcopy" data-w="2" data-h="3" data-tags="ads">
           <h2>Trueblood Twitter App @ bloodcopy.com</h2>
           <div class="thumbs-vert">
             <a
@@ -1687,7 +1745,7 @@
           </dl>
         </div>
 
-        <div id="mmh" data-w="2" data-h="2">
+        <div id="mmh" data-w="2" data-h="2" data-tags="ads">
           <h2>Monster High: Monsterfy Yourself</h2>
           <div class="thumbs-vert">
             <a
@@ -1764,7 +1822,7 @@
           </dl>
         </div>
 
-        <div id="espn" data-w="4">
+        <div id="espn" data-w="4" data-tags="ads">
           <a href="images/thumbs/espn_nba_12-25-2012.jpg"></a>
           <h2>970x250 ESPN.com Takeover</h2>
           <!-- <object width="970" height="250">
@@ -1805,7 +1863,7 @@
           </dl>
         </div>
 
-        <div id="nvidia" data-w="2" data-h="2">
+        <div id="nvidia" data-w="2" data-h="2" data-tags="ads">
           <h2>NVIDIA Speak Visual Ad Campaign</h2>
           <div class="thumbs-vert">
             <a
@@ -1912,7 +1970,7 @@
           </div>
         </div>
 
-        <div id="mwwc" data-w="2" data-h="2">
+        <div id="mwwc" data-w="2" data-h="2" data-tags="games">
           <h2>Word Central</h2>
           <div class="thumbs-vert">
             <a
@@ -1989,7 +2047,13 @@
           </dl>
         </div>
 
-        <div id="led" data-w="3" data-h="3" class="new-and-improved">
+        <div
+          id="led"
+          data-w="3"
+          data-h="3"
+          class="new-and-improved"
+          data-tags="leds"
+        >
           <h2>LED Bonsai</h2>
           <div style="display: flex; flex-direction: row">
             <a
@@ -2038,6 +2102,7 @@
           class="fancybox"
           data-href="images/SUP_LED.jpg"
           data-caption="LEDs on the bottom of a paddleboard make for fun night paddling."
+          data-tags="leds"
         >
           <a href="images/SUP_LED.jpg"></a>
           <h2>SUP LED</h2>
@@ -2049,6 +2114,7 @@
           data-w="1"
           data-href="images/spoke-pov.jpg"
           data-caption="Adafruit Spoke POV (Persistence-of-Vision) LED display mounted on the front wheel of my bike."
+          data-tags="leds"
         >
           <a href="images/spoke-pov.jpg"></a>
           <h2>Spoke POV</h2>
@@ -2059,7 +2125,7 @@
           class="fancybox"
           data-href="images/_art/ck_fixture-011.jpg"
           data-caption="Color shifting light fixture made from vintage electric bed-warmer frame, stretch fabric, copper wire, iColor Coves, and a trash-picked MacBook charger."
-          style="display: none"
+          data-tags="leds"
         >
           <a href="images/_art/ck_fixture-011.jpg"></a>
           <h2>Color Kinetics Light Fixture</h2>
@@ -2073,6 +2139,7 @@
           class="fancybox"
           data-href="images/traffic_cone_armor.webp"
           data-caption="My Halloween costume made from traffic cones, EL wire, LEDs and fiber-optics."
+          data-tags="leds"
         >
           <a href="images/traffic_cone_armor.webp"></a>
           <h2>Traffic Cone Armor</h2>

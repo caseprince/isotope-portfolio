@@ -1,5 +1,4 @@
 import $ from "jquery";
-import Isotope from "isotope-layout";
 import Packery from "packery";
 import getSize from "get-size";
 
@@ -11,7 +10,7 @@ registerTyper($);
 registerFancyBox(window, document, $);
 
 console.log("jQuery %s", $().jquery);
-console.log("isotope", Isotope);
+
 console.log("Packery", Packery);
 
 // Create the measurement node
@@ -25,42 +24,43 @@ var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 // Delete the DIV
 document.body.removeChild(scrollDiv);
 
-var content = $("#content > div");
-$.each(content, function () {
-    const id = $(this).attr("id"),
-        w = $(this).data("w") || 1,
-        h = $(this).data("h") || 1,
-        title = $(this).find("h2")[0]?.innerHTML,
-        inlineStyle = $(this).attr("style") || "",
-        href = $(this).data("href"),
-        externalLink = !$(this).hasClass("fancybox") && $(this).data("href"),
-        imageUrl = $(this).find("a")[0]?.getAttribute("href");
+// Extract thumbnail images from content and populate .elements for Packery
+function initPackery() {
+    var content = $("#content > div");
+    $.each(content, function () {
+        const id = $(this).attr("id"),
+            w = $(this).data("w") || 1,
+            h = $(this).data("h") || 1,
+            title = $(this).find("h2")[0]?.innerHTML,
+            inlineStyle = $(this).attr("style") || "",
+            href = $(this).data("href"),
+            externalLink =
+                !$(this).hasClass("fancybox") && $(this).data("href"),
+            imageUrl = $(this).find("a")[0]?.getAttribute("href"),
+            tags = $(this).data("tags") || "",
+            classes = $(this).attr("class") || "";
 
-    var classes = "";
-    if ($(this).hasClass("fancybox")) {
-        classes += "fancybox ";
-    }
-    if ($(this).hasClass("iframe")) {
-        classes += "iframe ";
-    }
+        const html = `
+        <a style="${
+            w == 1 ? "font-size:.7em;" : ""
+        }" class="${classes} element w-${w} h-${h}" data-id="${id}" ${
+            href ? `data-href="${href}"` : ""
+        } ${externalLink ? `href="${externalLink}"` : ""} data-tags="${tags}">
+            <div style="background-image: url('${imageUrl}'); ${inlineStyle}">
+                <h4>${title}</h4>
+                ${
+                    externalLink
+                        ? `<span class="external-link">${externalLink}</span>`
+                        : ""
+                }
+            </div>
+        </a>
+        `;
 
-    const html = `
-    <a style="${w == 1 ? "font-size:.7em;" : ""}" class="${classes}element w-${w} h-${h}" data-id="${id}" ${
-        href ? `data-href="${href}"` : ""
-    } ${externalLink ? `href="${externalLink}"` : ""}>
-        <div style="background-image: url('${imageUrl}'); ${inlineStyle}">
-            <h4>${title}</h4>
-            ${
-                externalLink
-                    ? `<span class="external-link">${externalLink}</span>`
-                    : ""
-            }
-        </div>
-    </a>
-    `;
-
-    $("#container").append(html);
-});
+        $("#container").append(html);
+    });
+}
+initPackery();
 
 // Centers packery layout
 var __resetLayout = Packery.prototype._resetLayout;
@@ -95,10 +95,28 @@ Packery.prototype.resize = function () {
 };
 
 var container = document.querySelector("#container");
-var pckry = new Packery(container, {
+window.pckry = new Packery(container, {
     itemSelector: ".element",
     columnWidth: 120,
     gutter: 10,
+    transitionDuration: 0,    
+});
+
+let filter = "all";
+$("#project-filter").on("change", function () {
+    console.log($(this).val());
+    filter = $(this).val() as string;
+    $("#container > a").each(function () {
+        if (
+            filter === "all" ||
+            $(this).data("tags") && $(this).data("tags")?.split(" ").includes(filter)
+        ) {
+            $(this).toggleClass("hidden", false);
+        } else {
+            $(this).toggleClass("hidden", true);
+        }
+    });
+    window.pckry.layout();
 });
 
 $(".element").click(function () {
@@ -111,7 +129,6 @@ $(".element").click(function () {
 });
 
 $("#scrim, #overlay, .close").click(function (e) {
-    console.log(e.target);
     if (
         e.target.id === "scrim" ||
         e.target.id === "overlay" ||
@@ -173,14 +190,6 @@ function updateHash() {
 }
 window.onhashchange = updateHash;
 updateHash();
-
-if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-    if ($.stellar) {
-        $.stellar({
-            horizontalScrolling: false,
-        });
-    }
-}
 
 $(".thumb, .fancythumb").fancybox({
     openSpeed: 0,
