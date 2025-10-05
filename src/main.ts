@@ -202,8 +202,8 @@ $(".thumb, .fancythumb").fancybox({
 });
 $("a.mh").fancybox({ width: 760 });
 
-$.typer.options.typerInterval = 7500;
-$.typer.options.typeDelay = 30;
+$.typer.options.typerInterval = 9000;
+$.typer.options.typeDelay = 25;
 $("[data-typer-targets]").typer();
 
 $("#brands, footer").delay(1000).show();
