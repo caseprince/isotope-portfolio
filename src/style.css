@@ -2,7 +2,9 @@
 
 /* https://www.joshwcomeau.com/css/custom-css-reset/ */
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 /* 2. Remove default margin */
@@ -23,29 +25,48 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   /* max-width: 100%; */
 }
 /* 7. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 /* 9. Improve line wrapping */
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 /*
   10. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
@@ -303,6 +324,7 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   background: #e9edff;
+  background: #0e121b;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: #333;
   overflow: auto;
@@ -716,37 +738,40 @@ dd {
 #main {
   position: relative;
   padding: 10px;
-  background: #0e121b;
 }
 
-header {  
+header {
   margin: 0;
   padding: 10px 0 20px 0;
   overflow: auto;
-  background: #e9edff url("/images/case_toon_key.png") no-repeat ;
-  background-position: 18% 10px;
+  background: #e9edff url("/images/case_toon_key.png") no-repeat;
+  background-position: min(18%, 170px) 10px;
   background-size: auto 43.7rem;
   min-height: 450px;
-  max-width: 1200px;
+
+  background-color: #e9edff;
 }
 
 #head_copy {
   max-width: 530px;
-  margin-left: 45%;
+  margin-left: min(45%, 550px);
   padding-right: 30px;
-}
-#head_copy h1 {
-  margin: 25px 0 0px 0px;
-  padding: 0px 5px;
-  font-weight: 700;
-  background-color: #e9edfff2
-}
-#head_copy p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 10px 0;
-  padding: 3px 7px;
-  background-color: #e9edfff2
+  h1,
+  p {
+    background-color: #e9edffa5;
+    backdrop-filter: blur(3px);
+  }
+  h1 {
+    margin: 25px 0 0px 0px;
+    padding: 0px 5px;
+    font-weight: 700;
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 7px 0;
+    padding: 5px 7px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -776,7 +801,7 @@ header {
     display: none;
   }
   #head_copy h1 {
-    font-size: 20px;;
+    font-size: 20px;
   }
   #head_copy p {
     font-size: 13px;
@@ -865,6 +890,7 @@ small {
   margin: 0 auto;
   text-align: center;
   display: none;
+  background: #0e121b;
 }
 #brands ul#client_brands {
   display: block;

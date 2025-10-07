@@ -10,9 +10,12 @@ registerTyper($);
 registerFancyBox(window, document, $);
 
 console.log("jQuery %s", $().jquery);
-
 console.log("Packery", Packery);
 
+// We hide the main body scrollbar when a modal is opened, & want to avoid shifting the packery elements.
+// (scrollbar-gutter: stable; might work if it weren't the <body> scrolling?)
+// We can achieve this by measuring the scrollbar width, and applying it as margin when <body> scrollbar
+// is disabled & hidden.
 // Create the measurement node
 var scrollDiv = document.createElement("div");
 scrollDiv.className = "scrollbar-measure";
@@ -99,7 +102,7 @@ window.pckry = new Packery(container, {
     itemSelector: ".element",
     columnWidth: 120,
     gutter: 10,
-    transitionDuration: 0,    
+    transitionDuration: 0,
 });
 
 let filter = "all";
@@ -109,7 +112,8 @@ $("#project-filter").on("change", function () {
     $("#container > a").each(function () {
         if (
             filter === "all" ||
-            $(this).data("tags") && $(this).data("tags")?.split(" ").includes(filter)
+            ($(this).data("tags") &&
+                $(this).data("tags")?.split(" ").includes(filter))
         ) {
             $(this).toggleClass("hidden", false);
         } else {
@@ -179,7 +183,7 @@ function updateHash() {
             $("#overlay").scrollTop(0);
             $("body").css({
                 overflow: "hidden",
-                "margin-right": 0,
+                "margin-right": `${scrollbarWidth}px`,
             });
         }
     } else {
