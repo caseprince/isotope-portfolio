@@ -1,0 +1,121 @@
+/* @for $i from 1 through 10 {
+    .w-#{$i} {
+        width: #{($base * $i) + ($margin * ($i - 1) * 2)}#{px};
+    }
+    .h-#{$i} {
+        height: #{($base * $i) + ($margin * ($i - 1) * 2)}#{px};
+    }
+} */
+
+/* One day: https://caniuse.com/?search=css%20attr */
+/* div[data-w] {
+  width: calc(attr(data-w type(<integer>)) * 120px + (attr(data-w type(<integer>)) - 1) * 10px);
+}
+div[data-h] {
+  height: calc(attr(data-h type(<integer>)) * 120px + (attr(data-h type(<integer>)) - 1) * 10px);
+} */
+
+.w-1 {
+  width: 120px;
+}
+
+.h-1 {
+  height: 120px;
+}
+
+.w-2 {
+  width: 250px;
+}
+
+.h-2 {
+  height: 250px;
+}
+
+.w-3 {
+  width: 380px;
+}
+
+.h-3 {
+  height: 380px;
+}
+
+.w-4 {
+  width: 510px;
+}
+
+.h-4 {
+  height: 510px;
+}
+
+.w-5 {
+  width: 640px;
+}
+
+.h-5 {
+  height: 640px;
+}
+
+.w-6 {
+  width: 770px;
+}
+
+.h-6 {
+  height: 770px;
+}
+
+.w-7 {
+  width: 900px;
+}
+
+.h-7 {
+  height: 900px;
+}
+
+.w-8 {
+  width: 1030px;
+}
+
+.h-8 {
+  height: 1030px;
+}
+
+.w-9 {
+  width: 1160px;
+}
+
+.h-9 {
+  height: 1160px;
+}
+
+.w-10 {
+  width: 1290px;
+}
+
+.h-10 {
+  height: 1290px;
+}
+
+a.c1 {
+  width: 955px;
+  margin-right: 0px;
+}
+
+a.c2 {
+  width: 474px;
+}
+
+a.c3 {
+  width: 312px;
+}
+
+a.c4 {
+  width: 232px;
+}
+
+a.c5 {
+  width: 182px;
+}
+
+a.c6 {
+  width: 150px;
+}
