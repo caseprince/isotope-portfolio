@@ -210,4 +210,17 @@ $.typer.options.typerInterval = 9000;
 $.typer.options.typeDelay = 25;
 $("[data-typer-targets]").typer();
 
+$(".color-mode-toggle .switch").on("click", function() {
+    $("body").toggleClass("greyscale");
+    $("label.greyscale, label.colorful").toggleClass("active")
+})
+$("label.greyscale").on("click", () => {
+    $("body").addClass("greyscale");
+    $("label.greyscale, label.colorful").toggleClass("active")
+})
+$("label.colorful").on("click", () => {
+    $("body").removeClass("greyscale");
+    $("label.greyscale, label.colorful").toggleClass("active")
+})
+
 $("#brands, footer").delay(1000).show();

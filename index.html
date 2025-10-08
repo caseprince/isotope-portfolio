@@ -20,7 +20,7 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>"
     />
   </head>
-  <body>
+  <body class="greyscale">
     <header>
       <div class="head-copy">
         <h1>Hello!</h1>
@@ -70,6 +70,14 @@
             <option value="leds">LEDs</option>
           </select> -->
         </p>
+      </div>
+      <div class="color-mode-toggle">
+        <label class="greyscale active">greyscale</label>        
+        <div class="switch"></div>
+        <label class="colorful"
+          ><span>c</span><span>o</span><span>l</span><span>o</span><span>r</span
+          ><span>f</span><span>u</span><span>l</span></label
+        >        
       </div>
     </header>
     <div id="main">
@@ -2162,7 +2170,7 @@
     <div id="brands">
       <h1>Brands I've worked with:</h1>
 
-      <ul id="client_brands">
+      <ul>
         <!--li><div style="background-image:url('images/brands/bud_light.gif');"></div></li-->
         <li>
           <div style="background-image: url('images/brands/chb.gif')"></div>
