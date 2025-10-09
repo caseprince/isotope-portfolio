@@ -210,17 +210,29 @@ $.typer.options.typerInterval = 9000;
 $.typer.options.typeDelay = 25;
 $("[data-typer-targets]").typer();
 
-$(".color-mode-toggle .switch").on("click", function() {
-    $("body").toggleClass("greyscale");
-    $("label.greyscale, label.colorful").toggleClass("active")
-})
-$("label.greyscale").on("click", () => {
-    $("body").addClass("greyscale");
-    $("label.greyscale, label.colorful").toggleClass("active")
-})
-$("label.colorful").on("click", () => {
-    $("body").removeClass("greyscale");
-    $("label.greyscale, label.colorful").toggleClass("active")
-})
+function setGreyscale(enabled: boolean) {
+    if (enabled) {
+        $("body").addClass("greyscale");
+        $("label.greyscale").addClass("active");
+        $("label.colorful").removeClass("active");
+    } else {
+        $("body").removeClass("greyscale");
+        $("label.greyscale").removeClass("active");
+        $("label.colorful").addClass("active");
+    }
+    localStorage.setItem("greyscale", enabled.toString());
+}
+
+// Initialize from localStorage
+const savedGreyscale = localStorage.getItem("greyscale");
+if (savedGreyscale !== null) {
+    setGreyscale(savedGreyscale === "true");
+}
+
+$(".color-mode-toggle .switch").on("click", function () {
+    setGreyscale(!$("body").hasClass("greyscale"));
+});
+$(".color-mode-toggle label.greyscale").on("click", () => setGreyscale(true));
+$(".color-mode-toggle label.colorful").on("click", () => setGreyscale(false));
 
 $("#brands, footer").delay(1000).show();

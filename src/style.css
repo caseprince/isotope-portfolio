@@ -127,8 +127,8 @@ header {
     height: 22px;
     border-radius: 100px;
     position: relative;
-    background-color: #eeeeee;
-    border: 1px solid #cccccc;
+    background-color: rgb(0, 0, 0, 0.04);
+    border: 1px solid rgb(0, 0, 0, 0.2);
     box-shadow: 0px 1px 4px rgb(0 0 0 / 14%) inset;
     cursor: pointer;
     &:after {
@@ -136,17 +136,13 @@ header {
       display: block;
       position: absolute;
       top: 3px;
-      
       left: 21px;
       width: 15px;
       height: 15px;
       border-radius: 100px;
-      background: radial-gradient(circle, white, rgba(255, 255, 255, 0)), conic-gradient(
-          in hsl longer hue,
-          rgb(207, 0, 0),
-          rgb(207, 0, 0)
-        )
-        ;
+      background: radial-gradient(circle, white, rgba(255, 255, 255, 0)),
+        conic-gradient(in hsl longer hue, rgb(207, 0, 0), rgb(207, 0, 0));
+      border: 1px solid rgb(189 189 189);
       transition: left 0.1s ease-in-out;
     }
     transition: background-color 0.1s;
@@ -272,7 +268,7 @@ body.greyscale {
   left: 0;
   overflow-y: auto;
   will-change: transform;
-  padding: 7% 5% 5% 5%;
+  padding: min(5%, 65px) 5% 5%;
   color: white;
   display: none;
 }
