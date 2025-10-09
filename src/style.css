@@ -13,15 +13,31 @@ body {
 }
 
 header {
-  margin: 0;
-  padding: 10px 0 20px 0;
-  overflow: auto;
-  background: url("/images/case_toon_key.png") no-repeat;
-  background-color: var(--light-bg);
-  background-position: min(18%, 170px) 10px;
-  background-size: auto 43.7rem;
   min-height: 450px;
+  margin: 0;
+  padding: 15px 0;
+  overflow: auto;
+  background-color: var(--light-bg);
   position: relative;
+  .me {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: min(45%, 550px);
+    min-width: 260px;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0px;
+      right: 0;
+      width: 100%;
+      max-width: 350px;
+      height: 100%;
+      background: url("/images/case_toon_key.png") no-repeat 0 10px;
+      background-size: cover;
+    }
+  }
 
   .head-copy {
     max-width: 530px;
@@ -34,49 +50,29 @@ header {
     }
     h1 {
       margin: 25px 0 0px 0px;
-      padding: 0px 5px;
+      padding: 0px 10px;
       font-weight: 700;
     }
     p {
       font-size: 16px;
       line-height: 1.6;
       margin: 7px 0;
-      padding: 5px 7px;
+      padding: 5px 12px;
     }
-  }
-}
-
-@media (max-width: 1200px) {
-  header {
-    background-position: 15% 10px;
-  }
-}
-
-@media (max-width: 1100px) {
-  header {
-    background-position: 13% 10px;
-  }
-}
-
-@media (max-width: 1000px) {
-  header {
-    background-position: 10% 10px;
   }
 }
 
 @media (max-width: 810px) {
   header {
-    background-position: left 5% bottom 0;
-    background-size: auto 95%;
-  }
-  .typing {
-    display: none;
-  }
-  .head-copy h1 {
-    font-size: 20px;
-  }
-  .head-copy p {
-    font-size: 13px;
+    .typing {
+      display: none;
+    }
+    .head-copy h1 {
+      font-size: 27px;
+    }
+    .head-copy p {
+      font-size: 15px;
+    }
   }
 }
 
