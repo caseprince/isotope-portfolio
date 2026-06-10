@@ -439,6 +439,64 @@ p.detail {
   font-size: 15px;
 }
 
+#escher-lamps h2 {
+  margin: 10px 0 30px;
+}
+
+.escher-lamps-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.escher-lamps-comparison a,
+.escher-lamps-comparison img {
+  display: block;
+}
+
+.escher-lamps-comparison img {
+  aspect-ratio: 1;
+  width: 100%;
+  object-fit: cover;
+}
+
+#escher-lamps p {
+  clear: both;
+  margin: 28px 0 18px;
+}
+
+.escher-lamps-references {
+  display: flex;
+  gap: 18px;
+}
+
+.escher-lamps-references figure {
+  width: 150px;
+  margin: 0;
+}
+
+.escher-lamps-references a,
+.escher-lamps-references img {
+  display: block;
+}
+
+.escher-lamps-references img {
+  aspect-ratio: 1;
+  width: 100%;
+  object-fit: cover;
+}
+
+.escher-lamps-references img.escher-lizard-reference {
+  object-position: top center;
+}
+
+.escher-lamps-references figcaption {
+  color: #687f99;
+  font-size: 12px;
+  line-height: 1.3;
+  margin-top: 7px;
+}
+
 dl {
   clear: both;
   display: block;
