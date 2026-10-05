@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(noto-sans-tc.woff2) format('woff2');
+  unicode-range: U+3002, U+4e00, U+4ee5, U+516c, U+53ef, U+53f8, U+5b78, U+5bb6, U+5be6, U+7269, U+7406, U+7522, U+771f, U+91cf, U+ff0c;
+}
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(noto-sans-tc.woff2) format('woff2');
+  unicode-range: U+3002, U+4e00, U+4ee5, U+516c, U+53ef, U+53f8, U+5b78, U+5bb6, U+5be6, U+7269, U+7406, U+7522, U+771f, U+91cf, U+ff0c;
+}

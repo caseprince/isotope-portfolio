@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Noto Sans Hebrew';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(noto-sans-hebrew.woff2) format('woff2');
+  unicode-range: U+20, U+2e, U+5d0-5d1, U+5d4, U+5d6-5d7, U+5d9, U+5dc, U+5de, U+5e2-5e4, U+5e7-5ea;
+}
+@font-face {
+  font-family: 'Noto Sans Hebrew';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(noto-sans-hebrew.woff2) format('woff2');
+  unicode-range: U+20, U+2e, U+5d0-5d1, U+5d4, U+5d6-5d7, U+5d9, U+5dc, U+5de, U+5e2-5e4, U+5e7-5ea;
+}

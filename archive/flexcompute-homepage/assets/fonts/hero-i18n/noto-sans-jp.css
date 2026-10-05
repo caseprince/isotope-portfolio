@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(noto-sans-jp.woff2) format('woff2');
+  unicode-range: U+3001-3002, U+3048, U+304b-304c, U+3066-3067, U+306b, U+308b, U+3092, U+3099, U+4e88, U+5b9f, U+672c, U+696d, U+6a21, U+6e2c, U+7269, U+7406, U+7523, U+8010, U+898f;
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(noto-sans-jp.woff2) format('woff2');
+  unicode-range: U+3001-3002, U+3048, U+304b-304c, U+3066-3067, U+306b, U+308b, U+3092, U+3099, U+4e88, U+5b9f, U+672c, U+696d, U+6a21, U+6e2c, U+7269, U+7406, U+7523, U+8010, U+898f;
+}
